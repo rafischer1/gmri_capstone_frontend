@@ -1,4 +1,4 @@
-# Public Voluntary Flood Alert FE - A prototype for GMRI / City of Portland
+# Prototype Voluntary Flood Alert FE -  GMRI / City of Portland
 
 ```js
 npm start
