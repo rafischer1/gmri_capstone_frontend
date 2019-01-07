@@ -20,6 +20,16 @@ footer {
   text-align: center;
 }
 
+.footer-btn {
+  margin-top: 5px;
+  border-radius: 10px;
+  font-size: 12px;
+}
+
+.signup {
+  width: 100%;
+}
+
 /* signup */
 
 @import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
@@ -39,7 +49,7 @@ padding : 50px 0;
 .login-sec .copy-text i{color:rgb(138, 190, 254);}
 .login-sec .copy-text a{color:#E36262;}
 .login-sec h2{margin-bottom:30px; font-weight:800; font-size:30px; color: #DE6262;}
-.login-sec h2:after{content:" "; width:100px; height:5px; background:#FEB58A; display:block; margin-top:20px; border-radius:3px; margin-left:auto;margin-right:auto}
+.login-sec h2:after{content:" "; width:200px; height:5px; background:#FEB58A; display:block; margin-top:20px; border-radius:3px; }
 .btn-login{background: #DE6262; color:#fff; font-weight:600;}
 
 
