@@ -1,6 +1,6 @@
 # Prototype Voluntary Flood Alert FE -  GMRI / City of Portland
 
-```json
+```js
 {
 id: "8418150",
 name: "Portland",
