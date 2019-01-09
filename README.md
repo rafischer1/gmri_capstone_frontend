@@ -1,4 +1,4 @@
-# Prototype Voluntary Flood Alert FE -  GMRI / City of Portland
+# A prototype tool to engage citizens in sea level rise/storm surge impacts in Maine 🌊
 
 ```js
 {
