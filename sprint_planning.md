@@ -1,5 +1,7 @@
 # Planning for Capstone FE 🌊
 
+> a prototype tool to engage citizens in sea level rise/storm surge impacts in Maine.
+
 ## To-do 📋
 
 [ ] Build out react testing suite
