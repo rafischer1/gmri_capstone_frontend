@@ -14,10 +14,10 @@ const SignUp = () => {
               </h2>
               <form className="login-form">
                 <div className="form-group row">
-                <span class="input-field col s6">
-                  <i class="material-icons prefix">phone</i><br />
-                  <Input id="icon_telephone" type="tel" class="validate" placeholder="207-555-5555"></Input>
-                    <label for="icon_telephone"></label>
+                <span className="input-field col s6">
+                  <i className="material-icons prefix">phone</i><br />
+                  <Input id="icon_telephone" type="tel" className="validate" placeholder="207-555-5555"></Input>
+                    <label htmlFor="icon_telephone"></label>
         </span>
                 </div>
                 <div className="form-group">

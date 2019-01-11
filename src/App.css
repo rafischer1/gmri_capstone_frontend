@@ -1,6 +1,6 @@
 body {
-  background-color: rgb(205, 205, 205);
-  color: rgb(0, 0, 0);
+  background-color: rgb(0, 0, 0);
+  color: rgb(235, 235, 235);
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -28,6 +28,14 @@ footer {
 
 .signup {
   width: 100%;
+}
+
+.moonPage > img {
+  float: left;
+  padding: 1%;
+  margin: 1%;
+  border:1px solid darkgrey;
+  border-radius: 10px;
 }
 
 /* signup */

@@ -8,6 +8,11 @@ lat: "43.6567",
 lon: "-70.2467"
 },
 ```
+Sample request for water temp:
+
+`https://tidesandcurrents.noaa.gov/api/datagetter?begin_date=20190111%2015:00&end_date=20190112%2015:06&station=8418150&product=water_temperature&units=english&time_zone=gmt&application=ports_screen&format=json`
+
+
 
 ```js
 npm start

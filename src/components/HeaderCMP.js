@@ -1,9 +1,11 @@
 import React from 'react'
 import {Navbar, NavItem} from 'react-materialize'
 
+
 const HeaderCMP = () => {
   return <header className="App-header">
     <Navbar className="cyan lighten-4" left>
+      
       <ul className="nav navbar-nav right">
         <li>
           <img id="logo" src="https://www.gmri.org/sites/default/files/logo_0.png" height="60" alt="" />
@@ -13,6 +15,7 @@ const HeaderCMP = () => {
       <NavItem className="cyan" onClick={() => console.log("test click")}>
         F.A.S. React Frontend
             </NavItem>
+      
     </Navbar>
   </header>
 }
