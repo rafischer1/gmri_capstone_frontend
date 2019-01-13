@@ -12,6 +12,7 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      water_level_noaa: [],
       todaysDate: '',
       currentTime: '',
       weatherApi: {
@@ -43,18 +44,42 @@ class App extends Component {
     } else if (month.toString().length === 2) {
       month = month + 1
     }
-  
     let day = d.getDate();
+
+    let noaaDate = `${year}${month}${day}`;
+  
+    
     this.setState({
       todaysDate: `${year}${month}${day}`
     }) 
+    this.waterLevelNOAA(noaaDate);
   }
 
   // converts new Date object to current time in API format
   hourConverter() {
     let t = new Date();
-    this.setState({ currentTime: `${t.getHours()}:${t.getMinutes()}` });
+    
+    // this is calculating the current EST from MST...
+    this.setState({ currentTime: `${t.getHours() + 2}:${t.getMinutes()}` });
   }
+
+  async waterLevelNOAA(noaaDate) {
+    console.log("date in noaa call:", noaaDate)
+    let response = await fetch(
+      `https://tidesandcurrents.noaa.gov/api/datagetter?product=predictions&application=NOS.COOPS.TAC.WL&begin_date=${noaaDate}&end_date=${+noaaDate +
+      1}&datum=MLLW&station=8418150&time_zone=lst_ldt&units=english&interval=hilo&format=json`
+    );
+
+    let resJson = await response.json();
+    console.log(resJson);
+    if (resJson.predictions === undefined) {
+      return 'wait'
+    } else {
+      return this.setState({
+        water_level_noaa: resJson.predictions
+      })
+    }
+  };
 
 
   
@@ -75,7 +100,8 @@ class App extends Component {
         weatherApi={this.state.weatherApi} 
         todaysDate={this.state.todaysDate} 
         currentTime={this.state.currentTime}
-          
+        water_level_noaa={this.state.water_level_noaa}
+
         />
       {/* <SignUp /> */}
         <footer>

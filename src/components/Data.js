@@ -1,38 +1,84 @@
 import React from 'react';
+var Spinner = require("react-spinkit");
 
+const Data = ({weatherApi, currentTime, todaysDate, water_level_noaa}) => {
+    console.log("data cmp:", water_level_noaa, currentTime, todaysDate)
+     let showData = false
+    if (water_level_noaa) {
+      showData = true;
+    } else {
+      showData = false
+    }
 
+   let predictions = water_level_noaa
+   let nextHigh = 0
+   predictions.map((day) => {
+     // "2019-01-12 02:58"
+     let tideTimeOfDay = day.t.split(' ')[1]
+      console.log("days:", day, "currentTime:", currentTime)
+      if (day.type === 'H') {
+        console.log('hi')
+        nextHigh = militaryToStandardTime(tideTimeOfDay)
+      }
 
-
-const Data = ({weatherApi, currentTime, todaysDate}) => {
-   
-    let water_level_data = waterLevelNOAA(todaysDate);
-
-    console.log(water_level_data.predictions, currentTime, todaysDate)
-
+   })
+    
+    
+ 
   
-
-
   return <div className="dataPage">
-           {/* <div>Water Level: <span>{water_level_data}</span></div> */}
-           <div>Air Temp: <span>{weatherApi.air_temp}</span>F</div>
+  <div>
+          {showData ? <div><div>Air Temp: <span>{weatherApi.air_temp}</span>F</div>
            <div>Water Temp: <span>{weatherApi.water_temp}</span>F</div>
            <div>Sea Level: <span>{weatherApi.water_level}</span>Ft</div>
-          <div>Next High Tide: <span>{weatherApi.high_tide}</span> </div>
+          <div>Next High Tide: <span>{nextHigh}</span> </div></div>
+           : <Spinner name="line-scale" color="grey" />}
+          </div>
+          <div className="predictionsChart">{}</div>
     </div>
 }
 
+const militaryToStandardTime = (militaryTime) => {
+  let time = 0
+  let tmp = +(militaryTime.split(":")[0])
+  let minutes = militaryTime.split(":")[1]
+  console.log("split", militaryTime.split(':'))
 
-const waterLevelNOAA = async todaysDate => {
-  console.log("date in noaa call:", todaysDate);
-  let response = await fetch(
-    `https://tidesandcurrents.noaa.gov/api/datagetter?product=predictions&application=NOS.COOPS.TAC.WL&begin_date=${todaysDate}&end_date=${+todaysDate +
-    1}&datum=MLLW&station=8418150&time_zone=lst_ldt&units=english&interval=hilo&format=json`
-  );
+  if (tmp > 12) {
+      if (tmp === 13) {
+      tmp = 1;
+    } else if (tmp === 14) {
+      tmp = 2;
+    } else if (tmp === 15) {
+      tmp = 3;
+    } else if (tmp === 16) {
+      tmp = 4;
+    } else if (tmp === 17) {
+      tmp = 5;
+    } else if (tmp === 18) {
+      tmp = 6;
+    } else if (tmp === 19) {
+      tmp = 7;
+    } else if (tmp === 20) {
+      tmp = 8;
+    } else if (tmp === 21) {
+      tmp = 9;
+    } else if (tmp === 22) {
+      tmp = 10;
+    } else if (tmp === 23) {
+      tmp = 11;
+    } 
+    return `${tmp}:${minutes}AM`
+  
+  }
+   else if (tmp === 24) {
+    return `12:${minutes}AM`
+  } else {
+    return `${tmp}:${minutes}PM`
+  } 
+}
 
-  let resJson = await response.json();
-  console.log(resJson);
-  return resJson;
-};
+
 
 
 export default Data
