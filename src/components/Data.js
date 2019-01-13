@@ -1,8 +1,10 @@
 import React from 'react';
+import WaterTempDisplay from "./dataComponents/WaterTempDisplay";
+import TidePredictionsDisplay from "./dataComponents/TidePredictionsDisplay";
 var Spinner = require("react-spinkit");
 
-const Data = ({weatherApi, currentTime, todaysDate, water_level_noaa}) => {
-    console.log("data cmp:", water_level_noaa, currentTime, todaysDate)
+const Data = ({weatherApi, water_level_noaa, water_temp_noaa}) => {
+    // console.log("data cmp:", water_level_noaa, currentTime, todaysDate)
      let showData = false
     if (water_level_noaa) {
       showData = true;
@@ -15,36 +17,34 @@ const Data = ({weatherApi, currentTime, todaysDate, water_level_noaa}) => {
    predictions.map((day) => {
      // "2019-01-12 02:58"
      let tideTimeOfDay = day.t.split(' ')[1]
-      console.log("days:", day, "currentTime:", currentTime)
+      // console.log("days:", day, "currentTime:", currentTime)
       if (day.type === 'H') {
-        console.log('hi')
         nextHigh = militaryToStandardTime(tideTimeOfDay)
       }
 
    })
     
     
- 
-  
   return <div className="dataPage">
   <div>
           {showData ? <div><div>Air Temp: <span>{weatherApi.air_temp}</span>F</div>
            <div>Water Temp: <span>{weatherApi.water_temp}</span>F</div>
            <div>Sea Level: <span>{weatherApi.water_level}</span>Ft</div>
-          <div>Next High Tide: <span>{nextHigh}</span> </div></div>
+          <div>Next High Tide: <span>{nextHigh}</span> </div>
+          <WaterTempDisplay water_temp_noaa={water_temp_noaa}/>
+        <TidePredictionsDisplay water_level_noaa={water_level_noaa}/></div>
            : <Spinner name="line-scale" color="grey" />}
           </div>
           <div className="predictionsChart">{}</div>
+          
     </div>
 }
 
 const militaryToStandardTime = (militaryTime) => {
-  let time = 0
   let tmp = +(militaryTime.split(":")[0])
   let minutes = militaryTime.split(":")[1]
-  console.log("split", militaryTime.split(':'))
 
-  if (tmp > 12) {
+  if (tmp >= 12) {
       if (tmp === 13) {
       tmp = 1;
     } else if (tmp === 14) {
@@ -68,13 +68,13 @@ const militaryToStandardTime = (militaryTime) => {
     } else if (tmp === 23) {
       tmp = 11;
     } 
-    return `${tmp}:${minutes}AM`
+    return `${tmp}:${minutes}PM`
   
   }
    else if (tmp === 24) {
     return `12:${minutes}AM`
   } else {
-    return `${tmp}:${minutes}PM`
+    return `${tmp}:${minutes}AM`
   } 
 }
 

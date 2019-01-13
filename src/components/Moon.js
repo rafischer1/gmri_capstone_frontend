@@ -28,8 +28,7 @@ const Moon = () => {
   let current_phase = lune.phase();
   let current_moon_age = Math.floor(current_phase.age);
   let moon_phase_src = '' 
-  console.log("age of moon:", current_moon_age);
-
+  
   moon_phase_src = moonPhaseCalc(current_moon_age, moon_phase_src);
   
   return <div className="moonPage"><img src={moon_phase_src} alt="Moon Phase" /></div>;
