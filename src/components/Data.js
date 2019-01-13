@@ -14,6 +14,11 @@ const Data = ({weatherApi, water_level_noaa, water_temp_noaa}) => {
 
    let predictions = water_level_noaa
    let nextHigh = 0
+  let currentTemp
+  if (water_temp_noaa[0] === undefined) {
+    return 'wait'
+  } else { currentTemp = water_temp_noaa[0].v;}
+   
    predictions.map((day) => {
      // "2019-01-12 02:58"
      let tideTimeOfDay = day.t.split(' ')[1]
@@ -28,11 +33,12 @@ const Data = ({weatherApi, water_level_noaa, water_temp_noaa}) => {
   return <div className="dataPage">
   <div>
           {showData ? <div><div>Air Temp: <span>{weatherApi.air_temp}</span>F</div>
-           <div>Water Temp: <span>{weatherApi.water_temp}</span>F</div>
+           <div>Water Temp: <span>{currentTemp}</span>F</div>
            <div>Sea Level: <span>{weatherApi.water_level}</span>Ft</div>
           <div>Next High Tide: <span>{nextHigh}</span> </div>
+        <TidePredictionsDisplay water_level_noaa={water_level_noaa} />
           <WaterTempDisplay water_temp_noaa={water_temp_noaa}/>
-        <TidePredictionsDisplay water_level_noaa={water_level_noaa}/></div>
+        </div>
            : <Spinner name="line-scale" color="grey" />}
           </div>
           <div className="predictionsChart">{}</div>
