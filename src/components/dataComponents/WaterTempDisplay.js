@@ -4,9 +4,10 @@ import {
   XAxis,
   YAxis,
   VerticalGridLines,
-  HorizontalGridLines, LineSeries
+  HorizontalGridLines,
+  LineSeries
 } from "react-vis";
-
+const Spinner = require("react-spinkit");
 /***
  *  Water temp data object: {t: "2019-01-13 00:00", v: "36.9", f: "0,0,0"}
  * 
@@ -25,7 +26,7 @@ const WaterTempDataDisplay = (data) => {
   let waterTempData = data.water_temp_noaa
   console.log("water temp cmp:", waterTempData[0]);
   if (waterTempData[0] === undefined) {
-    return 'wait'
+    return <Spinner name="line-scale" color="teal" />;
   } else {
       let count = 1
       const dataArr = waterTempData.map((day) => {
@@ -44,7 +45,7 @@ const WaterTempDataDisplay = (data) => {
           <HorizontalGridLines />
           <XAxis title="Day" />
           <YAxis title="Water Temp F" />
-          <LineSeries data={dataArr} style={{ stroke: "#19F5CB", strokeWidth: 2 }} curve={"curveMonotoneX"} />
+        <LineSeries data={dataArr} style={{ stroke: "#19F5CB", strokeWidth: 2 }} curve={"curveMonotoneX"} />
         </XYPlot>
       </div>;
   }

@@ -1,4 +1,5 @@
 import React from 'react'
+
 import {
   XYPlot,
   XAxis,
@@ -7,20 +8,19 @@ import {
   HorizontalGridLines,
   LineSeries
 } from "react-vis";
+const Spinner = require("react-spinkit");
 
 const TidePredictionsDisplay = (data) => {
   
-  const tideChart = {
-    backgroundColor: 'black',
-    width: '700px',
-    marginTop: '2%',
-    borderBottom: '2px solid white',
+  const tideChart = { backgroundColor: "rgba(0, 0, 0, 0.034)", 
+  width: "700px", 
+  marginTop: "2%", 
+  borderBottom: "2px solid white" };
     // marginLeft: '25%'
-  }
 
   let tideData = data.water_level_noaa
   if (tideData[0] === undefined) {
-    return 'wait'
+    return <Spinner name="line-scale" color="teal" />
   } else {
     let count = 1
     const dataArr = tideData.map((day) => {

@@ -4,7 +4,7 @@ import {Navbar, NavItem} from 'react-materialize'
 
 const HeaderCMP = () => {
   return <header className="App-header">
-      <Navbar className="cyan lighten-4" left>
+      <Navbar className="blue" left>
         <ul className="nav navbar-nav right">
           <li>
             <a href="/SignUp">Sign Up</a>

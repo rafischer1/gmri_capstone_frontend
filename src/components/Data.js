@@ -1,7 +1,8 @@
 import React from 'react';
 import WaterTempDisplay from "./dataComponents/WaterTempDisplay";
 import TidePredictionsDisplay from "./dataComponents/TidePredictionsDisplay";
-var Spinner = require("react-spinkit");
+import Information from "./dataComponents/Information";
+const Spinner = require("react-spinkit");
 
 const Data = ({weatherApi, water_level_noaa, water_temp_noaa}) => {
     // console.log("data cmp:", water_level_noaa, currentTime, todaysDate)
@@ -38,6 +39,7 @@ const Data = ({weatherApi, water_level_noaa, water_temp_noaa}) => {
           <div>Next High Tide: <span>{nextHigh}</span> </div>
         <TidePredictionsDisplay water_level_noaa={water_level_noaa} />
           <WaterTempDisplay water_temp_noaa={water_temp_noaa}/>
+          <Information />
         </div>
            : <Spinner name="line-scale" color="grey" />}
           </div>
