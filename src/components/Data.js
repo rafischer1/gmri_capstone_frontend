@@ -1,29 +1,38 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Data extends Component {
- 
-  componentDidMount() {
-    console.log("props recieve to data:", this.props.weatherApi)
-    getWeather()
-  }
-  
-  render() {
-  return <div className="dataPage">
-           <div>Air Temp: <span>{this.props.weatherApi.air_temp}</span>F</div>
-           <div>Water Temp: <span>{this.props.weatherApi.water_temp}</span>F</div>
-           <div>Sea Level: <span>{this.props.weatherApi.water_level}</span>Ft</div>
-          <div>Next High Tide: <span>{this.props.weatherApi.high_tide}</span> </div>
-    </div>
+
+
+
+const Data = ({weatherApi, currentTime, todaysDate}) => {
    
+    let water_level_data = waterLevelNOAA(todaysDate);
+
+    console.log(water_level_data.predictions, currentTime, todaysDate)
+
   
-  }
-  
+
+
+  return <div className="dataPage">
+           {/* <div>Water Level: <span>{water_level_data}</span></div> */}
+           <div>Air Temp: <span>{weatherApi.air_temp}</span>F</div>
+           <div>Water Temp: <span>{weatherApi.water_temp}</span>F</div>
+           <div>Sea Level: <span>{weatherApi.water_level}</span>Ft</div>
+          <div>Next High Tide: <span>{weatherApi.high_tide}</span> </div>
+    </div>
 }
+
+
+const waterLevelNOAA = async todaysDate => {
+  console.log("date in noaa call:", todaysDate);
+  let response = await fetch(
+    `https://tidesandcurrents.noaa.gov/api/datagetter?product=predictions&application=NOS.COOPS.TAC.WL&begin_date=${todaysDate}&end_date=${+todaysDate +
+    1}&datum=MLLW&station=8418150&time_zone=lst_ldt&units=english&interval=hilo&format=json`
+  );
+
+  let resJson = await response.json();
+  console.log(resJson);
+  return resJson;
+};
+
 
 export default Data
-
-const getWeather = async () => {
-  let weather = 'hi'
-  // let weather = await fetch(`https://api.darksky.net/forecast/1d577a6cf480a1d51c10dce5e2d4d865/43.6567,-70.2467`);
-  console.log('weather:', weather)
-}

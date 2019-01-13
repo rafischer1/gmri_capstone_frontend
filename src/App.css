@@ -33,9 +33,22 @@ footer {
 .moonPage > img {
   float: left;
   padding: 1%;
-  margin: 1%;
+  margin: 1% 1% 1% 10%;
   border:1px solid darkgrey;
   border-radius: 10px;
+  -webkit-box-shadow: 6px 8px 1000px -4px rgba(182,238,252,1);
+-moz-box-shadow: 6px 8px 1000px -4px rgba(182,238,252,1);
+box-shadow: 6px 8px 1000px -4px rgba(182,238,252,1);
+}
+
+.moonPage > img:hover {
+  border:1px solid rgb(126, 160, 173);
+  
+}
+
+.dataPage {
+  margin-top: 1%;
+  font-size: 20px;
 }
 
 /* signup */
