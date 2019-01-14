@@ -4,8 +4,7 @@ import TidePredictionsDisplay from "./dataComponents/TidePredictionsDisplay";
 import Information from "./dataComponents/Information";
 const Spinner = require("react-spinkit");
 
-const Data = ({weatherApi, water_level_noaa, water_temp_noaa}) => {
-    // console.log("data cmp:", water_level_noaa, currentTime, todaysDate)
+const Data = ({weatherApi, water_level_noaa, water_temp_noaa, currentTime}) => {
      let showData = false
     if (water_level_noaa) {
       showData = true;
@@ -13,39 +12,53 @@ const Data = ({weatherApi, water_level_noaa, water_temp_noaa}) => {
       showData = false
     }
 
-   let predictions = water_level_noaa
-   let nextHigh = 0
+  let predictions = water_level_noaa
+  let nextHigh = 0
   let currentTemp
+  let tmpArrTime = []
+  let tmpArrFt = []
   if (water_temp_noaa[0] === undefined) {
-    return 'wait'
+    return <Spinner name="line-scale" color="grey" />;
   } else { currentTemp = water_temp_noaa[0].v;}
-   
-   predictions.map((day) => {
+
+   predictions.filter((day) => {
      // "2019-01-12 02:58"
      let tideTimeOfDay = day.t.split(' ')[1]
-      // console.log("days:", day, "currentTime:", currentTime)
-      if (day.type === 'H') {
-        nextHigh = militaryToStandardTime(tideTimeOfDay)
-      }
+     let tmpTime = currentTime.split(":")[0]
+     if (day.type === "H" && tideTimeOfDay.split(":")[0] >= tmpTime - 6) {
+       tmpArrFt.push(day.v)
+       nextHigh = militaryToStandardTime(tideTimeOfDay);
+       tmpArrTime.push(nextHigh)
+       return tmpArrTime[0];
+     }
 
    })
     
     
   return <div className="dataPage">
-  <div>
-          {showData ? <div><div>Air Temp: <span>{weatherApi.air_temp}</span>F</div>
-           <div>Water Temp: <span>{currentTemp}</span>F</div>
-           <div>Sea Level: <span>{weatherApi.water_level}</span>Ft</div>
-          <div>Next High Tide: <span>{nextHigh}</span> </div>
-        <TidePredictionsDisplay water_level_noaa={water_level_noaa} />
-          <WaterTempDisplay water_temp_noaa={water_temp_noaa}/>
-          <Information />
-        </div>
-           : <Spinner name="line-scale" color="grey" />}
-          </div>
-          <div className="predictionsChart">{}</div>
-          
-    </div>
+      <div>
+        {showData ? <div>
+            <div>
+              Air Temp: <span>{weatherApi.air_temp}</span>F
+            </div>
+            <div>
+              Water Temp: <span>{currentTemp}</span>F
+            </div>
+            <div>
+              Sea Level: <span>{weatherApi.water_level}</span>Ft
+            </div>
+            <div>
+              High Tide: <span>
+                {tmpArrFt[0]}ft @ {tmpArrTime[0]}
+              </span>{" "}
+            </div>
+            <TidePredictionsDisplay water_level_noaa={water_level_noaa} />
+            <WaterTempDisplay water_temp_noaa={water_temp_noaa} />
+            <Information />
+          </div> : <Spinner name="line-scale" color="grey" />}
+      </div>
+      <div className="predictionsChart">{}</div>
+    </div>;
 }
 
 const militaryToStandardTime = (militaryTime) => {

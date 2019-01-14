@@ -58,6 +58,11 @@ box-shadow: 6px 8px 1000px -4px rgba(182,238,252,1);
   margin: 3%;
 }
 
+.rv-xy-plot__axis__tick__text {
+
+  text-shadow: 2px 2px 1px rgb(252, 230, 133);
+}
+
 /* signup */
 
 @import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");

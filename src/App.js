@@ -20,7 +20,6 @@ class App extends Component {
         water_temp: 37,
         water_level: 4.5,
         air_temp: 38,
-        high_tide: `18:38`
       }
     };
   }
@@ -93,7 +92,7 @@ class App extends Component {
     return (
       <div className="App">
         <Router>
-          <div>
+          <div className="navbar">
             <HeaderCMP />
             <Route exact path="/" />
             <Route path="/signup" component={SignUp} />

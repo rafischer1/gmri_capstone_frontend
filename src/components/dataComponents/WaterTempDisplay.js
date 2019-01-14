@@ -40,10 +40,10 @@ const WaterTempDataDisplay = (data) => {
     
     return <div style={waterTempChart}>
         <span>Water Temp F</span>
-        <XYPlot width={700} height={200}>
+      <XYPlot width={700} height={200} yDomain={[32, 45]}>
           <VerticalGridLines />
           <HorizontalGridLines />
-          <XAxis title="Day" />
+          <XAxis title="Day" className="xaxis"/>
           <YAxis title="Water Temp F" />
         <LineSeries data={dataArr} style={{ stroke: "#19F5CB", strokeWidth: 2 }} curve={"curveMonotoneX"} />
         </XYPlot>
