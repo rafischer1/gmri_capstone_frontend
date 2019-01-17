@@ -17,9 +17,12 @@ const Data = ({weatherApi, water_level_noaa, water_temp_noaa, currentTime}) => {
   let currentTemp
   let tmpArrTime = []
   let tmpArrFt = []
+
   if (water_temp_noaa[0] === undefined) {
-    return <Spinner name="line-scale" color="grey" />;
-  } else { currentTemp = water_temp_noaa[0].v;}
+    return <Spinner name="line-scale" color="teal" />
+  } else { 
+    currentTemp = water_temp_noaa[water_temp_noaa.length - 1].v
+  }
 
    predictions.filter((day) => {
      // "2019-01-12 02:58"
@@ -53,9 +56,9 @@ const Data = ({weatherApi, water_level_noaa, water_temp_noaa, currentTime}) => {
               </span>{" "}
             </div>
             <TidePredictionsDisplay water_level_noaa={water_level_noaa} />
-            <WaterTempDisplay water_temp_noaa={water_temp_noaa} />
+            {/* <WaterTempDisplay water_temp_noaa={water_temp_noaa} /> */}
             <Information />
-          </div> : <Spinner name="line-scale" color="grey" />}
+          </div> : <Spinner name="line-scale" color="teal" />}
       </div>
       <div className="predictionsChart">{}</div>
     </div>;

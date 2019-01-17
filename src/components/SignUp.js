@@ -2,40 +2,71 @@ import React from 'react'
 import {Row, Input} from 'react-materialize'
 import "react-phone-number-input/style.css";
 
-const SignUp = () => {
-  return <div className="container signup">
+const SignUp = ({ subscribeCall }) => {
+
+  const Subscribe = (callback) => (ev) => {
+    ev.preventDefault();
+    let phone = ev.target[0].value;
+    phone = phoneFormat(phone);
+    let location = ev.target[1].value;
+    if (phone.length === 10 && location) {
+      callback(phone, location);
+    } 
+  };
+
+  return (
+    <div className="container signup">
       <section className="login-block">
         <div className="container">
           <div className="row">
             <div className="col-md-4 login-sec">
               <h2 className="text-center">
-                Sign Up For Flooding Notifications
+                Sign Up For Sea Level Rise/Flooding Notifications
               </h2>
-              <form className="login-form">
+              <form className="login-form" onSubmit={Subscribe(subscribeCall)}>
                 <div className="form-group row">
-                <span className="input-field col s6">
-                  <i className="material-icons prefix">phone</i><br />
-                  <Input id="icon_telephone" type="tel" className="validate" placeholder="207-555-5555"></Input>
-                    <label htmlFor="icon_telephone"></label>
-        </span>
+                  <span className="input-field col s12">
+                    <i className="material-icons prefix">phone</i>
+                    <br />
+                    <Input
+                      id="phone"
+                      type="tel"
+                      pattern="[0-9]{10}"
+                      className="validate"
+                      placeholder="207-555-5555"
+                      required
+                    />
+                    <label htmlFor="icon_phone" />
+                  </span>
                 </div>
                 <div className="form-group">
                   <Row>
-                    <Input s={12} type="select" label="Select Location:" defaultValue="1">
+                    <Input
+                      s={12}
+                      id="location"
+                      type="select"
+                      label="Select Location:"
+                      defaultValue="1"
+                    >
                       <option value="1">Portland</option>
                       <option value="2">South Portland</option>
                       <option value="3">Cape Elizabeth</option>
                       <option value="4">Falmouth</option>
+                      <option value="4">Westbrook</option>
+                      <option value="5">Other</option>
                     </Input>
                   </Row>
-                  
                 </div>
                 <br />
                 <br />
                 <button type="submit" className="btn btn-login float-right">
                   Sign Up
                 </button>
-                <a type="a" href="./proposal.html" className="btn btn-login float-right info">
+                <a
+                  type="a"
+                  href="./proposal.html"
+                  className="btn btn-login float-right info"
+                >
                   Continue to Site
                 </a>
               </form>
@@ -44,8 +75,21 @@ const SignUp = () => {
           </div>
         </div>
       </section>
-    </div>;
-}
+    </div>
+  );
+};
 
 
 export default SignUp
+
+function phoneFormat(phone) {
+  for (let i = 0; i < phone.length; i++) {
+    if (phone[i] === "-") {
+      phone = phone.slice(0, i) + phone.slice(i + 1);
+    }
+    else if (phone[i] === " ") {
+      phone = phone.slice(0, i) + phone.slice(i + 1);
+    }
+  }
+    return phone;
+}

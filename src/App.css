@@ -63,6 +63,10 @@ box-shadow: 6px 8px 1000px -4px rgba(182,238,252,1);
   text-shadow: 2px 2px 1px rgb(252, 230, 133);
 }
 
+#icon_email {
+  width: 300px;
+}
+
 /* signup */
 
 @import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
@@ -72,10 +76,10 @@ background: -webkit-linear-gradient(to bottom, rgb(140, 176, 255), #DE6262);  /*
 background: linear-gradient(to bottom, rgb(48, 98, 159), #DE6262); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 float:left;
 width:100%;
-padding : 50px 0;
+padding : 25px 0;
 }
 .banner-sec{background:url(https://media.gettyimages.com/photos/man-walks-through-the-sea-water-flooding-the-portland-pier-after-high-picture-id903086592)  no-repeat left bottom; background-size:cover; min-height:500px; border-radius: 0 10px 10px 0; padding:0;}
-.container{background:rgb(255, 255, 255); border-radius: 10px; box-shadow:15px 20px 0px rgba(0,0,0,0.1);}
+.container{color: rgb(48, 98, 159);background:rgb(255, 255, 255); border-radius: 10px; box-shadow:15px 20px 0px rgba(0,0,0,0.1);}
 .login-sec{padding: 50px 30px; position:relative;}
 .login-sec{background-color:rgba(205, 205, 205, 0.071);}
 .login-sec .copy-text{position:absolute; width:80%; bottom:20px; font-size:13px; text-align:center;}

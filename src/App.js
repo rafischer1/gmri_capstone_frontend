@@ -19,16 +19,39 @@ class App extends Component {
       weatherApi: {
         water_temp: 37,
         water_level: 4.5,
-        air_temp: 38,
-      }
+        air_temp: 38
+      },
+      show: false
     };
   }
 
-  componentDidMount() {
-    console.log("component did mount");
-    this.dateConverter();
-    this.hourConverter();
-    // getWeather();
+
+  /**
+ * subscribeCall to POST a subscriber
+ * @param {*} phone 
+ * @param {*} location 
+ */
+  async subscribeCall(phone, location) {
+    console.log('call phone location:', phone, location)
+    let postBody = {
+      phone,
+      location
+    }
+    let response = await fetch('http://localhost:3003/subscribe', {
+      method: 'POST',
+      body: JSON.stringify(postBody),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }).catch(err => {
+      console.log(err)
+    })
+    
+    let res = await response.json()
+    console.log("Res:", res)
+    // Content:<nil>3333333333Maine
+    
+    
   }
 
   // converts new Date object to current date in API format and calls API
@@ -88,34 +111,35 @@ class App extends Component {
     }
   }
 
+  componentDidMount() {
+    console.log("component did mount");
+    this.dateConverter();
+    this.hourConverter();
+    // getWeather();
+  }
+
   render() {
-    return (
-      <div className="App">
+    return <div className="App">
         <Router>
           <div className="navbar">
             <HeaderCMP />
             <Route exact path="/" />
-            <Route path="/signup" component={SignUp} />
+
+            <Route path="/signup" render={props => <SignUp {...props} subscribeCall={this.subscribeCall} />} />
             <Route path="/data" component={Data} />
             <Moon />
           </div>
         </Router>
 
-        <Data
-          weatherApi={this.state.weatherApi}
-          todaysDate={this.state.todaysDate}
-          currentTime={this.state.currentTime}
-          water_level_noaa={this.state.water_level_noaa}
-          water_temp_noaa={this.state.water_temp_noaa}
-        />
-        {/* <SignUp /> */}
+        <Data weatherApi={this.state.weatherApi} todaysDate={this.state.todaysDate} currentTime={this.state.currentTime} water_level_noaa={this.state.water_level_noaa} water_temp_noaa={this.state.water_temp_noaa} />
+
+
         <footer>
           <Button className="footer-btn right grey">About GMRI</Button>
           <Button className="footer-btn right grey">Unsubscribe</Button>
           <Button className="footer-btn right grey">Disclaimer</Button>
         </footer>
-      </div>
-    );
+      </div>;
   }
 }
 

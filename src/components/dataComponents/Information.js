@@ -24,7 +24,7 @@ const Information = () => {
         </h5>
      
       </div>
-    <img src="https://i1.wp.com/emmavreed.com/wp-content/uploads/2016/11/ezgif.com-9de85b22b4.gif?resize=604%2C453"></img>
+    <img alt="srl date gif" src="https://i1.wp.com/emmavreed.com/wp-content/uploads/2016/11/ezgif.com-9de85b22b4.gif?resize=604%2C453"></img>
     </div>;
 }
 

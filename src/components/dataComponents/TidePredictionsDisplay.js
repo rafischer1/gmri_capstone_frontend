@@ -24,9 +24,6 @@ const TidePredictionsDisplay = (data) => {
     borderBottom: "2px solid white" 
 };
 
-
-
-  
   let tideData = data.water_level_noaa
   console.log("tidal", tideData)
   if (tideData[0] === undefined) {
@@ -45,8 +42,8 @@ const TidePredictionsDisplay = (data) => {
       count++
       return {
         // needs to cover entire chart not just half the amount of x
-        x: count/2,
-        y: 10.8
+        x: (count/2),
+        y: 11.8
       }
     })
 

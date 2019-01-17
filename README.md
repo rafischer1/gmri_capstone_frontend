@@ -29,6 +29,8 @@ npm run eject
 
 Resources
 
+[Trello for Sprint Planning](https://trello.com/b/IQbTPzVc/gmri)
+
 [Tides and Currents NOAA](http://tidesandcurrents.noaa.gov/stations.html)
 
 [Maine Data - SLR & Tidal Flooding](https://www.maine.gov/dacf/mgs/hazards/slr_ss/index.shtml)
