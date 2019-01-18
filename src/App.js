@@ -3,8 +3,10 @@ import './App.css';
 import {Button} from 'react-materialize'
 import SignUp from './components/SignUp'
 import HeaderCMP from './components/HeaderCMP'
-import Moon from "./components/Moon";
 import Data from './components/Data'
+import Moon from "./components/visualComponents/Moon";
+import Parallax from "react-springy-parallax";
+import TidePredictionsDisplay from './components/dataComponents/TidePredictionsDisplay'
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
@@ -43,16 +45,19 @@ class App extends Component {
       headers: {
         "Content-Type": "application/json"
       }
-    }).catch(err => {
-      console.log(err)
     })
     
     let res = await response.json()
     console.log("Res:", res)
-    // Content:<nil>3333333333Maine
+    if (res === 200) {
+      localStorage.setItem("token", res);
+      return <Data to={{
+        pathname: '/Data',
+       
+      }}/> 
+    }
     
-    
-  }
+   }
 
   // converts new Date object to current date in API format and calls API
   dateConverter() {
@@ -112,33 +117,81 @@ class App extends Component {
   }
 
   componentDidMount() {
-    console.log("component did mount");
+    console.log("component did mount", this.state.res);
     this.dateConverter();
     this.hourConverter();
+    this.setState({
+      show: true
+    })
     // getWeather();
+  }
+
+  // css styles for scroll layer
+  tideLayer = {
+    backgroundColor: "black"
   }
 
   render() {
     return <div className="App">
-        <Router>
+        
           <div className="navbar">
             <HeaderCMP />
-            <Route exact path="/" />
-
-            <Route path="/signup" render={props => <SignUp {...props} subscribeCall={this.subscribeCall} />} />
-            <Route path="/data" component={Data} />
-            <Moon />
           </div>
-        </Router>
+        
+        <Parallax ref="parallax" pages={3}>
+         {/* SignUp layer at the top */}
+          <Parallax.Layer // Page offset, or where the layer will be at when scrolled to
+            // 0 means start, 1 second page, 1.5 second and half, and so on ...
+            offset={0} // Parallax factor, allows for positive and negative values
+            // Shifts the layer up or down in accordance to its offset
+            speed={0}
+            >
+            <SignUp subscribeCall={this.subscribeCall} />
+            <br />
+          </Parallax.Layer>
 
-        <Data weatherApi={this.state.weatherApi} todaysDate={this.state.todaysDate} currentTime={this.state.currentTime} water_level_noaa={this.state.water_level_noaa} water_temp_noaa={this.state.water_temp_noaa} />
+          {/* Moon layer */}
 
+          <Parallax.Layer 
+            offset={.4}
+            speed={-0.6}
+          >
+            <div className="moonDiv">
+           <Moon />
+           </div>
+            {/* <Information /> */}
+          </Parallax.Layer>
 
-        <footer>
-          <Button className="footer-btn right grey">About GMRI</Button>
-          <Button className="footer-btn right grey">Unsubscribe</Button>
-          <Button className="footer-btn right grey">Disclaimer</Button>
-        </footer>
+        <Parallax.Layer
+          offset={.9}
+          speed={0.2}
+          >
+
+          <Data weatherApi={this.state.weatherApi} todaysDate={this.state.todaysDate} currentTime={this.state.currentTime} water_level_noaa={this.state.water_level_noaa} water_temp_noaa={this.state.water_temp_noaa} />
+          <br />
+          <br />
+         
+
+        </Parallax.Layer>
+
+          {/* Tide layer */}
+
+        <Parallax.Layer
+          offset={1.3}
+          speed={0.8}
+          style={this.tideLayer}>
+            <br />
+            <br />
+            <TidePredictionsDisplay water_level_noaa={this.state.water_level_noaa} />
+        
+          {/* <Information /> */}
+        </Parallax.Layer>
+          <footer>
+            <Button className="footer-btn right grey">About GMRI</Button>
+            <Button className="footer-btn right grey">Unsubscribe</Button>
+            <Button className="footer-btn right grey">Disclaimer</Button>
+          </footer>
+        </Parallax>
       </div>;
   }
 }

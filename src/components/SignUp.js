@@ -14,13 +14,14 @@ const SignUp = ({ subscribeCall }) => {
     } 
   };
 
-  return (
-    <div className="container signup">
+ 
+
+  return <div className="container signup">
       <section className="login-block">
         <div className="container">
-          <div className="row">
+        <div className="row" >
             <div className="col-md-4 login-sec">
-              <h2 className="text-center">
+            <h2 className="text-center" >
                 Sign Up For Sea Level Rise/Flooding Notifications
               </h2>
               <form className="login-form" onSubmit={Subscribe(subscribeCall)}>
@@ -28,26 +29,13 @@ const SignUp = ({ subscribeCall }) => {
                   <span className="input-field col s12">
                     <i className="material-icons prefix">phone</i>
                     <br />
-                    <Input
-                      id="phone"
-                      type="tel"
-                      pattern="[0-9]{10}"
-                      className="validate"
-                      placeholder="207-555-5555"
-                      required
-                    />
+                    <Input id="phone" type="tel" pattern="[0-9]{10}" className="validate" placeholder="207-555-5555" required />
                     <label htmlFor="icon_phone" />
                   </span>
                 </div>
                 <div className="form-group">
                   <Row>
-                    <Input
-                      s={12}
-                      id="location"
-                      type="select"
-                      label="Select Location:"
-                      defaultValue="1"
-                    >
+                    <Input s={12} id="location" type="select" label="Select Location:" defaultValue="1">
                       <option value="1">Portland</option>
                       <option value="2">South Portland</option>
                       <option value="3">Cape Elizabeth</option>
@@ -62,21 +50,14 @@ const SignUp = ({ subscribeCall }) => {
                 <button type="submit" className="btn btn-login float-right">
                   Sign Up
                 </button>
-                <a
-                  type="a"
-                  href="./proposal.html"
-                  className="btn btn-login float-right info"
-                >
-                  Continue to Site
-                </a>
               </form>
+            
             </div>
-            <div className="col-md-8 banner-sec" />
+          <div className="col-md-8 banner-sec" />
           </div>
         </div>
       </section>
-    </div>
-  );
+    </div>;
 };
 
 

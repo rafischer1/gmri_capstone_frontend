@@ -1,7 +1,5 @@
 import React from 'react';
-import WaterTempDisplay from "./dataComponents/WaterTempDisplay";
-import TidePredictionsDisplay from "./dataComponents/TidePredictionsDisplay";
-import Information from "./dataComponents/Information";
+
 const Spinner = require("react-spinkit");
 
 const Data = ({weatherApi, water_level_noaa, water_temp_noaa, currentTime}) => {
@@ -19,7 +17,7 @@ const Data = ({weatherApi, water_level_noaa, water_temp_noaa, currentTime}) => {
   let tmpArrFt = []
 
   if (water_temp_noaa[0] === undefined) {
-    return <Spinner name="line-scale" color="teal" />
+    return <Spinner class="spinner" name="line-scale" color="teal" />
   } else { 
     currentTemp = water_temp_noaa[water_temp_noaa.length - 1].v
   }
@@ -34,14 +32,24 @@ const Data = ({weatherApi, water_level_noaa, water_temp_noaa, currentTime}) => {
        tmpArrTime.push(nextHigh)
        return tmpArrTime[0];
      }
-
    })
+
+   const infoStyle = { 
+     backgroundColor: "rgba(49, 49, 49, 0.223)", 
+     opacity: "1", 
+     color: "white",
+     padding: "2%",
+     textAlign: "center",
+     width: "50%",
+     marginLeft: "25%"
+    };
     
     
   return <div className="dataPage">
-      <div>
-        {showData ? <div>
-            <div>
+  
+    {showData ? <div style={infoStyle}>
+      
+            <div>CURRENT CONDITIONS PORTLAND HARBOR <br />
               Air Temp: <span>{weatherApi.air_temp}</span>F
             </div>
             <div>
@@ -54,14 +62,10 @@ const Data = ({weatherApi, water_level_noaa, water_temp_noaa, currentTime}) => {
               High Tide: <span>
                 {tmpArrFt[0]}ft @ {tmpArrTime[0]}
               </span>{" "}
-            </div>
-            <TidePredictionsDisplay water_level_noaa={water_level_noaa} />
-            {/* <WaterTempDisplay water_temp_noaa={water_temp_noaa} /> */}
-            <Information />
-          </div> : <Spinner name="line-scale" color="teal" />}
+            </div>   
+          </div> : <Spinner class="spinner" name="line-scale" color="teal" />}
       </div>
-      <div className="predictionsChart">{}</div>
-    </div>;
+      
 }
 
 const militaryToStandardTime = (militaryTime) => {

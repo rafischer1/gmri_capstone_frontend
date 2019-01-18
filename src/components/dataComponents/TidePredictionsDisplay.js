@@ -18,9 +18,10 @@ const Spinner = require("react-spinkit");
 const TidePredictionsDisplay = (data) => {
   
   const tideChart = { 
-    backgroundColor: "rgba(0, 0, 0, 0.034)", 
+    backgroundColor: "black", 
     width: "700px", 
-    marginTop: "2%", 
+    marginTop: "2%",
+    marginLeft: "22%", 
     borderBottom: "2px solid white" 
 };
 
