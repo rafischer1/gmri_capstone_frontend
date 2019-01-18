@@ -4,11 +4,6 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
-.proposal {
-  height: 90%;
-  margin-bottom: 50px;
-}
-
 .spinner {
   margin-left: 50%;
 }
@@ -39,14 +34,18 @@ footer {
   width: 65%;
   margin-left: 15%;
   border-radius: 10px;
-   background-color: rgba(193, 193, 248, 0.096);
+  background-color: rgba(193, 193, 248, 0.096);
+}
+
+.moonPage {
+  width: auto;
 }
 
 .moonPage > img {
-   background-color: black;
+  background-color: black;
   float: left;
   padding: 2%;
-  margin: 1% 1% 1% 5%;
+  margin-left: 5%;
   border: 2px solid rgb(0, 132, 255);
   border-radius: 100px;
   -webkit-box-shadow: 6px 8px 1000px -4px rgb(255, 249, 168);
@@ -55,8 +54,7 @@ footer {
 }
 
 .moonPage > img:hover {
-  border:2px solid rgb(23, 202, 134);
-  
+  border:2px solid rgb(23, 202, 134); 
 }
 
 .dataPage {
@@ -70,8 +68,6 @@ footer {
   font-size: 20px;
   box-shadow: 2px 5px 3px darkgrey;
 }
-
-
 
 .informationDataPage {
   border: 1px solid rgba(182,238,252,1);
@@ -90,9 +86,6 @@ footer {
 }
 
 /* signup */
-
-@import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
-
 /* .login-block{
   margin-left: 15%;
   margin-bottom: 10%;
@@ -116,7 +109,7 @@ footer {
 /* .container{color: rgb(48, 98, 159);background:rgb(255, 255, 255); border-radius: 10px; box-shadow:15px 20px 0px rgba(0,0,0,0.1);} */
 
 .login-sec {
-  padding: 50px 30px; 
+  padding: 2%; 
   position:relative;
 }
 

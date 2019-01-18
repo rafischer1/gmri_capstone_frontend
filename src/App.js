@@ -131,61 +131,55 @@ class App extends Component {
     backgroundColor: "black"
   }
 
+  imageStyle = {
+    marginLeft: "55%",
+  }
+
   render() {
     return <div className="App">
-        
-          <div className="navbar">
-            <HeaderCMP />
-          </div>
-        
+        <div className="navbar">
+          <HeaderCMP />
+        </div>
+
         <Parallax ref="parallax" pages={3}>
-         {/* SignUp layer at the top */}
-          <Parallax.Layer // Page offset, or where the layer will be at when scrolled to
-            // 0 means start, 1 second page, 1.5 second and half, and so on ...
-            offset={0} // Parallax factor, allows for positive and negative values
-            // Shifts the layer up or down in accordance to its offset
-            speed={0}
-            >
+          {/* SignUp layer at the top */}
+          <Parallax.Layer offset={0 // 0 means start, 1 second page, 1.5 second and half, and so on ... // Page offset, or where the layer will be at when scrolled to
+            } speed={0 // Shifts the layer up or down in accordance to its offset // Parallax factor, allows for positive and negative values
+            }>
             <SignUp subscribeCall={this.subscribeCall} />
             <br />
           </Parallax.Layer>
 
           {/* Moon layer */}
 
-          <Parallax.Layer 
-            offset={.4}
-            speed={-0.6}
-          >
+          <Parallax.Layer offset={0.65} speed={-0.6}>
             <div className="moonDiv">
-           <Moon />
-           </div>
+              <Moon />
+            </div>
             {/* <Information /> */}
           </Parallax.Layer>
 
-        <Parallax.Layer
-          offset={.9}
-          speed={0.2}
-          >
+          {/* data info layer/current conditions */}
 
-          <Data weatherApi={this.state.weatherApi} todaysDate={this.state.todaysDate} currentTime={this.state.currentTime} water_level_noaa={this.state.water_level_noaa} water_temp_noaa={this.state.water_temp_noaa} />
-          <br />
-          <br />
-         
-
-        </Parallax.Layer>
+          <Parallax.Layer offset={0.9} speed={0.2}>
+            <Data weatherApi={this.state.weatherApi} todaysDate={this.state.todaysDate} currentTime={this.state.currentTime} water_level_noaa={this.state.water_level_noaa} water_temp_noaa={this.state.water_temp_noaa} />
+          </Parallax.Layer>
 
           {/* Tide layer */}
 
-        <Parallax.Layer
-          offset={1.3}
-          speed={0.8}
-          style={this.tideLayer}>
+          <Parallax.Layer offset={1.3} speed={0.8} style={this.tideLayer}>
+          <br />
+            <Moon />
             <br />
             <br />
             <TidePredictionsDisplay water_level_noaa={this.state.water_level_noaa} />
-        
-          {/* <Information /> */}
-        </Parallax.Layer>
+          </Parallax.Layer>
+          <Parallax.Layer offset={2} speed={2} style={this.imageStyle}>
+            <img src="https://services3.arcgis.com/IWh1Id1sBCnK9p7O/arcgis/rest/services/Portland_Flooding/FeatureServer/0/2/attachments/3" height="50%" alt="flooding on frankling st" style={{ borderRadius: "10%" }} />
+            <br />
+          </Parallax.Layer>
+
+          {/* footer and links render last on bottom of page */}
           <footer>
             <Button className="footer-btn right grey">About GMRI</Button>
             <Button className="footer-btn right grey">Unsubscribe</Button>

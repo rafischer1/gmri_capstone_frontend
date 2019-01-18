@@ -49,7 +49,9 @@ const TidePredictionsDisplay = (data) => {
     })
 
     return <div style={tideChart}>
+      
         <span>Tide (24hrs)</span>
+       
         <XYPlot width={700} height={250} onMouseLeave={onMouseLeave} yDomain={[-2, 12]}>
           <VerticalGridLines />
           <HorizontalGridLines />
