@@ -27,37 +27,38 @@ class App extends Component {
     };
   }
 
-
   /**
- * subscribeCall to POST a subscriber
- * @param {*} phone 
- * @param {*} location 
- */
+   * subscribeCall to POST a subscriber
+   * @param {*} phone
+   * @param {*} location
+   */
   async subscribeCall(phone, location) {
-    console.log('call phone location:', phone, location)
+    console.log("call phone location:", phone, location);
     let postBody = {
       phone,
       location
-    }
-    let response = await fetch('http://localhost:3003/subscribe', {
-      method: 'POST',
+    };
+    let response = await fetch("http://localhost:3003/subscribe", {
+      method: "POST",
       body: JSON.stringify(postBody),
       headers: {
         "Content-Type": "application/json"
       }
-    })
-    
-    let res = await response.json()
-    console.log("Res:", res)
+    });
+
+    let res = await response.json();
+    console.log("Res:", res);
     if (res === 200) {
       localStorage.setItem("token", res);
-      return <Data to={{
-        pathname: '/Data',
-       
-      }}/> 
+      return (
+        <Data
+          to={{
+            pathname: "/Data"
+          }}
+        />
+      );
     }
-    
-   }
+  }
 
   // converts new Date object to current date in API format and calls API
   dateConverter() {
@@ -122,37 +123,44 @@ class App extends Component {
     this.hourConverter();
     this.setState({
       show: true
-    })
+    });
     // getWeather();
   }
 
   // css styles for scroll layer
   tideLayer = {
     backgroundColor: "black"
-  }
+  };
+
 
   imageStyle = {
-    marginLeft: "55%",
-  }
+    marginLeft: "55%"
+  };
 
   render() {
-    return <div className="App">
+    return (
+      <div className="App">
         <div className="navbar">
           <HeaderCMP />
         </div>
 
         <Parallax ref="parallax" pages={3}>
           {/* SignUp layer at the top */}
-          <Parallax.Layer offset={0 // 0 means start, 1 second page, 1.5 second and half, and so on ... // Page offset, or where the layer will be at when scrolled to
-            } speed={0 // Shifts the layer up or down in accordance to its offset // Parallax factor, allows for positive and negative values
-            }>
+          <Parallax.Layer
+            offset={
+              0 // 0 means start, 1 second page, 1.5 second and half, and so on ... // Page offset, or where the layer will be at when scrolled to
+            }
+            speed={
+              0 // Shifts the layer up or down in accordance to its offset // Parallax factor, allows for positive and negative values
+            }
+          >
             <SignUp subscribeCall={this.subscribeCall} />
             <br />
           </Parallax.Layer>
 
           {/* Moon layer */}
 
-          <Parallax.Layer offset={0.65} speed={-0.6}>
+          <Parallax.Layer offset={0.65} speed={-0.48}>
             <div className="moonDiv">
               <Moon />
             </div>
@@ -162,20 +170,33 @@ class App extends Component {
           {/* data info layer/current conditions */}
 
           <Parallax.Layer offset={0.9} speed={0.2}>
-            <Data weatherApi={this.state.weatherApi} todaysDate={this.state.todaysDate} currentTime={this.state.currentTime} water_level_noaa={this.state.water_level_noaa} water_temp_noaa={this.state.water_temp_noaa} />
+            <Data
+              weatherApi={this.state.weatherApi}
+              todaysDate={this.state.todaysDate}
+              currentTime={this.state.currentTime}
+              water_level_noaa={this.state.water_level_noaa}
+              water_temp_noaa={this.state.water_temp_noaa}
+            />
           </Parallax.Layer>
 
           {/* Tide layer */}
 
           <Parallax.Layer offset={1.3} speed={0.8} style={this.tideLayer}>
-          <br />
+            <br />
             <Moon />
             <br />
             <br />
-            <TidePredictionsDisplay water_level_noaa={this.state.water_level_noaa} />
+            <TidePredictionsDisplay
+              water_level_noaa={this.state.water_level_noaa}
+            />
           </Parallax.Layer>
           <Parallax.Layer offset={2} speed={2} style={this.imageStyle}>
-            <img src="https://services3.arcgis.com/IWh1Id1sBCnK9p7O/arcgis/rest/services/Portland_Flooding/FeatureServer/0/2/attachments/3" height="50%" alt="flooding on frankling st" style={{ borderRadius: "10%" }} />
+            <img
+              src="https://services3.arcgis.com/IWh1Id1sBCnK9p7O/arcgis/rest/services/Portland_Flooding/FeatureServer/0/2/attachments/3"
+              height="50%"
+              alt="flooding on frankling st"
+              style={{ borderRadius: "10%" }}
+            />
             <br />
           </Parallax.Layer>
 
@@ -186,7 +207,8 @@ class App extends Component {
             <Button className="footer-btn right grey">Disclaimer</Button>
           </footer>
         </Parallax>
-      </div>;
+      </div>
+    );
   }
 }
 
