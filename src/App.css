@@ -84,6 +84,64 @@ footer {
   z-index: -1;   
 }
 
+.sixFtPage {
+   background: url(https://images.unsplash.com/photo-1464925257126-6450e871c667?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1867&q=80);
+  background-size:cover;
+  color: white;
+  border-radius: 10px;
+  padding: 2%;
+  width: 66%;
+  margin-top: 6%;
+  margin-left: 16.5%;
+  font-size: 20px;
+  text-shadow: 1px 1px black;
+  box-shadow: 3px 5px 3px rgb(202, 202, 202);
+}
+
+#GISLink {
+  margin-left: 30%;
+  text-shadow: none;
+  padding: 1%;
+  border-radius: 5%;
+  border: 1px solid rgb(23, 202, 134);
+  color: rgb(23, 202, 134);
+}
+
+#GISLink:hover {
+  color: white;
+}
+
+
+.septemberPage {
+   background: url(https://services3.arcgis.com/IWh1Id1sBCnK9p7O/arcgis/rest/services/Portland_Flooding/FeatureServer/0/2/attachments/3);
+   background-size: 100% 100%;
+   background-repeat: no-repeat;
+  color: white;
+  border-radius: 10px;
+  padding: 2%;
+  width: 40%;
+  margin-top: 6%;
+  margin-left: 16.5%;
+  font-size: 20px;
+  text-shadow: 1px 1px black;
+  box-shadow: 3px 5px 3px rgb(202, 202, 202);
+}
+
+#SeptLink {
+  margin-left: 30%;
+  text-shadow: none;
+  padding: 1%;
+  border-radius: 5%;
+  border: 1px solid rgb(236, 225, 118);
+  color: rgb(236, 225, 118);
+}
+
+#SeptLink:hover {
+  color: white;
+}
+
+
+
 .informationDataPage {
   border: 1px solid rgba(182,238,252,1);
   border-radius: 5px;

@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
 import './App.css';
+import Parallax from "react-springy-parallax";
 import {Button} from 'react-materialize'
+
+// Component Imports
 import SignUp from './components/SignUp'
 import HeaderCMP from './components/HeaderCMP'
 import Data from './components/Data'
 import Moon from "./components/visualComponents/Moon";
-import Parallax from "react-springy-parallax";
+import SixFeetInfo from './components/visualComponents/SixFeetInfo'
+import SeptemberRainInfo from './components/visualComponents/SeptemberRainInfo'
 import TidePredictionsDisplay from './components/dataComponents/TidePredictionsDisplay'
+import BlizzardInfo from './components/visualComponents/BlizzardInfo'
 
-import { BrowserRouter as Router, Route } from "react-router-dom";
+
 
 class App extends Component {
   constructor(props) {
@@ -133,27 +138,17 @@ class App extends Component {
   };
 
 
-  imageStyle = {
-    marginLeft: "55%"
-  };
-
   render() {
-    return (
-      <div className="App">
+    return <div className="App">
         <div className="navbar">
           <HeaderCMP />
         </div>
 
-        <Parallax ref="parallax" pages={3}>
+        <Parallax ref="parallax" pages={4}>
           {/* SignUp layer at the top */}
-          <Parallax.Layer
-            offset={
-              0 // 0 means start, 1 second page, 1.5 second and half, and so on ... // Page offset, or where the layer will be at when scrolled to
-            }
-            speed={
-              0 // Shifts the layer up or down in accordance to its offset // Parallax factor, allows for positive and negative values
-            }
-          >
+          <Parallax.Layer offset={0 // 0 means start, 1 second page, 1.5 second and half, and so on ... // Page offset, or where the layer will be at when scrolled to
+            } speed={0 // Shifts the layer up or down in accordance to its offset // Parallax factor, allows for positive and negative values
+            }>
             <SignUp subscribeCall={this.subscribeCall} />
             <br />
           </Parallax.Layer>
@@ -170,13 +165,7 @@ class App extends Component {
           {/* data info layer/current conditions */}
 
           <Parallax.Layer offset={0.9} speed={0.2}>
-            <Data
-              weatherApi={this.state.weatherApi}
-              todaysDate={this.state.todaysDate}
-              currentTime={this.state.currentTime}
-              water_level_noaa={this.state.water_level_noaa}
-              water_temp_noaa={this.state.water_temp_noaa}
-            />
+            <Data weatherApi={this.state.weatherApi} todaysDate={this.state.todaysDate} currentTime={this.state.currentTime} water_level_noaa={this.state.water_level_noaa} water_temp_noaa={this.state.water_temp_noaa} />
           </Parallax.Layer>
 
           {/* Tide layer */}
@@ -186,17 +175,19 @@ class App extends Component {
             <Moon />
             <br />
             <br />
-            <TidePredictionsDisplay
-              water_level_noaa={this.state.water_level_noaa}
-            />
+            <TidePredictionsDisplay water_level_noaa={this.state.water_level_noaa} />
           </Parallax.Layer>
-          <Parallax.Layer offset={2} speed={2} style={this.imageStyle}>
-            <img
-              src="https://services3.arcgis.com/IWh1Id1sBCnK9p7O/arcgis/rest/services/Portland_Flooding/FeatureServer/0/2/attachments/3"
-              height="50%"
-              alt="flooding on frankling st"
-              style={{ borderRadius: "10%" }}
-            />
+          <Parallax.Layer offset={2} speed={1}>
+            <SixFeetInfo />
+
+            <br />
+          </Parallax.Layer>
+          <Parallax.Layer offset={2.7} speed={2}>
+            <SeptemberRainInfo />
+            <br />
+          </Parallax.Layer>
+          <Parallax.Layer offset={3} speed={1.8}>
+            <BlizzardInfo />
             <br />
           </Parallax.Layer>
 
@@ -207,8 +198,7 @@ class App extends Component {
             <Button className="footer-btn right grey">Disclaimer</Button>
           </footer>
         </Parallax>
-      </div>
-    );
+      </div>;
   }
 }
 
