@@ -114,7 +114,7 @@ footer {
 
 .septemberPage {
    background: url(https://services3.arcgis.com/IWh1Id1sBCnK9p7O/arcgis/rest/services/Portland_Flooding/FeatureServer/0/2/attachments/3);
-   background-size: 100% 100%;
+   background-size: 115% 100%;
    background-repeat: no-repeat;
   color: white;
   border-radius: 10px;
@@ -126,6 +126,22 @@ footer {
   text-shadow: 1px 1px black;
   box-shadow: 3px 5px 3px rgb(202, 202, 202);
 }
+
+.septemberPage::after {
+  content: "";
+  background: url(https://images.unsplash.com/photo-1495102675274-3ba61637d5bc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);
+  background-size: 100% 100%;
+   background-repeat: no-repeat;
+   border: 5px double rgb(85, 142, 180);
+  opacity: 0.5;
+  top: 0px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;   
+}
+
 
 #SeptLink {
   margin-left: 30%;

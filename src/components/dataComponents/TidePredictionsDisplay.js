@@ -26,7 +26,7 @@ const TidePredictionsDisplay = (data) => {
 };
 
   let tideData = data.water_level_noaa
-  console.log("tidal", tideData)
+  // console.log("tidal", tideData)
   if (tideData[0] === undefined) {
     return <Spinner name="line-scale" color="teal" />
   } else {

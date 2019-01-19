@@ -1,6 +1,7 @@
 import React from 'react'
 import {Row, Input} from 'react-materialize'
 import "react-phone-number-input/style.css";
+import ScrollAnimation from "react-animate-on-scroll";
 
 const SignUp = ({ subscribeCall }) => {
 
@@ -14,9 +15,8 @@ const SignUp = ({ subscribeCall }) => {
     } 
   };
 
- 
-
   return <div className="container signup">
+    <ScrollAnimation animateIn="fadeInDown">
       <section className="login-block">
         <div className="container">
         <div className="row" >
@@ -57,6 +57,7 @@ const SignUp = ({ subscribeCall }) => {
           </div>
         </div>
       </section>
+      </ScrollAnimation>
     </div>;
 };
 

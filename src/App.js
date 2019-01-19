@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import Parallax from "react-springy-parallax";
 import {Button} from 'react-materialize'
-
 // Component Imports
 import SignUp from './components/SignUp'
 import HeaderCMP from './components/HeaderCMP'
@@ -11,9 +10,7 @@ import Moon from "./components/visualComponents/Moon";
 import SixFeetInfo from './components/visualComponents/SixFeetInfo'
 import SeptemberRainInfo from './components/visualComponents/SeptemberRainInfo'
 import TidePredictionsDisplay from './components/dataComponents/TidePredictionsDisplay'
-import BlizzardInfo from './components/visualComponents/BlizzardInfo'
-
-
+require("dotenv").config();
 
 class App extends Component {
   constructor(props) {
@@ -23,11 +20,11 @@ class App extends Component {
       water_temp_noaa: [],
       todaysDate: "",
       currentTime: "",
-      weatherApi: {
-        water_temp: 37,
-        water_level: 4.5,
-        air_temp: 38
-      },
+      water_level: 0,
+      air_temp: 80,
+      wind_card: "",
+      wind_dir: 0,
+      wind_speed: 0,
       show: false
     };
   }
@@ -73,6 +70,7 @@ class App extends Component {
       todaysDate: `${year}${month}${day}`
     });
     this.waterLevelNOAA(noaaDate);
+    this.currentWaterLevel(noaaDate);
     this.waterTemplNOAA();
   }
 
@@ -101,14 +99,22 @@ class App extends Component {
     }
   }
 
+  // currentWaterLevel grabs the last item in the array as the last 6 minute updated sea level data
+  async currentWaterLevel(noaaDate) {
+    let response = await fetch(`https://tidesandcurrents.noaa.gov/api/datagetter?product=water_level&application=NOS.COOPS.TAC.WL&begin_date=${noaaDate}&end_date=${+noaaDate +
+      1}&datum=MLLW&station=8418150&time_zone=lst_ldt&units=english&format=json`);
+    let resJson = await response.json()
+    let tmp = resJson.data
+    this.setState({ water_level: +(tmp[tmp.length - 1].v) });
+  }
+
   // Water temp API call - sent as props to Data cmp
   async waterTemplNOAA() {
     let { year, month, day } = dateCalculator();
-    let noaaDate = `${year}${month}${day}`;
-    let noaaDatePlusOne = `${year}${month}${day + 1}`;
-    console.log("date in temp call:", +noaaDate, +noaaDatePlusOne);
+    let noaaDay = `${year}${month}${day}`;
+    let noaaDayPlusOne = `${year}${month}${day + 1}`;
     let response = await fetch(
-      `https://tidesandcurrents.noaa.gov/api/datagetter?product=water_temperature&application=NOS.COOPS.TAC.PHYSOCEAN&begin_date=${+noaaDate}&end_date=${+noaaDatePlusOne}&station=8418150&time_zone=GMT&units=english&interval=6&format=json`
+      `https://tidesandcurrents.noaa.gov/api/datagetter?product=water_temperature&application=NOS.COOPS.TAC.PHYSOCEAN&begin_date=${+noaaDay}&end_date=${+noaaDayPlusOne}&station=8418150&time_zone=GMT&units=english&interval=6&format=json`
     );
 
     let resJson = await response.json();
@@ -122,10 +128,29 @@ class App extends Component {
     }
   }
 
+  async weatherApiCall() {
+    console.log("processenv:", (process.env.REACT_APP_API_KEY));
+    let lat = 43.6567;
+    let lon = -70.2467;
+    let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_WEATHRE_KEY}`);
+    let weatherJson = await response.json()
+    let currentWind = weatherJson.wind.speed
+    let currentWindDir = weatherJson.wind.deg
+    let currentWindCard = windConversion(currentWindDir)
+    let currentTemp = tempConversion(weatherJson.main.temp)
+    this.setState({
+         air_temp: currentTemp,
+         wind_card: currentWindCard,
+         wind_dir: currentWindDir,
+         wind_speed: currentWind
+    })
+  }
+
   componentDidMount() {
     console.log("component did mount", this.state.res);
     this.dateConverter();
     this.hourConverter();
+    this.weatherApiCall()
     this.setState({
       show: true
     });
@@ -165,37 +190,33 @@ class App extends Component {
           {/* data info layer/current conditions */}
 
           <Parallax.Layer offset={0.9} speed={0.2}>
-            <Data weatherApi={this.state.weatherApi} todaysDate={this.state.todaysDate} currentTime={this.state.currentTime} water_level_noaa={this.state.water_level_noaa} water_temp_noaa={this.state.water_temp_noaa} />
+            <Data wind_speed={this.state.wind_speed} water_level={this.state.water_level} air_temp={this.state.air_temp} wind_card={this.state.wind_card} todaysDate={this.state.todaysDate} currentTime={this.state.currentTime} water_level_noaa={this.state.water_level_noaa} water_temp_noaa={this.state.water_temp_noaa} />
           </Parallax.Layer>
 
           {/* Tide layer */}
 
-          <Parallax.Layer offset={1.3} speed={0.8} style={this.tideLayer}>
+          <Parallax.Layer offset={1.4} speed={0.8} style={this.tideLayer}>
             <br />
             <Moon />
-            <br />
-            <br />
+          
             <TidePredictionsDisplay water_level_noaa={this.state.water_level_noaa} />
           </Parallax.Layer>
-          <Parallax.Layer offset={2} speed={1}>
+        <Parallax.Layer offset={2} speed={2}>
+          <SeptemberRainInfo />
+          <br />
+        </Parallax.Layer>
+          <Parallax.Layer offset={2.9} speed={1}>
             <SixFeetInfo />
-
-            <br />
           </Parallax.Layer>
-          <Parallax.Layer offset={2.7} speed={2}>
-            <SeptemberRainInfo />
-            <br />
-          </Parallax.Layer>
-          <Parallax.Layer offset={3} speed={1.8}>
-            <BlizzardInfo />
-            <br />
-          </Parallax.Layer>
+        
 
           {/* footer and links render last on bottom of page */}
           <footer>
-            <Button className="footer-btn right grey">About GMRI</Button>
-            <Button className="footer-btn right grey">Unsubscribe</Button>
-            <Button className="footer-btn right grey">Disclaimer</Button>
+          <a href="http://gmri.org/" rel="noopener noreferrer" target="_blank" className="footer-btn right teal lighten-4">
+              About GMRI
+            </a>
+          <Button className="footer-btn right teal lighten-4">Unsubscribe</Button>
+          <Button className="footer-btn right teal lighten-4">Disclaimer</Button>
           </footer>
         </Parallax>
       </div>;
@@ -217,4 +238,33 @@ const dateCalculator = () => {
   }
   let day = d.getDate();
   return { year, month, day };
+}
+
+const tempConversion = (tempK) => {
+  let tempF = (tempK - 273.15) * 9 / 5 + 32
+  return Math.ceil(tempF)
+}
+
+const windConversion = (deg) => {
+  let dir
+  if (deg > 330) {
+    dir = 'N'
+  } else if (deg <= 330 && deg > 290) {
+    dir = "NW"
+  } else if (deg <= 290 && deg > 250) {
+    dir = "W"
+  } else if (deg <= 250 && deg > 210) {
+    dir = "SW"
+  } else if (deg <= 210 && deg > 140) {
+    dir = "S"
+  } else if (deg <= 140 && deg > 120) {
+    dir = "SE"
+  } else if (deg <= 120 && deg > 80) {
+    dir = "E"
+  } else if (deg <= 80 && deg > 30) {
+    dir = "NE"
+  } else {
+    dir = "N"
+  }
+  return dir
 }

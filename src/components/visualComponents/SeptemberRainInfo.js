@@ -1,6 +1,7 @@
 
 import React from 'react';
 
+
 const SeptemberRainInfo = () => {
 
   const largeSix = {
@@ -10,6 +11,9 @@ const SeptemberRainInfo = () => {
   }
 
   return <div className="septemberPage">
+  
+      
+
       <span style={largeSix}>5.63</span>
       <br />
       <h4>
@@ -20,6 +24,7 @@ const SeptemberRainInfo = () => {
     <a id="SeptLink" href="https://www.pressherald.com/2015/09/30/heavy-rains-slowing-morning-commute-across-southern-maine/" target="_blank" rel="noopener noreferrer">
         Portland Press Herald Article
       </a>
+   
     </div>;
 
 }

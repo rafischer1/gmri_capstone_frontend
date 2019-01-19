@@ -2,7 +2,7 @@ import React from 'react';
 
 const Spinner = require("react-spinkit");
 
-const Data = ({weatherApi, water_level_noaa, water_temp_noaa, currentTime}) => {
+const Data = ({wind_speed, wind_card, air_temp, water_level, water_level_noaa, water_temp_noaa, currentTime}) => {
      let showData = false
     if (water_level_noaa) {
       showData = true;
@@ -24,6 +24,7 @@ const Data = ({weatherApi, water_level_noaa, water_temp_noaa, currentTime}) => {
 
    predictions.filter((day) => {
      // "2019-01-12 02:58"
+     console.log("Current time data:", currentTime)
      let tideTimeOfDay = day.t.split(' ')[1]
      let tmpTime = currentTime.split(":")[0]
      if (day.type === "H" && tideTimeOfDay.split(":")[0] >= tmpTime - 6) {
@@ -35,7 +36,7 @@ const Data = ({weatherApi, water_level_noaa, water_temp_noaa, currentTime}) => {
    })
 
    const infoStyle = { 
-     backgroundColor: "rgba(49, 49, 49, 0.223)", 
+     backgroundColor: "rgba(49, 49, 49, 0.723)", 
      opacity: "1", 
      color: "white",
      padding: "2%",
@@ -50,13 +51,17 @@ const Data = ({weatherApi, water_level_noaa, water_temp_noaa, currentTime}) => {
     {showData ? <div style={infoStyle}>
       
             <div>CURRENT CONDITIONS PORTLAND HARBOR <br />
-              Air Temp: <span>{weatherApi.air_temp}</span>F
+              Air Temp: <span>{air_temp}</span>F
             </div>
+      <div>
+        Wind: <span>{wind_speed}Mph from {wind_card}</span>
+            </div>
+     
             <div>
               Water Temp: <span>{currentTemp}</span>F
             </div>
             <div>
-              Sea Level: <span>{weatherApi.water_level}</span>Ft
+              Sea Level: <span>{water_level}</span>Ft
             </div>
             <div>
               High Tide: <span>
