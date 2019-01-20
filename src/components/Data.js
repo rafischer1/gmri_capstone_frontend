@@ -61,7 +61,7 @@ const Data = ({wind_speed, wind_card, air_temp, water_level, water_level_noaa, w
               Water Temp: <span>{currentTemp}</span>F
             </div>
             <div>
-              Sea Level: <span>{water_level}</span>Ft
+        Sea Level: <span>{water_level.toFixed(2)}</span>Ft
             </div>
             <div>
               High Tide: <span>

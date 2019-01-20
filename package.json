@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "animate.css": "^3.7.0",
+    "bootstrap": "^4.2.1",
     "dotenv": "^6.2.0",
     "jest": "^23.6.0",
     "lune": "^0.4.0",
@@ -19,7 +20,8 @@
     "react-spinkit": "^3.0.0",
     "react-springy-parallax": "^1.3.0",
     "react-test-renderer": "^16.7.0",
-    "react-vis": "^1.11.5"
+    "react-vis": "^1.11.5",
+    "reactstrap": "^7.1.0"
   },
   "scripts": {
     "start": "react-scripts start",

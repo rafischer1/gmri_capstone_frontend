@@ -21,7 +21,7 @@ const HeaderCMP = () => {
   }
 
   return <header className="App-header" onClick={waveFunc} id="ocean">
-    <Navbar className="teal lighten-4" left>
+    <Navbar className="teal lighten-4" >
         <ul className="nav navbar-nav right">
           <li>
             <a href="/SignUp">Sign Up</a>

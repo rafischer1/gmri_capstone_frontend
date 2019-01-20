@@ -4,13 +4,15 @@ import Parallax from "react-springy-parallax";
 import {Button} from 'react-materialize'
 // Component Imports
 import SignUp from './components/SignUp'
+import AlertCMP from './components/alerts/AlertCMP'
 import HeaderCMP from './components/HeaderCMP'
 import Data from './components/Data'
 import Moon from "./components/visualComponents/Moon";
 import SixFeetInfo from './components/visualComponents/SixFeetInfo'
+import InformationCarousel from './components/visualComponents/InformationCarousel'
 import SeptemberRainInfo from './components/visualComponents/SeptemberRainInfo'
 import TidePredictionsDisplay from './components/dataComponents/TidePredictionsDisplay'
-require("dotenv").config();
+
 
 class App extends Component {
   constructor(props) {
@@ -25,10 +27,18 @@ class App extends Component {
       wind_card: "",
       wind_dir: 0,
       wind_speed: 0,
-      show: false
+      show: false,
+      alertValue: 0
     };
   }
-
+  
+  renderAlert = (value) => {
+    console.log("Renderalert:", value)
+    // alert(`🌊 Flooding definitely possible!🌊 ${value}`)
+    this.setState({
+      alertValue: value
+    })
+  }
   /**
    * subscribeCall to POST a subscriber
    * @param {*} phone
@@ -93,6 +103,12 @@ class App extends Component {
     if (resJson.predictions === undefined) {
       return "wait";
     } else {
+      console.log(resJson.predictions, "hi there")
+      resJson.predictions.map((day) => {
+        if (+(day.v) > 10.8) {
+          this.renderAlert(+(day.v))
+        }
+      })
       return this.setState({
         water_level_noaa: resJson.predictions
       });
@@ -129,10 +145,10 @@ class App extends Component {
   }
 
   async weatherApiCall() {
-    console.log("processenv:", (process.env.REACT_APP_API_KEY));
+    console.log("processenv:", (process.env.REACT_APP_WEATHER_KEY));
     let lat = 43.6567;
     let lon = -70.2467;
-    let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_WEATHRE_KEY}`);
+    let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_WEATHER_KEY}`);
     let weatherJson = await response.json()
     let currentWind = weatherJson.wind.speed
     let currentWindDir = weatherJson.wind.deg
@@ -170,6 +186,7 @@ class App extends Component {
         </div>
 
         <Parallax ref="parallax" pages={4}>
+          <AlertCMP props={this.state.alertValue}/>
           {/* SignUp layer at the top */}
           <Parallax.Layer offset={0 // 0 means start, 1 second page, 1.5 second and half, and so on ... // Page offset, or where the layer will be at when scrolled to
             } speed={0 // Shifts the layer up or down in accordance to its offset // Parallax factor, allows for positive and negative values
@@ -198,25 +215,31 @@ class App extends Component {
           <Parallax.Layer offset={1.4} speed={0.8} style={this.tideLayer}>
             <br />
             <Moon />
-          
+
             <TidePredictionsDisplay water_level_noaa={this.state.water_level_noaa} />
           </Parallax.Layer>
-        <Parallax.Layer offset={2} speed={2}>
-          <SeptemberRainInfo />
-          <br />
-        </Parallax.Layer>
+          <Parallax.Layer offset={2} speed={2}>
+            <SeptemberRainInfo />
+            <br />
+          </Parallax.Layer>
           <Parallax.Layer offset={2.9} speed={1}>
             <SixFeetInfo />
           </Parallax.Layer>
-        
+          <Parallax.Layer offset={3} speed={1.5}>
+            <InformationCarousel />
+          </Parallax.Layer>
 
           {/* footer and links render last on bottom of page */}
           <footer>
-          <a href="http://gmri.org/" rel="noopener noreferrer" target="_blank" className="footer-btn right teal lighten-4">
+            <a href="http://gmri.org/" rel="noopener noreferrer" target="_blank" className="footer-btn right teal lighten-4">
               About GMRI
             </a>
-          <Button className="footer-btn right teal lighten-4">Unsubscribe</Button>
-          <Button className="footer-btn right teal lighten-4">Disclaimer</Button>
+            <Button className="footer-btn right teal lighten-4">
+              Unsubscribe
+            </Button>
+            <Button className="footer-btn right teal lighten-4">
+              Disclaimer
+            </Button>
           </footer>
         </Parallax>
       </div>;
