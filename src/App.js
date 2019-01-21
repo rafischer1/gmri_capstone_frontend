@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link} from 'react-router-dom'
 import './App.css';
 import Parallax from "react-springy-parallax";
 import {Button} from 'react-materialize'
+
 // Component Imports
 import SignUp from './components/SignUp'
+import Admin from './components/Admin'
 import AlertCMP from './components/alerts/AlertCMP'
 import HeaderCMP from './components/HeaderCMP'
 import Data from './components/Data'
@@ -12,6 +15,7 @@ import SixFeetInfo from './components/visualComponents/SixFeetInfo'
 import InformationCarousel from './components/visualComponents/InformationCarousel'
 import SeptemberRainInfo from './components/visualComponents/SeptemberRainInfo'
 import TidePredictionsDisplay from './components/dataComponents/TidePredictionsDisplay'
+const Spinner = require("react-spinkit");
 
 
 class App extends Component {
@@ -33,8 +37,6 @@ class App extends Component {
   }
   
   renderAlert = (value) => {
-    console.log("Renderalert:", value)
-    // alert(`🌊 Flooding definitely possible!🌊 ${value}`)
     this.setState({
       alertValue: value
     })
@@ -45,7 +47,6 @@ class App extends Component {
    * @param {*} location
    */
   async subscribeCall(phone, location) {
-    console.log("call phone location:", phone, location);
     let postBody = {
       phone,
       location
@@ -59,16 +60,8 @@ class App extends Component {
     });
 
     let res = await response.json();
-    console.log("Res:", res);
     if (res === 200) {
-      localStorage.setItem("token", res);
-      return (
-        <Data
-          to={{
-            pathname: "/Data"
-          }}
-        />
-      );
+      return localStorage.setItem("token", res);
     }
   }
 
@@ -121,6 +114,9 @@ class App extends Component {
       1}&datum=MLLW&station=8418150&time_zone=lst_ldt&units=english&format=json`);
     let resJson = await response.json()
     let tmp = resJson.data
+    if (tmp.length === undefined) {
+      return <Spinner className="spinner" name="line-scale" color="teal" />;
+    }
     this.setState({ water_level: +(tmp[tmp.length - 1].v) });
   }
 
@@ -145,7 +141,6 @@ class App extends Component {
   }
 
   async weatherApiCall() {
-    console.log("processenv:", (process.env.REACT_APP_WEATHER_KEY));
     let lat = 43.6567;
     let lon = -70.2467;
     let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_WEATHER_KEY}`);
@@ -186,7 +181,7 @@ class App extends Component {
         </div>
 
         <Parallax ref="parallax" pages={4}>
-          <AlertCMP props={this.state.alertValue}/>
+          <AlertCMP props={this.state.alertValue} />
           {/* SignUp layer at the top */}
           <Parallax.Layer offset={0 // 0 means start, 1 second page, 1.5 second and half, and so on ... // Page offset, or where the layer will be at when scrolled to
             } speed={0 // Shifts the layer up or down in accordance to its offset // Parallax factor, allows for positive and negative values
@@ -206,33 +201,45 @@ class App extends Component {
 
           {/* data info layer/current conditions */}
 
-          <Parallax.Layer offset={0.9} speed={0.2}>
+          <Parallax.Layer offset={0.8} speed={0.2}>
             <Data wind_speed={this.state.wind_speed} water_level={this.state.water_level} air_temp={this.state.air_temp} wind_card={this.state.wind_card} todaysDate={this.state.todaysDate} currentTime={this.state.currentTime} water_level_noaa={this.state.water_level_noaa} water_temp_noaa={this.state.water_temp_noaa} />
           </Parallax.Layer>
 
           {/* Tide layer */}
 
-          <Parallax.Layer offset={1.4} speed={0.8} style={this.tideLayer}>
+          <Parallax.Layer offset={1.1} speed={0.85} style={this.tideLayer}>
             <br />
+            <Parallax pages={1}>
             <Moon />
-
             <TidePredictionsDisplay water_level_noaa={this.state.water_level_noaa} />
+            <Parallax.Layer offset={.1} speed={1}>
+              <SixFeetInfo />
+            </Parallax.Layer>
+            </Parallax>
           </Parallax.Layer>
-          <Parallax.Layer offset={2} speed={2}>
+          <Parallax.Layer offset={1.999} speed={.5}>
             <SeptemberRainInfo />
-            <br />
           </Parallax.Layer>
           <Parallax.Layer offset={2.9} speed={1}>
-            <SixFeetInfo />
+          <InformationCarousel />
           </Parallax.Layer>
           <Parallax.Layer offset={3} speed={1.5}>
-            <InformationCarousel />
+            
           </Parallax.Layer>
+      </Parallax>
 
           {/* footer and links render last on bottom of page */}
           <footer>
+          <Router>
+            <div>
+              <Route path="/admin" component={Admin} />
+              
             <a href="http://gmri.org/" rel="noopener noreferrer" target="_blank" className="footer-btn right teal lighten-4">
               About GMRI
+            </a>
+              
+            <a href="/Admin" rel="noopener noreferrer" target="_blank" className="footer-btn right teal lighten-4">
+              Admin
             </a>
             <Button className="footer-btn right teal lighten-4">
               Unsubscribe
@@ -240,8 +247,11 @@ class App extends Component {
             <Button className="footer-btn right teal lighten-4">
               Disclaimer
             </Button>
+            </div>
+          </Router>
+          
           </footer>
-        </Parallax>
+        
       </div>;
   }
 }

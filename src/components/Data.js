@@ -1,5 +1,4 @@
 import React from 'react';
-
 const Spinner = require("react-spinkit");
 
 const Data = ({wind_speed, wind_card, air_temp, water_level, water_level_noaa, water_temp_noaa, currentTime}) => {
@@ -17,20 +16,20 @@ const Data = ({wind_speed, wind_card, air_temp, water_level, water_level_noaa, w
   let tmpArrFt = []
 
   if (water_temp_noaa[0] === undefined) {
-    return <Spinner class="spinner" name="line-scale" color="teal" />
+    return <Spinner className="spinner" name="line-scale" color="teal" />
   } else { 
     currentTemp = water_temp_noaa[water_temp_noaa.length - 1].v
   }
 
    predictions.filter((day) => {
      // "2019-01-12 02:58"
-     console.log("Current time data:", currentTime)
+    //  console.log("Current time data:", currentTime)
      let tideTimeOfDay = day.t.split(' ')[1]
      let tmpTime = currentTime.split(":")[0]
-     if (day.type === "H" && tideTimeOfDay.split(":")[0] >= tmpTime - 6) {
-       tmpArrFt.push(day.v)
+     if (day.type === "H" && tideTimeOfDay.split(":")[0] >= tmpTime - 6 && currentTime.split(":")[0] < tideTimeOfDay.split(":")[0]) {
+       tmpArrFt.push(day.v);
        nextHigh = militaryToStandardTime(tideTimeOfDay);
-       tmpArrTime.push(nextHigh)
+       tmpArrTime.push(nextHigh);
        return tmpArrTime[0];
      }
    })
@@ -68,7 +67,7 @@ const Data = ({wind_speed, wind_card, air_temp, water_level, water_level_noaa, w
                 {tmpArrFt[0]}ft @ {tmpArrTime[0]}
               </span>{" "}
             </div>   
-          </div> : <Spinner class="spinner" name="line-scale" color="teal" />}
+          </div> : <Spinner className="spinner" name="line-scale" color="teal" />}
       </div>
       
 }

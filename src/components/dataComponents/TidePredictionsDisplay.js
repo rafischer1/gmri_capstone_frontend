@@ -28,7 +28,7 @@ const TidePredictionsDisplay = (data) => {
   let tideData = data.water_level_noaa
   // console.log("tidal", tideData)
   if (tideData[0] === undefined) {
-    return <Spinner name="line-scale" color="teal" />
+    return <Spinner className="spinner" name="line-scale" color="teal" />
   } else {
     let count = 1
     const dataArr = tideData.map((day) => {
@@ -58,7 +58,7 @@ const TidePredictionsDisplay = (data) => {
   
    
 
-    return <div style={tideChart}>
+    return <div className="tideChartCss" style={tideChart}>
         <span>Tide (24hrs)</span>
         <XYPlot width={700} height={250}  yDomain={[-2, 12]}>
           <VerticalGridLines />

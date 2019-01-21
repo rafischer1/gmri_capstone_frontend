@@ -98,7 +98,6 @@ footer {
   margin-left: 16.5%;
   font-size: 20px;
   text-shadow: 1px 1px black;
-  box-shadow: 3px 5px 3px rgb(202, 202, 202);
 }
 
 #GISLink {
@@ -121,9 +120,9 @@ footer {
   color: white;
   border-radius: 10px;
   padding: 2%;
-  width: 40%;
-  margin-top: 6%;
-  margin-left: 16.5%;
+  width: 60%;
+  margin-top: 8%;
+  margin-left: 10%;
   font-size: 20px;
   text-shadow: 1px 1px black;
   box-shadow: 3px 5px 3px rgb(202, 202, 202);
@@ -146,6 +145,7 @@ footer {
 
 
 #SeptLink {
+  background-color: rgba(0, 0, 0, 0.212);
   margin-left: 30%;
   text-shadow: none;
   padding: 1%;
@@ -223,17 +223,70 @@ body{
 
 /* media screen declarations */
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 850px) {
   body {
-    background-color: lightblue;
+    background-color: rgb(255, 255, 255); 
   }
 
-  .alertDiv {
+  .row {
     width: 100%;
-    font-size: 10px;
   }
-  
 
+  .moonPage {
+    display: none;
+  }
+
+  .login-block {
+    width: 95%;
+    margin: 2.5%;
+    padding: 0;
+    font-size: 14px; 
+  }
+ 
+  .signUp {
+    width: 100%;
+  }
+
+  .login-sec {
+    padding: 0;
+   max-width: 700px;
+  }
+
+  .tideChartCss {
+    margin: 0% !important;
+  }
+
+  .rv-xy-plot_inner {
+    width: 20px !important;
+  }
+
+  .dataPage {
+    width: 95%;
+    margin: 2.5%;
+    font-size: 14px;
+  }
+
+  .sixFtPage {
+    width: 96%;
+    font-size: 12px;
+    margin: 1%;
+    box-shadow: none;
+  }
+
+  .septemberPage {
+   background: url(https://services3.arcgis.com/IWh1Id1sBCnK9p7O/arcgis/rest/services/Portland_Flooding/FeatureServer/0/2/attachments/3);
+   background-size: 115% 100%;
+   background-repeat: no-repeat;
+  color: white;
+  border-radius: 10px;
+  padding: 2%;
+  width: 80%;
+  font-size: 12px;
+  text-shadow: 1px 1px black;
+  box-shadow: 3px 5px 3px rgb(202, 202, 202);
+}
+
+  
 
 
 }
