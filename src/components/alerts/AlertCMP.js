@@ -23,7 +23,7 @@ export default class AlertCMP extends React.Component {
            </Button>}>
          <h3>
            Flooding is predicted today with a Water Level of:{" "}
-           {this.props.props}Ft
+           {this.props.props.toFixed(1)} Ft
          </h3>
          <br />
          <hr />

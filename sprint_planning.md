@@ -6,34 +6,30 @@
 
 [ ] Build out react testing suite
 
-[ ] Components: sign-up, home, data, admin, admin-login
+[x] Components: sign-up, home, data, admin, admin-login
 
-[ ] react-router
+[x] react-router
 
-[ ] Connect to API's and build dataset
+[x] Connect to API's and build dataset
 
 ## Working Code 🦙
 
 [x] React-Materialize hooked up
 
-
-
-
-
-
 ---
 
 Wind Conversion from Q1:
+
 ```js
 if (Winds.length > 0) {
-			var currvalue = Winds[currentindex][1];
-			var currdir = WindDirs[currentindex][1];
-			switch (true) {
-			  case (currdir >= 348.75 || currdir <= 11.25):
-				  currdir = "N";
-				  break;
-			  case (currdir >= 11.25 && currdir <= 33.75):
-				  currdir = "NNE";
+  var currvalue = Winds[currentindex][1];
+  var currdir = WindDirs[currentindex][1];
+  switch (true) {
+    case (currdir >= 348.75 || currdir <= 11.25):
+      currdir = "N";
+      break;
+		case (currdir >= 11.25 && currdir <= 33.75):
+			currdir = "NNE";
 				  break;
 			  case (currdir >= 33.75 && currdir <= 56.25):
 				  currdir = "NE";

@@ -1,15 +1,13 @@
 import React from "react";
-import {Input} from "react-materialize";
+import {Input, Toast} from "react-materialize";
 import SixFeetInfo from "../visualComponents/SixFeetInfo";
 
 
-const Unsubscribe = ({unsubscribeCall}) => {
 
+const Unsubscribe = ({unsubscribeCall, toastMsg}) => {
   const unsubscribe = (callback) => (ev) => {
     ev.preventDefault();
     let phone = ev.target[0].value;
-    console.log(ev.target[1].checked);
-  
     if (phone.length === 10 && ev.target[1].checked === true) {
       callback(phone);
     }
@@ -23,7 +21,7 @@ const Unsubscribe = ({unsubscribeCall}) => {
   }
 
   return <div className="unsubscribe">
-      <form className="unsibscribe-form" style={unsubCss} onSubmit={unsubscribe(unsubscribeCall)}>
+      <form className="unsubscribe-form" style={unsubCss} onSubmit={unsubscribe(unsubscribeCall)}>
         <div className="form-group row">
           <span className="input-field col s12">
             <i className="material-icons prefix">phone</i>
@@ -37,10 +35,13 @@ const Unsubscribe = ({unsubscribeCall}) => {
           </label>
         </div>
 
-        <button type="submit" className="btn btn-login float-right">
-          Unsubscribe
-        </button>
+      {!toastMsg ? <button type="submit" className="btn btn-login float-right">
+        Unsubscribe
+        </button>  : <Toast className="red" toast={toastMsg}>
+        {toastMsg}
+      </Toast>}
       </form>
+   
       <SixFeetInfo />
     </div>;
 }

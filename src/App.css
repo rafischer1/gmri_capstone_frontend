@@ -8,13 +8,55 @@ body {
   margin-left: 50%;
 }
 
+.toast {
+  margin-bottom: 3%;
+}
+
+table {
+  border: 1px solid rgb(123, 189, 228);
+}
+
+tr:hover {
+  background-color: rgb(221, 255, 244);
+}
+
+nav ul a {
+  color: rgb(44, 157, 177);
+}
+
+nav ul a:hover {
+  color: rgb(250, 229, 134);
+  padding: -1%;
+  background-color: rgba(17, 17, 17, 0.678);
+  border-radius: 5%;
+  transform: translate(2px, -3px);
+}
+
+nav ul a:active {
+  transform: translate(1px, 1px);
+}
+
+.button-collapse {
+  color: rgb(44, 157, 177);
+}
+
+.button-collapse:hover {
+  color: rgb(250, 229, 134);
+  transform: translate(1px, -1px);
+}
+
+.button-collapse:active {
+  color: rgb(0, 0, 0);
+  transform: translate(1px, 1px);
+}
+
 footer {
   position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
   height: 50px;
-  background-color: #DE6262;
+  background-color: rgba(255, 130, 130, 0.37);
   color: white;
   text-align: center;
 }
@@ -44,7 +86,6 @@ footer {
 
 .moonPage {
   width: auto;
-  
 }
 
 .moonPage > img {
@@ -289,8 +330,5 @@ body{
   text-shadow: 1px 1px black;
   box-shadow: 3px 5px 3px rgb(202, 202, 202);
 }
-
-  
-
 
 }

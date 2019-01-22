@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Parallax from "react-springy-parallax";
 
+
 // Component Imports
 import SignUp from './coreComponents/SignUp'
 import AlertCMP from './alerts/AlertCMP'
@@ -27,7 +28,8 @@ class MainView extends Component {
       wind_dir: 0,
       wind_speed: 0,
       show: false,
-      alertValue: 0
+      alertValue: 0,
+      viewToastMsg: ''
     };
   }
 
@@ -36,29 +38,48 @@ class MainView extends Component {
       alertValue: value
     })
   }
+
+  renderToast = (msg) => {
+     this.setState({
+      viewToastMsg: msg
+    })
+  }
+
+
   /**
    * subscribeCall to POST a subscriber
    * @param {*} phone
    * @param {*} location
    */
-  async subscribeCall(phone, location) {
+ subscribeCall = async(phone, location) => {
     let postBody = {
       phone,
       location
     };
-    let response = await fetch("http://localhost:3003/subscribe", {
-      method: "POST",
-      body: JSON.stringify(postBody),
-      headers: {
-        "Content-Type": "application/json"
+    let response = await fetch(
+      `${process.env.REACT_APP_DEV_API_URL}/subscribe`,
+      {
+        method: "POST",
+        body: JSON.stringify(postBody),
+        headers: {
+          "Content-Type": "application/json"
+        }
       }
-    });
+    );
 
     let res = await response.json();
     if (res === 200) {
-      return localStorage.setItem("token", res);
+      let msg = `Subscription Succesful!`
+      console.log(res, msg)
+      this.renderToast(msg)
+      setTimeout(() => {
+        msg = ''
+        this.renderToast(msg)
+      }, 3000)
     }
   }
+
+
 
   // converts new Date object to current date in API format and calls API
   dateConverter() {
@@ -94,7 +115,7 @@ class MainView extends Component {
       console.log(resJson.predictions, "hi there")
       resJson.predictions.map((day) => {
         if (+(day.v) > 10.8) {
-          this.renderAlert(+(day.v))
+          return this.renderAlert(+(day.v))
         }
       })
       return this.setState({
@@ -136,8 +157,8 @@ class MainView extends Component {
   }
 
   async weatherApiCall() {
-    let lat = 43.6567;
-    let lon = -70.2467;
+    const lat = 43.6567;
+    const lon = -70.2467;
     let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_WEATHER_KEY}`);
     let weatherJson = await response.json()
     let currentWind = weatherJson.wind.speed
@@ -177,7 +198,8 @@ class MainView extends Component {
         <Parallax.Layer offset={0 // 0 means start, 1 second page, 1.5 second and half, and so on ... // Page offset, or where the layer will be at when scrolled to
         } speed={0 // Shifts the layer up or down in accordance to its offset // Parallax factor, allows for positive and negative values
         }>
-          <SignUp subscribeCall={this.subscribeCall} />
+          <SignUp subscribeCall={this.subscribeCall} toastMsg={this.state.viewToastMsg}/>
+          
           <br />
         </Parallax.Layer>
 
@@ -216,6 +238,7 @@ class MainView extends Component {
         <Parallax.Layer offset={3} speed={1.5}>
 
         </Parallax.Layer>
+        <footer></footer>
       </Parallax>
     </div>;
   }

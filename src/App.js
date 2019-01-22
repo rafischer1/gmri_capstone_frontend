@@ -9,13 +9,19 @@ import MainView from './components/MainView'
 import Unsubscribe from './components/coreComponents/Unsubscribe'
 
 
-
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cool_info: 0
+      cool_info: 0,
+      toastMsg: ''
     };
+  }
+
+  renderToast = (msg) => {
+    this.setState({
+      toastMsg: msg
+    })
   }
 
   /**
@@ -23,14 +29,35 @@ class App extends Component {
   * @param {*} phone
 
   */
-  async unsubscribeCall(phone) {
-    console.log("in the unsub phone:", phone)
-    let response = await fetch(`http://localhost:3003/subscribe/${phone}`, {
+  unsubscribeCall = async(phone) => {
+    let response = await fetch(`${process.env.REACT_APP_DEV_API_URL}/subscribe/${phone}`, {
       method: "DELETE",
     });
 
     let res = await response.json();
-   console.log("unsub res:", res)
+
+
+    if (res === 200) {
+      let msg = `${phone} Unsubscribed`;
+      this.renderToast(msg);
+      setTimeout(() => {
+        msg = '';
+        this.renderToast(msg);
+      }, 3000);
+    }
+  }
+
+  async postSMSCall() {
+    let postBody = {}
+    let response = await fetch(`${process.env.REACT_APP_DEV_API_URL}/data`, {
+      method: "POST",
+      body: JSON.stringify(postBody),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    let resJson = await response.json()
+    console.log("posSMScall body:", resJson)
   }
 
 
@@ -38,10 +65,10 @@ class App extends Component {
     return <div className="AppView">
       <Router>
         <div>
-          <Navbar className="grey darken-1" >
+          <Navbar className="white" >
             <ul>
               <li>
-                <Link to="/">Home</Link>
+                <Link to="/">SLR Maine</Link>
               </li>
               <li>
                 <Link to="/admin">Admin</Link>
@@ -50,21 +77,18 @@ class App extends Component {
                 <Link to="/unsubscribe">Unsubscribe</Link>
               </li>
             </ul>
-          <ul className="nav navbar-nav right">
-            <li>
-              <img id="logo" src="https://www.gmri.org/sites/default/files/logo_0.png" height="60" alt="" />
-              <img src="https://static1.squarespace.com/static/5a75f43a692ebeeb1159413d/t/5adf368f2b6a28995d5d1539/1524577943240/Seal.Navy.png" height="60" width="60" alt="" />
-           </li>
-          </ul>
+            <ul className="nav navbar-nav right">
+              <li>
+                <img id="logo" src="https://www.gmri.org/sites/default/files/logo_0.png" height="60" alt="" />
+                <img src="https://static1.squarespace.com/static/5a75f43a692ebeeb1159413d/t/5adf368f2b6a28995d5d1539/1524577943240/Seal.Navy.png" height="60" width="60" alt="" />
+             </li>
+            </ul>
           </Navbar>
           <Route exact path="/" component={MainView} />
-          <Route path="/admin" component={Admin} />
-          <Route path="/unsubscribe" component={() => <Unsubscribe unsubscribeCall={this.unsubscribeCall}/>}  />
+          <Route path="/admin" component={() => <Admin postSMSCall={this.portSMSCall}/>} />
+          <Route path="/unsubscribe" component={() => <Unsubscribe unsubscribeCall={this.unsubscribeCall} toastMsg={this.state.toastMsg}/>}  />
         </div>
-
       </Router>
-      {/* <Header /> */}
-      {/* <MainView /> */}
     </div>;
   }
 }

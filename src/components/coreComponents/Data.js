@@ -20,10 +20,8 @@ const Data = ({wind_speed, wind_card, air_temp, water_level, water_level_noaa, w
   } else { 
     currentTemp = water_temp_noaa[water_temp_noaa.length - 1].v
   }
-
-   predictions.filter((day) => {
+    predictions.filter((day) => {
      // "2019-01-12 02:58"
-    //  console.log("Current time data:", currentTime)
      let tideTimeOfDay = day.t.split(' ')[1]
      let tmpTime = currentTime.split(":")[0]
      if (day.type === "H" && tideTimeOfDay.split(":")[0] >= tmpTime - 6 && currentTime.split(":")[0] < tideTimeOfDay.split(":")[0]) {

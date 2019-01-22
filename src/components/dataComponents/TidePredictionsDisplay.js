@@ -73,9 +73,6 @@ const TidePredictionsDisplay = (data) => {
   }
 }
 
-const floodLineMouseOver = () => {
-  console.log("Hi there")
-}
 
 // onNearestXY = {(x, event) => {
 //   onHoverValue = `Tide Level: ${x.y}Ft`
