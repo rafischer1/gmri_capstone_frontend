@@ -14,11 +14,11 @@ export default class Admin extends React.Component {
 
   render() {
     return this.props.props === false ? <div /> : <div className="adminPage">
-      <Modal header="Admin Page" trigger={<Button className="teal darken-2">Admin Page
+      <Modal header="Admin Page" trigger={<Button className="teal darken-2">Password Verification
       </Button>}>
       <form onSubmit={this.checkPassword}>Sign In
       <input type="password" required placeholder="password" />
-      <button type="submit">Check Password</button>
+      <button type="submit">Validate Password</button>
       </form>
       <hr />
       <div>{this.passwordCorrect}</div>

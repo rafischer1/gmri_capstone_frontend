@@ -165,6 +165,10 @@ footer {
   margin: 3%;
 }
 
+.adminPage {
+  text-align: center;
+}
+
 .rv-xy-plot__axis__tick__text {
 
   text-shadow: 2px 2px 1px rgb(252, 230, 133);

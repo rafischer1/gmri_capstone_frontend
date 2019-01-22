@@ -19,6 +19,7 @@
     "react-scripts": "2.1.3",
     "react-scroll": "^1.7.10",
     "react-spinkit": "^3.0.0",
+    "react-spring": "^7.2.10",
     "react-springy-parallax": "^1.3.0",
     "react-test-renderer": "^16.7.0",
     "react-vis": "^1.11.5",
