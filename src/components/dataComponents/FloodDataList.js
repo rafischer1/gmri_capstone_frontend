@@ -5,7 +5,7 @@ const FloodDataList = ({floodData}) => {
    
   const ulStyle = { width: "100px", marginLeft: "5%", fontFamily: "Aleo", borderBottom: "1px dashed rgb(123, 189, 228)" };
 
-  return floodData === undefined ? <Spinner className="spinner" name="wave" color="teal" /> : floodData.map(
+  return floodData === undefined || floodData === null ? <Spinner className="spinner" name="wave" color="teal" /> : floodData.map(
       el => {
         let elDate = formatDate(el.createdat)
         return <thead key={el.id} style={ulStyle}>

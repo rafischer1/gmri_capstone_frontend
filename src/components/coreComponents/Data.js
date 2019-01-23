@@ -38,8 +38,8 @@ const Data = ({wind_speed, wind_card, air_temp, water_level, water_level_noaa, w
      color: "white",
      padding: "2%",
      textAlign: "center",
-     width: "50%",
-     marginLeft: "25%"
+     width: "60%",
+     marginLeft: "20%"
     };
     
     

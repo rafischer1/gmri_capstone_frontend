@@ -15,6 +15,7 @@ lon: "-70.2467"
 
 [Sample request for actual -> predicted water_level](https://tidesandcurrents.noaa.gov/api/datagetter?product=water_level&application=NOS.COOPS.TAC.WL&begin_date=20190111&end_date=20190112&datum=MLLW&station=8418150&time_zone=GMT&units=english&format=json)
 
+
 ```js
 Commands for React:
 
@@ -38,3 +39,7 @@ Resources
 [Lunar Phase Cal 🌝](https://github.com/kencrocken/lunar_phase)
 
 [📈 React-Vis Data Docs 📉](https://github.com/uber/react-vis)
+
+---
+
+![image](./src/images/SMS_Screenshot.png)

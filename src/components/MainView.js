@@ -205,7 +205,7 @@ class MainView extends Component {
 
         {/* Moon layer */}
 
-        <Parallax.Layer offset={0.65} speed={-0.48}>
+        <Parallax.Layer offset={0.64} speed={-0.4}>
           <div className="moonDiv">
             <Moon />
           </div>
@@ -214,12 +214,12 @@ class MainView extends Component {
 
         {/* data info layer/current conditions */}
 
-        <Parallax.Layer offset={0.8} speed={0.2}>
+        <Parallax.Layer offset={0.9} speed={0.2}>
           <Data wind_speed={this.state.wind_speed} water_level={this.state.water_level} air_temp={this.state.air_temp} wind_card={this.state.wind_card} todaysDate={this.state.todaysDate} currentTime={this.state.currentTime} water_level_noaa={this.state.water_level_noaa} water_temp_noaa={this.state.water_temp_noaa} />
         </Parallax.Layer>
 
         {/* Tide layer */}
-        <Parallax.Layer offset={1.1} speed={0.85} style={this.tideLayer}>
+        <Parallax.Layer offset={1.25} speed={0.85} style={this.tideLayer}>
           <br />
           <Parallax pages={1}>
             <Moon />
@@ -229,7 +229,7 @@ class MainView extends Component {
             </Parallax.Layer>
           </Parallax>
         </Parallax.Layer>
-        <Parallax.Layer offset={1.999} speed={.5}>
+        <Parallax.Layer offset={1.7} speed={0}>
           <SeptemberRainInfo />
         </Parallax.Layer>
         <Parallax.Layer offset={2.9} speed={1}>

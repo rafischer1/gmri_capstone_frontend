@@ -42,9 +42,9 @@ export default class Admin extends React.Component {
     ev.preventDefault()
     let postBody = {
       Msg: ev.target[0].value,
-      WindMPH: ev.target[1].value,
-      WindDir: ev.target[2].value,
-      SeaLevelFt: ev.target[3].value
+      WindMPH: +(ev.target[2].value),
+      WindDir: ev.target[3].value,
+      SeaLevelFt: +(ev.target[1].value)
     }
     console.log("postbody data:", postBody)
     let response = await fetch(`${process.env.REACT_APP_DEV_API_URL}/data`, {
@@ -58,6 +58,7 @@ export default class Admin extends React.Component {
     console.log("resjson data:", resJson)
     if (resJson === null) {
       alert('Post succesfull!')
+      this.getAlertData()
     }
   }
 
