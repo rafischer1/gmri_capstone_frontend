@@ -47,7 +47,7 @@ export default class SubscribeLocationChart extends React.Component {
     })
     return result
   }
-
+  
   render() {
     console.log(this.props.subscribeData)
     let location = this.props.subscribeData
@@ -60,7 +60,7 @@ export default class SubscribeLocationChart extends React.Component {
         <XYPlot className="barChart" xType="ordinal" width={600} height={250}>
           <YAxis style={{ width: "15px", textShadow: "none" }} />
           <XAxis style={{ fontSize: "13px", marginRight: "20%", textShadow: "none" }} />
-          <VerticalBarSeries data={blueData} style={{ stroke: "#DE6262", fill: "#DE6262" }} />
+        <VerticalBarSeries data={blueData} style={{ stroke: "#DE6262", fill: "#DE6262" }} />
         </XYPlot>
       </div>;
    

@@ -1,6 +1,4 @@
 body {
-  background-color: rgb(255, 255, 255);
-  color: rgb(0, 0, 0);
   font-family: 'Montserrat', sans-serif;
   height:auto;
   margin:0;
@@ -69,6 +67,10 @@ footer {
 
 .dropdown-content {
   font-size: 14px;
+}
+
+div.animated.infinite.bounce.delay-4s {
+  width: 44px;
 }
 
 .moonPage {width: auto;}
@@ -197,9 +199,8 @@ footer {
 #SeptLink:hover {color: white;}
 
 .informationDataPage {
-  padding: 2%;
-  margin: 3%;
-  width: 50%;
+  display: flex;
+  width: 90%;
 }
 
 .adminPage {text-align: center;}
@@ -218,7 +219,6 @@ footer {
 
 .unsubscribe {
   display: flex;
-  /* background-image: linear-gradient(to bottom right, #ffffff, #63d4d81e); */
   margin: 2%;
 }
 
@@ -297,6 +297,10 @@ footer {
 .barChart > .rv-xy-plot__inner > g > line {
   margin: 0;
   text-shadow: none;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2
 }
 
 
@@ -378,4 +382,73 @@ footer {
     background-color: rgba(255, 255, 255, 0.733);
   }
 
+}
+
+
+/* animated letter for information footer */
+*, *:before, *:after{
+  box-sizing:border-box;
+}
+
+div.foo{
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+}
+.letter{
+  display: inline-block;
+  font-weight: 900;
+  font-size: 6em;
+  margin: 0.2em;
+  position: relative;
+  color: rgb(98, 187, 222);
+  transform-style: preserve-3d;
+  perspective: 400;
+  z-index: 1;
+}
+.letter:before, .letter:after{
+  position:absolute;
+  content: attr(data-letter);
+  transform-origin: top left;
+  top:0;
+  left:0;
+}
+.letter, .letter:before, .letter:after{
+  transition: all 0.3s ease-in-out;
+}
+.letter:before{
+  color: rgb(255, 255, 255);
+  text-shadow: 
+    -1px 0px 1px rgba(255,255,255,.8),
+    1px 0px 1px rgba(0,0,0,.8);
+  z-index: 3;
+  transform:
+    rotateX(0deg)
+    rotateY(-15deg)
+    rotateZ(0deg);
+}
+.letter:after{
+  color: rgba(0,0,0,.11);
+  z-index:2;
+  transform:
+    scale(1.08,1)
+    rotateX(0deg)
+    rotateY(0deg)
+    rotateZ(0deg)
+    skew(0deg,1deg);
+}
+.letter:hover:before{
+  color: #fafafa;
+  transform:
+    rotateX(0deg)
+    rotateY(-40deg)
+    rotateZ(0deg);
+}
+.letter:hover:after{
+  transform:
+    scale(1.08,1)
+    rotateX(0deg)
+    rotateY(40deg)
+    rotateZ(0deg)
+    skew(0deg,22deg);
 }

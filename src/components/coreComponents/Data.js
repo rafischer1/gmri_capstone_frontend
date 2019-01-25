@@ -48,7 +48,7 @@ const Data = ({wind_speed, wind_card, air_temp, water_level, water_level_noaa, w
   return <div className="dataPage">
       {showData ? <div style={infoStyle}>
           <div>
-            CURRENT CONDITIONS PORTLAND HARBOR <br />
+        CURRENT CONDITIONS PORTLAND HARBOR <br />
        Air Temp: <span>{air_temp}</span>F
           </div>
           <div>

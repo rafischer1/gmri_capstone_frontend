@@ -2,6 +2,7 @@ import React from "react";
 import { Modal, Button, Toast, Row, Input } from "react-materialize";
 import FloodDataList from '../dataComponents/FloodDataList'
 import SubscribeLocationChart from '../dataComponents/SubscribeLocationChart'
+import Typist from 'react-typist'
 
 export default class Admin extends React.Component {
   constructor(props) {
@@ -179,7 +180,9 @@ export default class Admin extends React.Component {
         {!this.state.passwordVerified ? <div /> : <div>
             <div className="container topOfAdminPage">
               <Row style={this.formStyle}>
-                <form onSubmit={this.postSMS}> Enter Data for SMS Message
+                <form onSubmit={this.postSMS}>
+                  {" "}
+                  Enter Data for SMS Message
                   <Input type="textarea" label="SMS Message" s={12} />
                   <Input type="number" step="0.01" s={4} label="Sea Level Ft" />
                   <Input type="number" step="0.01" s={4} label="Wind Mph" />
@@ -190,24 +193,28 @@ export default class Admin extends React.Component {
                     Submit
                   </Button>
                 </form>
-              </Row>
-              <Row>
-                <h4>Example template for SMS:</h4>
-              </Row>
-              <Row>
-                <h5>
-                  Flooding expected (time of day) Portland Harbor. High
-                  tide: (so many ft). (Any other information regarding the
-                  weather system or important notice) (Link to SLR Maine
-                  site) or (Link to City fo Portland Twitter)
-                </h5>
+
+                <Typist>
+                  <span className="my-custom-class">
+                    {" "}
+                    <h5>Example template for SMS:</h5>{" "}
+                  </span>
+                  <br />
+                  <div className="container">
+                    <h6>{" "}Flooding expected (time of day) Portland Harbor.
+                    High tide: (so many ft). (Any other information
+                    regarding the weather system or important notice)
+                    (Link to SLR Maine site) or (Link to City fo
+                    Portland Twitter){" "}</h6>
+                  </div>
+                </Typist>
               </Row>
             </div>
             <hr />
             <div style={this.curUsersCss}>
               Current # of subscribers in system
               <h4>{this.state.subscribers}</h4>
-              <SubscribeLocationChart subscribeData={this.state.subscribeData}/>
+              <SubscribeLocationChart subscribeData={this.state.subscribeData} />
             </div>
             <table>
               <FloodDataList floodData={this.state.floodData} />

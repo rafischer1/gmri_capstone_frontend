@@ -1,6 +1,7 @@
 import React from 'react';
 import {Spring, config} from 'react-spring'
 
+
 export default class Unsubscribe extends React.Component {
   constructor(props) {
     super(props)
@@ -54,9 +55,9 @@ export default class Unsubscribe extends React.Component {
       <a id="GISLinkTwo" href="https://www.maine.gov/dacf/mgs/hazards/slr_ss/index.shtml" target="_blank" rel="noopener noreferrer">
         Explore Maine GIS SLR Maps
       </a>
-      <br />
-      <br />
-    </div>;
+   </div>
+   
+  
  }
   
 

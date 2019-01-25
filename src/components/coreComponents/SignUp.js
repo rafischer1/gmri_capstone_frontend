@@ -4,6 +4,7 @@ import {PhoneFormat} from '../function_exports/ConversionFuncs'
 import "react-phone-number-input/style.css";
 import ScrollAnimation from "react-animate-on-scroll";
 
+
 const SignUp = ({ subscribeCall, toastMsg }) => {
 
   const Subscribe = (callback) => (ev) => {
@@ -19,8 +20,10 @@ const SignUp = ({ subscribeCall, toastMsg }) => {
   };
 
   return <div className="container signup">
+    
       <ScrollAnimation animateIn="fadeInDown">
         <section className="login-block">
+
           <div className="container">
             <div className="row">
               <div className="col-md-4 login-sec">
@@ -39,7 +42,9 @@ const SignUp = ({ subscribeCall, toastMsg }) => {
                   <div className="form-group">
                     <Row>
                       <Input s={12} id="location" type="select" label="Select Location:" defaultValue="1">
-                        <option defaultChecked value="1">Portland</option>
+                        <option defaultChecked value="1">
+                          Portland
+                        </option>
                         <option value="2">South Portland</option>
                         <option value="3">Cape Elizabeth</option>
                         <option value="4">Falmouth</option>
@@ -47,24 +52,26 @@ const SignUp = ({ subscribeCall, toastMsg }) => {
                         <option value="5">Other</option>
                       </Input>
                     </Row>
-                  
                   </div>
                   <br />
                   <br />
-                {!toastMsg ? <button type="submit" className="btn btn-login float-right">
-                  Sign Up
-                  </button> : <Toast toast={toastMsg}>
-                  {toastMsg}
-                </Toast>}
-                  
-                
+                  {!toastMsg ? <button type="submit" className="btn btn-login float-right">
+                      Sign Up
+                    </button> : <Toast toast={toastMsg}>{toastMsg}</Toast>
+                    }
                 </form>
               </div>
               <div className="col-md-8 banner-sec" />
             </div>
           </div>
+          
         </section>
+      <ScrollAnimation className="animated infinite bounce delay-4s" animateIn="bounce"><span style={{ fontSize: "44px", color: "darkgrey", width: "44px" }}>↓</span>
       </ScrollAnimation>
+      </ScrollAnimation>
+<br />
+    
+ 
     </div>;
 };
 

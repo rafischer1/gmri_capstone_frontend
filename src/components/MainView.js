@@ -183,6 +183,7 @@ class MainView extends Component {
     });
   }
 
+ 
   // css styles for scroll layer
   tideLayer = {
     backgroundColor: "black"
@@ -190,16 +191,27 @@ class MainView extends Component {
   // horizontal
   render() {
     return <div className="App">
+   
         <Parallax ref="parallax" pages={5} scrolling={true}>
+       
           <AlertCMP props={this.state.alertValue} />
           {/* SignUp layer at the top */}
 
           <Parallax.Layer offset={0 // 0 means start, 1 second page, 1.5 second and half, and so on ... // Page offset, or where the layer will be at when scrolled to
-            } factor={.8} speed={0}>
+            } speed={0}>
+          <div style={{ fontSize: ".5em", marginLeft: "26%" }}>
+            <span class="letter" data-letter="W">
+              Welcome to
+              </span>
+            <span class="letter" data-letter="S">
+              SLR
+              </span>
+            <span class="letter" data-letter="M">
+              Maine
+              </span>
+          </div>
             <SignUp subscribeCall={this.subscribeCall} toastMsg={this.state.viewToastMsg} />
           </Parallax.Layer>
-
-        
 
           {/* data info layer/current conditions */}
         <Parallax.Layer offset={0.9} speed={0.2} factor={0.9}>
@@ -217,6 +229,7 @@ class MainView extends Component {
               </animated.div>}
             </Spring>
           </div>
+        
         </Parallax.Layer>
 
           {/* Tide layer */}
@@ -234,6 +247,7 @@ class MainView extends Component {
           {/* carousel of flooding pics */}
           <Parallax.Layer offset={2.9} speed={1}>
             <InformationCarousel />
+          <img alt="slr scenarios" height="600" style={{marginLeft: "2%"}} src="http://www.neracoos.org/sites/neracoos.org/files/images/slr/scenario_high_0.png"></img>
           </Parallax.Layer>
 
           {/* september rain box */}
@@ -241,12 +255,15 @@ class MainView extends Component {
             <SeptemberRainInfo />
           </Parallax.Layer>
           <Parallax.Layer offset={4.63} speed={-0.01}>
+         
             <FooterPage />
           </Parallax.Layer>
         </Parallax>
       </div>;
   }
 }
+
+
 
 export default MainView;
 
