@@ -1,6 +1,7 @@
 import React from "react";
 import { Modal, Button, Toast, Row, Input } from "react-materialize";
 import FloodDataList from '../dataComponents/FloodDataList'
+import SubscribeLocationChart from '../dataComponents/SubscribeLocationChart'
 
 export default class Admin extends React.Component {
   constructor(props) {
@@ -10,7 +11,8 @@ export default class Admin extends React.Component {
       passwordVerfified: false, 
       floodData: [], 
       subscribers: 0, 
-      showToast: false
+      showToast: false,
+      subscribeData: []
     };
     }
   
@@ -116,9 +118,9 @@ export default class Admin extends React.Component {
   getSubscribers = async() => {
     let response = await fetch(`${process.env.REACT_APP_DEV_API_URL}/subscribe`)
     let resJson = await response.json()
- 
     this.setState({
-      subscribers: resJson.length
+      subscribers: resJson.length,
+      subscribeData: resJson
     })
   }
   getAlertData = async() => {
@@ -205,6 +207,7 @@ export default class Admin extends React.Component {
             <div style={this.curUsersCss}>
               Current # of subscribers in system
               <h4>{this.state.subscribers}</h4>
+              <SubscribeLocationChart subscribeData={this.state.subscribeData}/>
             </div>
             <table>
               <FloodDataList floodData={this.state.floodData} />

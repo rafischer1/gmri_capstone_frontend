@@ -5,7 +5,7 @@ import FormUnsubscribe from './FormUnsubscribe'
 const Unsubscribe = ({unsubscribeCall, toastMsg}) => {
   return <div className="unsubscribe">
       <FormUnsubscribe unsubscribeCall={unsubscribeCall} toastMsg={toastMsg}/>
-      <UnsubscribeInfo />
+      <UnsubscribeInfo number={1}/>
     </div>;
 }
 

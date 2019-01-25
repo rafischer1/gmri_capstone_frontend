@@ -1,4 +1,5 @@
 import React from "react";
+import {FormatDate} from '../function_exports/ConversionFuncs'
 const Spinner = require("react-spinkit");
 
 const FloodDataList = ({floodData}) => {
@@ -7,7 +8,7 @@ const FloodDataList = ({floodData}) => {
 
   return floodData === undefined || floodData === null ? <Spinner className="spinner" name="wave" color="teal" /> : floodData.map(
       el => {
-        let elDate = formatDate(el.createdat)
+        let elDate = FormatDate(el.createdat)
         return <thead key={el.id} style={ulStyle}>
         <tr>
           <td>{elDate}</td>
@@ -21,10 +22,5 @@ const FloodDataList = ({floodData}) => {
     );
 }
 
-const formatDate = (createdAt) => {
-  let date = ''
-  date = `${createdAt.split(":")[0].split("-")[1]}/${createdAt.split(":")[0].split("-")[2].split("T")[0]}/${createdAt.split(":")[0].split("-")[0]}`
-  return date
-}
 
 export default FloodDataList

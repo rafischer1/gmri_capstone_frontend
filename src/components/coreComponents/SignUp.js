@@ -1,5 +1,6 @@
 import React from 'react'
 import {Row, Input, Toast} from 'react-materialize'
+import {PhoneFormat} from '../function_exports/ConversionFuncs'
 import "react-phone-number-input/style.css";
 import ScrollAnimation from "react-animate-on-scroll";
 
@@ -8,7 +9,7 @@ const SignUp = ({ subscribeCall, toastMsg }) => {
   const Subscribe = (callback) => (ev) => {
     ev.preventDefault();
     let phone = ev.target[0].value;
-    phone = phoneFormat(phone);
+    phone = PhoneFormat(phone);
     let location = ev.target[1].value;
     if (phone.length === 10 && location) {
       ev.target[0].value = ''
@@ -70,14 +71,4 @@ const SignUp = ({ subscribeCall, toastMsg }) => {
 
 export default SignUp
 
-function phoneFormat(phone) {
-  for (let i = 0; i < phone.length; i++) {
-    if (phone[i] === "-") {
-      phone = phone.slice(0, i) + phone.slice(i + 1);
-    }
-    else if (phone[i] === " ") {
-      phone = phone.slice(0, i) + phone.slice(i + 1);
-    }
-  }
-    return phone;
-}
+

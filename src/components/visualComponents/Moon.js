@@ -36,53 +36,43 @@ const Moon = () => {
 }
 export default Moon
 
+
 function moonPhaseCalc(current_moon_age, moon_phase_src) {
   if (current_moon_age === 0 || current_moon_age === 1) {
     moon_phase_src = moon1;
-  }
-  else if (current_moon_age === 2 || current_moon_age === 3) {
+  } else if (current_moon_age === 2 || current_moon_age === 3) {
     moon_phase_src = moon3;
-  }
-  else if (current_moon_age === 4 || current_moon_age === 5) {
+  } else if (current_moon_age === 4 || current_moon_age === 5) {
     moon_phase_src = moon5;
-  }
-  else if (current_moon_age === 6 || current_moon_age === 7) {
+  } else if (current_moon_age === 6 || current_moon_age === 7) {
     moon_phase_src = moon7;
-  }
-  else if (current_moon_age === 8 || current_moon_age === 9) {
+  } else if (current_moon_age === 8 || current_moon_age === 9) {
     moon_phase_src = moon9;
-  }
-  else if (current_moon_age === 10 || current_moon_age === 11) {
+  } else if (current_moon_age === 10 || current_moon_age === 11) {
     moon_phase_src = moon11;
-  }
-  else if (current_moon_age === 12 || current_moon_age === 13) {
+  } else if (current_moon_age === 12 || current_moon_age === 13) {
     moon_phase_src = moon13;
-  }
-  else if (current_moon_age === 14 || current_moon_age === 15) {
+  } else if (current_moon_age === 14 || current_moon_age === 15) {
     moon_phase_src = moon15;
-  }
-  else if (current_moon_age === 16 || current_moon_age === 17) {
+  } else if (current_moon_age === 16 || current_moon_age === 17) {
     moon_phase_src = moon17;
-  }
-  else if (current_moon_age === 18 || current_moon_age === 19) {
+  } else if (current_moon_age === 18 || current_moon_age === 19) {
     moon_phase_src = moon19;
-  }
-  else if (current_moon_age === 20 || current_moon_age === 21 || current_moon_age === 22) {
+  } else if (
+    current_moon_age === 20 ||
+    current_moon_age === 21 ||
+    current_moon_age === 22
+  ) {
     moon_phase_src = moon22;
-  }
-  else if (current_moon_age === 23 || current_moon_age === 24) {
+  } else if (current_moon_age === 23 || current_moon_age === 24) {
     moon_phase_src = moon24;
-  }
-  else if (current_moon_age === 25 || current_moon_age === 26) {
+  } else if (current_moon_age === 25 || current_moon_age === 26) {
     moon_phase_src = moon25;
-  }
-  else if (current_moon_age === 26) {
+  } else if (current_moon_age === 26) {
     moon_phase_src = moon26;
-  }
-  else if (current_moon_age === 27 || current_moon_age === 28) {
+  } else if (current_moon_age === 27 || current_moon_age === 28) {
     moon_phase_src = moon28;
-  }
-  else {
+  } else {
     moon_phase_src = moon29;
   }
   return moon_phase_src;

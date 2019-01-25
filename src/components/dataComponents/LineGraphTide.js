@@ -51,7 +51,7 @@ export default class LineGraphTide extends React.Component {
         <YAxis title="Tide FT" tickValues={[-2, 0, 2, 4, 6, 8, 10, 12]} />
       {/* <LineSeries data={{ x: dataArr.x, y: [-2, 0, 2, 4, 6, 8, 10, 12] }} style={{ stroke: "#F37B6F", strokeWidth: 2 }} /> */}
         <MarkSeries onNearestX={this._rememberValue} data={dataArr} style={{ stroke: "black", strokeWidth: 1 }} />
-        <LineSeries onValueMouseOver={this._rememberValue} onValueMouseOut={this._forgetValue} data={dataArr} curve={"curveMonotoneX"} style={{ stroke: "#19F5CB", strokeWidth: 2 }} />
+        <LineSeries onValueMouseOver={this._rememberValue} onValueMouseOut={this._forgetValue} data={dataArr} curve={"curveMonotoneX"} style={{ stroke: "#19F5CB", strokeWidth: 2, fill: "none" }} />
         {value ? <Hint value={value} align={{ vertical: Hint.ALIGN.AUTO }} style={{ background: "white", margin: "0", borderRadius: "10px", padding: "1%" }} /> : null}
       </XYPlot>;
   }

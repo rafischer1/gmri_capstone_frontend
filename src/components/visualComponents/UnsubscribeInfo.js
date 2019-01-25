@@ -5,7 +5,8 @@ export default class Unsubscribe extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      didMount: false
+      didMount: false,
+      number: 1
     }
   }
 
@@ -17,9 +18,25 @@ export default class Unsubscribe extends React.Component {
      }, 4000);
   }
 
+  shouldComponentUpdate(nextProps) {
+    if (this.props.number === nextProps.number) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   largeSix = {
     fontFamily: "Aleo",
     fontSize: "3.7em",
+  }
+
+  componentWillUnmount() {
+    setTimeout(() => {
+      this.setState({
+        didMount: false
+      })
+    }, 4000);
   }
 
  render() {

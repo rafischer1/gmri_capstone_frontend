@@ -12,9 +12,5 @@ it('renders without crashing', () => {
 it("APP renders a Footer", function () {
   const component = ReactTestUtils.renderIntoDocument(
     <App />
-  );
-
-  const footer = ReactTestUtils.findRenderedDOMComponentWithTag(
-    component, 'footer'
-  );   
+  );  
 });

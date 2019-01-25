@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Parallax from "react-springy-parallax";
 import { Spring, animated } from "react-spring";
+import { WindConversion, TempConversion, DateCalculator} from './function_exports/ConversionFuncs'
 
 // Component Imports
 import SignUp from './coreComponents/SignUp'
@@ -81,10 +82,9 @@ class MainView extends Component {
   }
 
 
-
   // converts new Date object to current date in API format and calls API
   dateConverter() {
-    let { year, month, day } = dateCalculator();
+    let { year, month, day } = DateCalculator();
     let noaaDate = `${year}${month}${day}`;
     this.setState({
       todaysDate: `${year}${month}${day}`
@@ -139,7 +139,7 @@ class MainView extends Component {
 
   // Water temp API call - sent as props to Data cmp
   async waterTemplNOAA() {
-    let { year, month, day } = dateCalculator();
+    let { year, month, day } = DateCalculator();
     let noaaDay = `${year}${month}${day}`;
     let noaaDayPlusOne = `${year}${month}${day + 1}`;
     let response = await fetch(
@@ -164,8 +164,8 @@ class MainView extends Component {
     let weatherJson = await response.json()
     let currentWind = weatherJson.wind.speed
     let currentWindDir = weatherJson.wind.deg
-    let currentWindCard = windConversion(currentWindDir)
-    let currentTemp = tempConversion(weatherJson.main.temp)
+    let currentWindCard = WindConversion(currentWindDir)
+    let currentTemp = TempConversion(weatherJson.main.temp)
     this.setState({
       air_temp: currentTemp,
       wind_card: currentWindCard,
@@ -195,30 +195,32 @@ class MainView extends Component {
           {/* SignUp layer at the top */}
 
           <Parallax.Layer offset={0 // 0 means start, 1 second page, 1.5 second and half, and so on ... // Page offset, or where the layer will be at when scrolled to
-            } speed={0}>
+            } factor={.8} speed={0}>
             <SignUp subscribeCall={this.subscribeCall} toastMsg={this.state.viewToastMsg} />
           </Parallax.Layer>
 
-          {/* Moon layer */}
-          <Parallax.Layer offset={0.64} speed={-0.4} factor={0.25}>
-            <div className="moonDiv">
-              <Spring native 
-              from={{ opacity: 0 }} to={{ opacity: 1 }}>
-                {props => <animated.div 
-                style={props}>
-                    <Moon />
-                  </animated.div>}
-              </Spring>
-            </div>
-          </Parallax.Layer>
+        
 
           {/* data info layer/current conditions */}
-          <Parallax.Layer offset={0.9} speed={0.2}>
+        <Parallax.Layer offset={0.9} speed={0.2} factor={0.9}>
             <Data wind_speed={this.state.wind_speed} water_level={this.state.water_level} air_temp={this.state.air_temp} wind_card={this.state.wind_card} todaysDate={this.state.todaysDate} currentTime={this.state.currentTime} water_level_noaa={this.state.water_level_noaa} water_temp_noaa={this.state.water_temp_noaa} />
           </Parallax.Layer>
 
+        {/* Moon layer */}
+        <Parallax.Layer offset={0.94} speed={-0.4} factor={0.25}>
+          <div className="moonDiv">
+            <Spring native
+              from={{ opacity: 0 }} to={{ opacity: 1 }}>
+              {props => <animated.div
+                style={props}>
+                <Moon />
+              </animated.div>}
+            </Spring>
+          </div>
+        </Parallax.Layer>
+
           {/* Tide layer */}
-          <Parallax.Layer offset={1.29} speed={0.85} style={this.tideLayer} factor={0.85}>
+          <Parallax.Layer offset={1.29} speed={0.85} style={this.tideLayer} factor={0.63}>
             <br />
             <Moon />
             <TidePredictionsDisplay water_level_noaa={this.state.water_level_noaa} />
@@ -248,46 +250,4 @@ class MainView extends Component {
 
 export default MainView;
 
-// modular method to calculate and return date
-const dateCalculator = () => {
-  let d = new Date();
-  let year = d.getFullYear();
-  let month = d.getMonth();
-  if (month.toString().length === 1) {
-    month = `0${month + 1}`;
-  }
-  else if (month.toString().length === 2) {
-    month = month + 1;
-  }
-  let day = d.getDate();
-  return { year, month, day };
-}
 
-const tempConversion = (tempK) => {
-  let tempF = (tempK - 273.15) * 9 / 5 + 32
-  return Math.ceil(tempF)
-}
-
-const windConversion = (deg) => {
-  let dir
-  if (deg > 330) {
-    dir = 'N'
-  } else if (deg <= 330 && deg > 290) {
-    dir = "NW"
-  } else if (deg <= 290 && deg > 250) {
-    dir = "W"
-  } else if (deg <= 250 && deg > 210) {
-    dir = "SW"
-  } else if (deg <= 210 && deg > 140) {
-    dir = "S"
-  } else if (deg <= 140 && deg > 120) {
-    dir = "SE"
-  } else if (deg <= 120 && deg > 80) {
-    dir = "E"
-  } else if (deg <= 80 && deg > 30) {
-    dir = "NE"
-  } else {
-    dir = "N"
-  }
-  return dir
-}

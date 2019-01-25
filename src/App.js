@@ -9,7 +9,7 @@ import MainView from './components/MainView'
 import Unsubscribe from './components/coreComponents/Unsubscribe'
 
 
-class App extends Component {
+export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -59,13 +59,7 @@ class App extends Component {
     let resJson = await response.json()
     console.log("posSMScall body:", resJson)
   }
-
-
-  componentDidMount() {
- 
-  }
-
-
+  
   render() {
     return <div className="AppView">
       <Router>
@@ -98,6 +92,3 @@ class App extends Component {
   }
 }
    
-
-
-export default App;

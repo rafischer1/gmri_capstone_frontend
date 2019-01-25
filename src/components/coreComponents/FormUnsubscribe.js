@@ -1,11 +1,12 @@
 import React from 'react'
+import {PhoneFormat} from '../function_exports/ConversionFuncs'
 import { Input, Toast } from "react-materialize";
 
 
 export default class FormUnsubscribe extends React.Component {
   unsubscribe = (callback) => (ev) => {
     ev.preventDefault();
-    let phone = ev.target[0].value;
+    let phone = PhoneFormat(ev.target[0].value);
     if (phone.length === 10 && ev.target[1].checked === true) {
       callback(phone);
     }

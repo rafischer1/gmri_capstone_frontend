@@ -31,5 +31,4 @@ const TidePredictionsDisplay = (data) => {
   }
 }
 
-
 export default TidePredictionsDisplay

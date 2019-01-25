@@ -1,4 +1,5 @@
 import React from 'react';
+import { MilToStrdTime } from '../function_exports/ConversionFuncs'
 const Spinner = require("react-spinkit");
 
 
@@ -27,7 +28,7 @@ const Data = ({wind_speed, wind_card, air_temp, water_level, water_level_noaa, w
      let tmpTime = currentTime.split(":")[0]
      if (day.type === "H" && tideTimeOfDay.split(":")[0] >= tmpTime - 6 && currentTime.split(":")[0] < tideTimeOfDay.split(":")[0]) {
        tmpArrFt.push(day.v);
-       nextHigh = militaryToStandardTime(tideTimeOfDay);
+       nextHigh = MilToStrdTime(tideTimeOfDay);
        tmpArrTime.push(nextHigh);
        return tmpArrTime[0];
      }
@@ -71,46 +72,6 @@ const Data = ({wind_speed, wind_card, air_temp, water_level, water_level_noaa, w
     </div>;
       
 }
-
-const militaryToStandardTime = (militaryTime) => {
-  let tmp = +(militaryTime.split(":")[0])
-  let minutes = militaryTime.split(":")[1]
-
-  if (tmp >= 12) {
-      if (tmp === 13) {
-      tmp = 1;
-    } else if (tmp === 14) {
-      tmp = 2;
-    } else if (tmp === 15) {
-      tmp = 3;
-    } else if (tmp === 16) {
-      tmp = 4;
-    } else if (tmp === 17) {
-      tmp = 5;
-    } else if (tmp === 18) {
-      tmp = 6;
-    } else if (tmp === 19) {
-      tmp = 7;
-    } else if (tmp === 20) {
-      tmp = 8;
-    } else if (tmp === 21) {
-      tmp = 9;
-    } else if (tmp === 22) {
-      tmp = 10;
-    } else if (tmp === 23) {
-      tmp = 11;
-    } 
-    return `${tmp}:${minutes}PM`
-  
-  }
-   else if (tmp === 24) {
-    return `12:${minutes}AM`
-  } else {
-    return `${tmp}:${minutes}AM`
-  } 
-}
-
-
 
 
 export default Data

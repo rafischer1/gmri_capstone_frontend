@@ -1,5 +1,5 @@
 import React from 'react';
-import { Spring } from "react-spring";
+import { Spring, config } from "react-spring";
 
 const SixFeetInfo = ({ weatherApi, water_level_noaa, water_temp_noaa, currentTime }) => {
   
@@ -10,8 +10,8 @@ const SixFeetInfo = ({ weatherApi, water_level_noaa, water_temp_noaa, currentTim
  }
 
   return <div className="sixFtPage">
-      <Spring from={{ number: 0 }} to={{ number: 6 }}>
-        {props => <div style={largeSix}>{props.number}</div>}
+    <Spring config={config.molasses} from={{ number: 0 }} to={{ number: 6 }}>
+        {props => <div style={largeSix}>{props.number.toFixed(2)}</div>}
       </Spring>
 
       <br />
@@ -23,12 +23,6 @@ const SixFeetInfo = ({ weatherApi, water_level_noaa, water_temp_noaa, currentTim
         Explore Maine GIS SLR Maps
       </a>
     </div>;
-
 }
-
-
-
-
-
 
 export default SixFeetInfo
