@@ -2,11 +2,11 @@ body {
   background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
   font-family: 'Montserrat', sans-serif;
+  height:auto;
+  margin:0;
 }
 
-.spinner {
-  margin-left: 50%;
-}
+.spinner {margin-left: 50%;}
 
 .toast {
   margin-bottom: 3%;
@@ -32,9 +32,7 @@ nav ul a:hover {
   transform: translate(2px, -3px);
 }
 
-nav ul a:active {
-  transform: translate(1px, 1px);
-}
+nav ul a:active {transform: translate(1px, 1px);}
 
 .button-collapse {
   color: rgb(44, 157, 177);
@@ -51,7 +49,6 @@ nav ul a:active {
 }
 
 footer {
-  position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -84,9 +81,7 @@ footer {
   border: 1px solid rgba(139, 0, 0, 0.514);
 }
 
-.moonPage {
-  width: auto;
-}
+.moonPage {width: auto;}
 
 .moonPage > img {
   background-color: black;
@@ -100,9 +95,7 @@ footer {
   box-shadow: 6px 8px 1000px -4px rgb(192, 192, 192);
 }
 
-.moonPage > img:hover {
-  border:2px solid rgb(23, 202, 134); 
-}
+.moonPage > img:hover {border:2px solid rgb(23, 202, 134);}
 
 .dataPage {
   background: url(https://images.unsplash.com/photo-1488921618671-463b781ac428?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);
@@ -141,6 +134,26 @@ footer {
   text-shadow: 1px 1px black;
 }
 
+#GISLinkTwo {
+  border: 2px solid white;
+  padding: 1%;
+  color: white;
+  margin-left: 10%;
+  text-shadow: none;
+  font-weight: bold;
+}
+
+#GISLinkTwo:hover {
+  border: 2px solid rgb(65, 219, 194);
+  color: rgb(52, 156, 139);
+  
+}
+
+.unsubscribe-form > div > h5 {
+  color: #DE6262;
+  font-weight: bold;
+}
+
 #GISLink {
   margin-left: 30%;
   text-shadow: none;
@@ -150,9 +163,7 @@ footer {
   color: rgb(23, 202, 134);
 }
 
-#GISLink:hover {
-  color: white;
-}
+#GISLink:hover {color: white;}
 
 .septemberPage {
    background: url(https://services3.arcgis.com/IWh1Id1sBCnK9p7O/arcgis/rest/services/Portland_Flooding/FeatureServer/0/2/attachments/3);
@@ -174,7 +185,6 @@ footer {
   background: url(https://images.unsplash.com/photo-1495102675274-3ba61637d5bc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);
   background-size: 100% 100%;
    background-repeat: no-repeat;
-   border: 5px double rgb(85, 142, 180);
   opacity: 0.5;
   top: 0px;
   left: 0;
@@ -183,7 +193,6 @@ footer {
   position: absolute;
   z-index: -1;   
 }
-
 
 #SeptLink {
   background-color: rgba(0, 0, 0, 0.212);
@@ -200,18 +209,54 @@ footer {
 }
 
 .informationDataPage {
-  border: 1px solid rgba(182,238,252,1);
-  border-radius: 5px;
   padding: 2%;
   margin: 3%;
+  width: 50%;
 }
 
 .adminPage {
   text-align: center;
 }
 
-.rv-xy-plot__axis__tick__text {
+.topOfAdminPage {
+  text-align: center
+}
 
+.topOfAdminPage > .row {
+  margin: 0;
+  width: 100% !important;
+}
+
+.btn.teal {
+  margin-top: 1%;
+  background-color: #DE6262 !important; 
+  margin-left: 10%;
+}
+
+.unsubscribe {
+  display: flex;
+  /* background-image: linear-gradient(to bottom right, #ffffff, #63d4d81e); */
+  margin: 2%;
+}
+
+.unsubInfoPage {
+  background: url(./images/mapBackground.png);
+  background-size:cover;
+  color: rgb(0, 0, 0);
+  border-radius: 10px;
+  padding: 2%;
+  margin: 2%;
+  width: 75%;
+  text-shadow: 1px 1px rgb(255, 255, 255);
+}
+
+.unsubscribe-form {
+  margin: 0 !important;
+  height: 60%;
+  background-color: rgba(255, 255, 255, 0.733);
+}
+
+.rv-xy-plot__axis__tick__text {
   text-shadow: 2px 2px 1px rgb(252, 230, 133);
 }
 
@@ -219,52 +264,14 @@ footer {
   width: 300px;
 }
 
-/* signup */
-/* .login-block{
-  margin-left: 15%;
-  margin-bottom: 10%;
-  border-radius: 10px;
-  background: #DE6262;  /* fallback for old browsers */ /*
-  background: -webkit-linear-gradient(to bottom, rgb(140, 176, 255), #DE6262);  /*Chrome 10-25, Safari 5.1-6 */ /*
-  background: linear-gradient(to bottom, rgb(48, 98, 159), #DE6262); /* W3C, IE 10+/Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ /*
-  width: 70%;
-  padding : 25px 0;
-  box-shadow: 2px 5px 3px darkgrey;
-} */
-
-/* .banner-sec{ */
-  /* background: url(https://media.gettyimages.com/photos/man-walks-through-the-sea-water-flooding-the-portland-pier-after-high-picture-id903086592)  no-repeat left bottom; background-size:cover;  */ /*
-  min-height:300px; 
-  border-radius: 10px; 
-  padding:0;
-
-}
-
-/* .container{color: rgb(48, 98, 159);background:rgb(255, 255, 255); border-radius: 10px; box-shadow:15px 20px 0px rgba(0,0,0,0.1);} */
-
-.login-sec {
-  padding: 2%; 
-  position:relative;
-}
-
-
+.login-sec {padding: 2%; position:relative;}
 .login-sec .copy-text{position:absolute; width:80%; bottom:20px; font-size:13px; text-align:center;}
 .login-sec .copy-text i{color:rgb(138, 190, 254);}
 .login-sec .copy-text a{color:rgb(33, 97, 122);}
 .login-sec h2{margin-bottom:30px; font-weight:800; font-size:30px; color: #DE6262;}
 .login-sec h2:after{content:" "; width:200px; height:5px; background:#FEB58A; display:block; margin-top:20px; border-radius:3px; }
+.btn-login { border-radius: 10px; margin-left: 1%; background: rgb(98, 177, 222); color:#fff; font-weight:600;}
 
-.btn-login {
-  border-radius: 10px;
-  margin-left: 1%;
-  background: rgb(98, 177, 222); 
-  color:#fff; font-weight:600;
-}
-
-body{
-  height:auto;
-  margin:0;
-}
 
 /* media screen declarations */
 
@@ -318,6 +325,13 @@ body{
     box-shadow: none;
   }
 
+  .unsubInfoPage {
+    width: 96%;
+    font-size: 12px;
+    margin: 1%;
+    box-shadow: none;
+  }
+
   .septemberPage {
    background: url(https://services3.arcgis.com/IWh1Id1sBCnK9p7O/arcgis/rest/services/Portland_Flooding/FeatureServer/0/2/attachments/3);
    background-size: 115% 100%;
@@ -329,6 +343,10 @@ body{
   font-size: 12px;
   text-shadow: 1px 1px black;
   box-shadow: 3px 5px 3px rgb(202, 202, 202);
+}
+
+.btn.teal {
+  margin-left: 0;
 }
 
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 const Spinner = require("react-spinkit");
 
+
 const Data = ({wind_speed, wind_card, air_temp, water_level, water_level_noaa, water_temp_noaa, currentTime}) => {
      let showData = false
     if (water_level_noaa) {
@@ -44,29 +45,30 @@ const Data = ({wind_speed, wind_card, air_temp, water_level, water_level_noaa, w
     
     
   return <div className="dataPage">
-  
-    {showData ? <div style={infoStyle}>
-      
-            <div>CURRENT CONDITIONS PORTLAND HARBOR <br />
-              Air Temp: <span>{air_temp}</span>F
-            </div>
-      <div>
-        Wind: <span>{wind_speed}Mph from {wind_card}</span>
-            </div>
-     
-            <div>
-              Water Temp: <span>{currentTemp}</span>F
-            </div>
-            <div>
+      {showData ? <div style={infoStyle}>
+          <div>
+            CURRENT CONDITIONS PORTLAND HARBOR <br />
+       Air Temp: <span>{air_temp}</span>F
+          </div>
+          <div>
+           Wind: <span>
+              {wind_speed}Mph from {wind_card}
+            </span>
+          </div>
+
+          <div>
+            Water Temp: <span>{currentTemp}</span>F
+          </div>
+          <div>
         Sea Level: <span>{water_level.toFixed(2)}</span>Ft
-            </div>
-            <div>
-              High Tide: <span>
-                {tmpArrFt[0]}ft @ {tmpArrTime[0]}
-              </span>{" "}
-            </div>   
-          </div> : <Spinner className="spinner" name="line-scale" color="teal" />}
-      </div>
+          </div>
+          <div>
+            High Tide: <span>
+              {tmpArrFt[0]}ft @ {tmpArrTime[0]}
+            </span>{" "}
+          </div>
+        </div> : <Spinner className="spinner" name="line-scale" color="teal" />}
+    </div>;
       
 }
 

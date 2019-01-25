@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Parallax from "react-springy-parallax";
-
+import { Spring, animated } from "react-spring";
 
 // Component Imports
 import SignUp from './coreComponents/SignUp'
@@ -11,8 +11,9 @@ import SixFeetInfo from './visualComponents/SixFeetInfo'
 import InformationCarousel from './visualComponents/InformationCarousel'
 import SeptemberRainInfo from './visualComponents/SeptemberRainInfo'
 import TidePredictionsDisplay from './dataComponents/TidePredictionsDisplay'
-const Spinner = require("react-spinkit");
+import FooterPage from './visualComponents/FooterPage'
 
+const Spinner = require("react-spinkit");
 
 class MainView extends Component {
   constructor(props) {
@@ -94,7 +95,7 @@ class MainView extends Component {
   }
 
   // converts new Date object to current time in API format
-  hourConverter(_noaaDate) {
+  hourConverter() {
     let t = new Date();
     // this is calculating the current EST from MST...
     this.setState({ currentTime: `${t.getHours() + 2}:${t.getMinutes()}` });
@@ -112,9 +113,9 @@ class MainView extends Component {
     if (resJson.predictions === undefined) {
       return "wait";
     } else {
-      console.log(resJson.predictions, "hi there")
+      // console.log(resJson.predictions)
       resJson.predictions.map((day) => {
-        if (+(day.v) > 10.8) {
+        if (+(day.v) > 11.4) {
           return this.renderAlert(+(day.v))
         }
       })
@@ -174,73 +175,74 @@ class MainView extends Component {
   }
 
   componentDidMount() {
-    console.log("component did mount", this.state.res);
     this.dateConverter();
     this.hourConverter();
     this.weatherApiCall()
     this.setState({
       show: true
     });
-    // getWeather();
   }
 
   // css styles for scroll layer
   tideLayer = {
     backgroundColor: "black"
   };
-
-
+  // horizontal
   render() {
     return <div className="App">
-      <Parallax ref="parallax" pages={4}>
-        <AlertCMP props={this.state.alertValue} />
-        {/* SignUp layer at the top */}
-        <Parallax.Layer offset={0 // 0 means start, 1 second page, 1.5 second and half, and so on ... // Page offset, or where the layer will be at when scrolled to
-        } speed={0 // Shifts the layer up or down in accordance to its offset // Parallax factor, allows for positive and negative values
-        }>
-          <SignUp subscribeCall={this.subscribeCall} toastMsg={this.state.viewToastMsg}/>
-          
-          <br />
-        </Parallax.Layer>
+        <Parallax ref="parallax" pages={5} scrolling={true}>
+          <AlertCMP props={this.state.alertValue} />
+          {/* SignUp layer at the top */}
 
-        {/* Moon layer */}
+          <Parallax.Layer offset={0 // 0 means start, 1 second page, 1.5 second and half, and so on ... // Page offset, or where the layer will be at when scrolled to
+            } speed={0}>
+            <SignUp subscribeCall={this.subscribeCall} toastMsg={this.state.viewToastMsg} />
+          </Parallax.Layer>
 
-        <Parallax.Layer offset={0.64} speed={-0.4}>
-          <div className="moonDiv">
-            <Moon />
-          </div>
-          {/* <Information /> */}
-        </Parallax.Layer>
+          {/* Moon layer */}
+          <Parallax.Layer offset={0.64} speed={-0.4} factor={0.25}>
+            <div className="moonDiv">
+              <Spring native 
+              from={{ opacity: 0 }} to={{ opacity: 1 }}>
+                {props => <animated.div 
+                style={props}>
+                    <Moon />
+                  </animated.div>}
+              </Spring>
+            </div>
+          </Parallax.Layer>
 
-        {/* data info layer/current conditions */}
+          {/* data info layer/current conditions */}
+          <Parallax.Layer offset={0.9} speed={0.2}>
+            <Data wind_speed={this.state.wind_speed} water_level={this.state.water_level} air_temp={this.state.air_temp} wind_card={this.state.wind_card} todaysDate={this.state.todaysDate} currentTime={this.state.currentTime} water_level_noaa={this.state.water_level_noaa} water_temp_noaa={this.state.water_temp_noaa} />
+          </Parallax.Layer>
 
-        <Parallax.Layer offset={0.9} speed={0.2}>
-          <Data wind_speed={this.state.wind_speed} water_level={this.state.water_level} air_temp={this.state.air_temp} wind_card={this.state.wind_card} todaysDate={this.state.todaysDate} currentTime={this.state.currentTime} water_level_noaa={this.state.water_level_noaa} water_temp_noaa={this.state.water_temp_noaa} />
-        </Parallax.Layer>
-
-        {/* Tide layer */}
-        <Parallax.Layer offset={1.25} speed={0.85} style={this.tideLayer}>
-          <br />
-          <Parallax pages={1}>
+          {/* Tide layer */}
+          <Parallax.Layer offset={1.29} speed={0.85} style={this.tideLayer} factor={0.85}>
+            <br />
             <Moon />
             <TidePredictionsDisplay water_level_noaa={this.state.water_level_noaa} />
-            <Parallax.Layer offset={.1} speed={1}>
-              <SixFeetInfo />
-            </Parallax.Layer>
-          </Parallax>
-        </Parallax.Layer>
-        <Parallax.Layer offset={1.7} speed={0}>
-          <SeptemberRainInfo />
-        </Parallax.Layer>
-        <Parallax.Layer offset={2.9} speed={1}>
-          <InformationCarousel />
-        </Parallax.Layer>
-        <Parallax.Layer offset={3} speed={1.5}>
+          </Parallax.Layer>
 
-        </Parallax.Layer>
-        <footer></footer>
-      </Parallax>
-    </div>;
+          {/* Six feet info box */}
+          <Parallax.Layer offset={1.9} speed={0}>
+            <SixFeetInfo />
+          </Parallax.Layer>
+
+          {/* carousel of flooding pics */}
+          <Parallax.Layer offset={2.9} speed={1}>
+            <InformationCarousel />
+          </Parallax.Layer>
+
+          {/* september rain box */}
+          <Parallax.Layer offset={3.3} speed={1.5}>
+            <SeptemberRainInfo />
+          </Parallax.Layer>
+          <Parallax.Layer offset={4.63} speed={-0.01}>
+            <FooterPage />
+          </Parallax.Layer>
+        </Parallax>
+      </div>;
   }
 }
 

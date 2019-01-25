@@ -12,8 +12,6 @@ const SeptemberRainInfo = () => {
 
   return <div className="septemberPage">
   
-      
-
       <span style={largeSix}>5.63</span>
       <br />
       <h4>

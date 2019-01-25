@@ -14,7 +14,7 @@ class App extends Component {
     super(props);
     this.state = {
       cool_info: 0,
-      toastMsg: ''
+      toastMsg: '',
     };
   }
 
@@ -58,6 +58,11 @@ class App extends Component {
     })
     let resJson = await response.json()
     console.log("posSMScall body:", resJson)
+  }
+
+
+  componentDidMount() {
+ 
   }
 
 

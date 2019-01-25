@@ -1,4 +1,5 @@
 import React from 'react';
+import { Spring } from "react-spring";
 
 const SixFeetInfo = ({ weatherApi, water_level_noaa, water_temp_noaa, currentTime }) => {
   
@@ -9,7 +10,10 @@ const SixFeetInfo = ({ weatherApi, water_level_noaa, water_temp_noaa, currentTim
  }
 
   return <div className="sixFtPage">
-      <span style={largeSix}>6</span>
+      <Spring from={{ number: 0 }} to={{ number: 6 }}>
+        {props => <div style={largeSix}>{props.number}</div>}
+      </Spring>
+
       <br />
       <h4>
         A 6 foot sea level rise will result in sunny-day floods with every
