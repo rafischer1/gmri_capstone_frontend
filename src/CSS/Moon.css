@@ -1,0 +1,15 @@
+.moonPage {width: auto;}
+
+.moonPage > img {
+  background-color: black;
+  float: left;
+  padding: 2%;
+  margin-left: 5%;
+  border: 2px solid rgb(0, 132, 255);
+  border-radius: 100px;
+  -webkit-box-shadow: 6px 8px 1000px -4px rgb(255, 249, 168);
+  -moz-box-shadow: 6px 8px 1000px -4px rgb(252, 247, 182);
+  box-shadow: 6px 8px 1000px -4px rgb(192, 192, 192);
+}
+
+.moonPage > img:hover {border:2px solid rgb(23, 202, 134);}

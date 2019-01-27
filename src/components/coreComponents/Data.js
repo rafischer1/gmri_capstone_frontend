@@ -25,13 +25,21 @@ const Data = ({wind_speed, wind_card, air_temp, water_level, water_level_noaa, w
     predictions.filter((day) => {
      // "2019-01-12 02:58"
      let tideTimeOfDay = day.t.split(' ')[1]
-     let tmpTime = currentTime.split(":")[0]
-     if (day.type === "H" && tideTimeOfDay.split(":")[0] >= tmpTime - 6 && currentTime.split(":")[0] < tideTimeOfDay.split(":")[0]) {
-       tmpArrFt.push(day.v);
-       nextHigh = MilToStrdTime(tideTimeOfDay);
-       tmpArrTime.push(nextHigh);
-       return tmpArrTime[0];
-     }
+    let tmpTideTime = day.t
+          .split(" ")[1]
+          .split(":")[0] + day.t.split(" ")[1].split(":")[1];
+     let tmpTime = currentTime.split(":")[0] + currentTime.split(':')[1]
+      // console.log(+(tmpTideTime), +(tmpTime))
+      if ((day.type === "H" && +tmpTideTime > +tmpTime) || (day.type === "H" && +tmpTideTime < 2000)) {
+        console.log(day.v)
+        if (day.v) {
+          let tmp = +day.v
+          tmpArrFt.push(tmp.toFixed(2))
+          nextHigh = MilToStrdTime(tideTimeOfDay);
+          tmpArrTime.push(nextHigh);
+          return tmpArrTime[0];
+        }
+      }
    })
 
    const infoStyle = { 

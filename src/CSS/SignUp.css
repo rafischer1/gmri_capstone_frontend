@@ -1,0 +1,62 @@
+.signup {
+  width: 90%;
+  margin-top: 1%;
+}
+
+.dropdown-content {
+  font-size: 14px;
+}
+
+div.animated.infinite.bounce.delay-4s {
+  width: 44px;
+}
+
+.login-block {
+  border: 1px solid rgba(139, 0, 0, 0.137);
+  width: 65%;
+  margin-left: 15%;
+  border-radius: 10px;
+  background-color: rgba(193, 193, 248, 0.096);
+}
+
+.login-block:hover {
+  border: 1px solid rgba(139, 0, 0, 0.514);
+}
+
+.login-sec {padding: 2%; position:relative;}
+
+.login-sec .copy-text {
+  position:absolute; 
+  width:80%; 
+  bottom:20px; 
+  font-size:13px; 
+  text-align:center;
+}
+
+.login-sec .copy-text i {color:rgb(138, 190, 254);}
+.login-sec .copy-text a {color:rgb(33, 97, 122);}
+
+.login-sec h2 {
+  margin-bottom:30px; 
+  font-weight:800; 
+  font-size:30px; 
+  color: #DE6262;
+}
+
+.login-sec h2:after {
+  content:" "; 
+  width:200px; 
+  height:5px; 
+  background:#FEB58A; 
+  display:block; 
+  margin-top:20px; 
+  border-radius:3px; 
+}
+
+.btn-login { 
+  border-radius: 10px; 
+  margin-left: 1%; 
+  background: rgb(98, 177, 222); 
+  color:#fff; 
+  font-weight:600;
+}
