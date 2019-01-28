@@ -107,7 +107,16 @@ const FormatDate = createdAt => {
   return date;
 };
 
+const FormatDateApi = createdAt => {
+  // 19-01-28 04:48
+  let tmp = createdAt.split(" ")[0]
+  let time = MilToStrdTime(createdAt.split(" ")[1])
+  let date = `${tmp.split("-")[1]}/${tmp.split("-")[2]} ${time}`;
+  return date
+}
+
 
 module.exports = {
-  WindConversion, TempConversion, DateCalculator, PhoneFormat, MilToStrdTime, FormatDate
+  WindConversion, TempConversion, DateCalculator, PhoneFormat, MilToStrdTime, FormatDate,
+  FormatDateApi
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import MediaQuery from 'react-responsive'
 import {
   XYPlot,
   XAxis,
@@ -49,21 +50,26 @@ export default class SubscribeLocationChart extends React.Component {
   }
   
   render() {
-    console.log(this.props.subscribeData)
     let location = this.props.subscribeData
     let locData = this.getLocationData(location)
-    console.log("locdata:", locData["South Portland"])
-  
 
     const blueData = [{ x: "Portland", y: locData.Portland }, { x: 'South Portland', y: locData["South Portland"] }, { x: "Westbrook", y: locData.Westbrook }, { x: "Falmouth", y: locData.Falmouth }, { x: 'Cape Elizabeth', y: locData["Cape Elizabeth"] }, {x: "Other", y:locData.Other}];
-    return <div>
-        <XYPlot className="barChart" xType="ordinal" width={600} height={250}>
-          <YAxis style={{ width: "15px", textShadow: "none" }} />
-          <XAxis style={{ fontSize: "13px", marginRight: "20%", textShadow: "none" }} />
-        <VerticalBarSeries data={blueData} style={{ stroke: "#DE6262", fill: "#DE6262" }} />
-        </XYPlot>
-      </div>;
-   
-   
+    return <MediaQuery minDeviceWidth={950}>
+        {(matches) => {
+          if (matches) {
+            return <XYPlot className="barChart" xType="ordinal" width={400} height={150}>
+                <YAxis style={{ width: "11px", textShadow: "none" }} />
+                <XAxis style={{ fontSize: "11px", marginRight: "5%", textShadow: "none" }} />
+                <VerticalBarSeries data={blueData} style={{ stroke: "#DE6262", fill: "#DE6262" }} />
+              </XYPlot>;
+          } else {
+            return <XYPlot className="barChart" xType="ordinal" width={600} height={250}>
+              <YAxis style={{ width: "15px", textShadow: "none" }} />
+              <XAxis style={{ fontSize: "13px", marginRight: "20%", textShadow: "none" }} />
+              <VerticalBarSeries data={blueData} style={{ stroke: "#DE6262", fill: "#DE6262" }} />
+            </XYPlot>
+          }
+        }}
+      </MediaQuery>
   }
 }

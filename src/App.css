@@ -190,8 +190,6 @@ nav ul a:active {transform: translate(1px, 1px);}
   margin-top: -20%;
 }
 
-.rv-hint {margin: -1% 0 3% 15% !important}
-
 #icon_email {width: 300px;}
 
 .barChart > .rv-xy-plot__inner {
@@ -246,6 +244,25 @@ footer {
 
 table > tr > td {
   font-size: 16px;
+}
+
+#tideChartLegend {
+   color: white; 
+   border: 1px solid white; 
+   width: 200px; 
+   float: right;
+   margin-right: 20%;
+   padding: 2%;
+}
+
+.rv-hint {
+  position: relative !important;
+  border: 1px solid white; 
+  width: 200px; 
+   float: right;
+   margin-right: 20%;
+   margin-bottom: 10%;
+   padding: 2%;
 }
 
 

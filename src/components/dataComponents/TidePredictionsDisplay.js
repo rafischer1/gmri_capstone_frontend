@@ -1,32 +1,35 @@
 import React from 'react'
 import LineGraphTide from './LineGraphTide';
+import { FormatDateApi } from '../function_exports/ConversionFuncs';
 const Spinner = require("react-spinkit");
+
 
 const TidePredictionsDisplay = (data) => {
 
   let tideData = data.water_level_noaa
-  let floodingLine = {}
   if (tideData[0] === undefined) {
     return <Spinner className="spinner" name="line-scale" color="teal" />
   } else {
     let count = 1
+    let datesArr = []
     const dataArr = tideData.map((day) => {
+      datesArr.push(FormatDateApi(day.t))
       count++ 
-      floodingLine = {x: count/2, y: +(day.v)}
       return {
         x: count,
         y: +(day.v)
       }
     })
+    console.log("dates:", datesArr)
 
     return <div className="tideChartCss" >
-        {/* <span style={onHoverCss}>Tide in Feet (24hrs)</span>
-        <XYPlot width={700} height={250} yDomain={[-2, 12]}>
-          <XAxis title="Date" hideTicks />
-          <YAxis title="Tide FT" tickValues={[-2, 0, 2, 4, 6, 8, 10, 12]} />
-          <LineSeries data={floodingLine} style={{ stroke: "#F37B6F", strokeWidth: 2 }} />
-          <LineSeries data={dataArr} style={{ stroke: "#19F5CB", strokeWidth: 3 }} curve={"curveMonotoneX"} /> */}
-        <LineGraphTide dataArr={dataArr} tideData={tideData} floodingLine={floodingLine}/>
+       <div id="tideChartTitle" style={{color: "white", marginLeft: "20%", fontSize:"24px"}}>Tide Chart for {datesArr[0]} to {datesArr[datesArr.length - 1]}</div>
+      <div id="tideChartLegend"><span style={{ color: "#19F5CB" }}>tide</span><br /><span style={{ color: "#F37B6F"}}>flood line @ 11.3 ft</span></div>
+      <br />
+
+       <br />
+        <LineGraphTide dataArr={dataArr} tideData={tideData} datesArr={datesArr}/>
+        {/* <div style={{ color: "white", fontFamily: "Aleo" }}>{datesArr.map((day) => `${day.split(" ")[0]} ${day.split(" ")[1]} `)}</div> */}
       </div>;
   }
 }

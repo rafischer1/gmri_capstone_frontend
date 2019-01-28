@@ -3,8 +3,6 @@ import {
   XYPlot,
   XAxis,
   YAxis,
-  VerticalGridLines,
-  HorizontalGridLines,
   LineSeries,
   MarkSeries,
   Hint
@@ -14,7 +12,8 @@ export default class LineGraphTide extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: null
+      value: null,
+      floodingLine: {x: 0, y: 11.3}
     };
   }
 
@@ -25,34 +24,29 @@ export default class LineGraphTide extends React.Component {
   };
 
   _rememberValue = value => {
-    this.setState({ value });
+    this.setState({ value: {x: this.props.datesArr[value.x - 1], y: `${value.y}ft` }});
   };
   render() {
-    const hintArr = this.props.tideData.map((day) => {
-      return {
-        x: day.t,
-        y: +(day.v)
-      }
-    })
-    let count = 1
+    let count = 0
+    console.log("tide data", this.props.tideData)
       const dataArr = this.props.tideData.map((day) => {
-        
-        count++
+        count++    
         return {
           x: count,
           y: +(day.v)
         }
       })
     const { value } = this.state;
-    return <XYPlot width={500} height={300} yDomain={[-2, 12]}>
-        <VerticalGridLines />
-        <HorizontalGridLines />
-        <XAxis />
+    const lineData = [{ x: 1, y: 11.3 }, { x: 2, y: 11.3 }, { x: 3, y: 11.3 }, { x: 4, y: 11.3 }, { x: 5, y: 11.3 }, { x: 6, y: 11.3 }, { x: 7, y: 11.3 }];
+    return <div><XYPlot width={500} height={300} yDomain={[-2, 12]}>
+        {/* <XAxis title="Time" ticks={this.props.datesArr.map((day) => day)}/> */}
         <YAxis title="Tide FT" tickValues={[-2, 0, 2, 4, 6, 8, 10, 12]} />
-      {/* <LineSeries data={{ x: dataArr.x, y: [-2, 0, 2, 4, 6, 8, 10, 12] }} style={{ stroke: "#F37B6F", strokeWidth: 2 }} /> */}
+        <LineSeries data={lineData} style={{ stroke: "#F37B6F", strokeWidth: 2 }} />
         <MarkSeries onNearestX={this._rememberValue} data={dataArr} style={{ stroke: "black", strokeWidth: 1 }} />
         <LineSeries onValueMouseOver={this._rememberValue} onValueMouseOut={this._forgetValue} data={dataArr} curve={"curveMonotoneX"} style={{ stroke: "#19F5CB", strokeWidth: 2, fill: "none" }} />
         {value ? <Hint value={value} align={{ vertical: Hint.ALIGN.AUTO }} style={{ background: "white", margin: "0", borderRadius: "10px", padding: "1%" }} /> : null}
       </XYPlot>;
+      
+    </div>
   }
 }
