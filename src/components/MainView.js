@@ -1,21 +1,20 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import "../CSS/Letter.css";
 import MediaQuery from "react-responsive";
 import Parallax from "react-springy-parallax";
 import { Spring, animated } from "react-spring";
-import { WindConversion, TempConversion, DateCalculator} from './function_exports/ConversionFuncs'
-
+import { WindConversion, TempConversion, DateCalculator} from "./function_exports/ConversionFuncs";
 
 // Component Imports
-import SignUp from './coreComponents/SignUp'
-import AlertCMP from './alerts/AlertCMP'
-import Data from './coreComponents/Data'
+import SignUp from './coreComponents/SignUp';
+import AlertCMP from './alerts/AlertCMP';
+import Data from './coreComponents/Data';
 import Moon from "./visualComponents/Moon";
-import SixFeetInfo from './visualComponents/SixFeetInfo'
-import InformationCarousel from './visualComponents/InformationCarousel'
-import SeptemberRainInfo from './visualComponents/SeptemberRainInfo'
-import TidePredictionsDisplay from './dataComponents/TidePredictionsDisplay'
-import FooterPage from './visualComponents/FooterPage'
+import SixFeetInfo from './visualComponents/SixFeetInfo';
+import InformationCarousel from './visualComponents/InformationCarousel';
+import SeptemberRainInfo from './visualComponents/SeptemberRainInfo';
+import TidePredictionsDisplay from './dataComponents/TidePredictionsDisplay';
+import FooterPage from './visualComponents/FooterPage';
 
 const Spinner = require("react-spinkit");
 
@@ -62,7 +61,7 @@ class MainView extends Component {
       location
     };
     let response = await fetch(
-      `${process.env.REACT_APP_DEV_API_URL}/subscribe`,
+      `${process.env.REACT_APP_API_DEV_URL}/subscribe`,
       {
         method: "POST",
         body: JSON.stringify(postBody),
@@ -75,7 +74,7 @@ class MainView extends Component {
     let res = await response.json();
     if (res === 200) {
       let msg = `Subscription Successful!`
-      console.log(res, msg)
+      // console.log(res, msg)
       this.renderToast(msg)
       setTimeout(() => {
         msg = ''
@@ -92,9 +91,13 @@ class MainView extends Component {
     this.setState({
       todaysDate: `${year}${month}${day}`
     });
+    this.getNOAAInfo(noaaDate);
+  }
+
+  getNOAAInfo(noaaDate) {
     this.waterLevelNOAA(noaaDate);
     this.currentWaterLevel(noaaDate);
-    this.waterTemplNOAA();
+    this.waterTempNOAA();
   }
 
   // converts new Date object to current time in API format
@@ -125,7 +128,9 @@ class MainView extends Component {
       return this.setState({
         water_level_noaa: resJson.predictions
       });
+   
     }
+
   }
 
   // currentWaterLevel grabs the last item in the array as the last 6 minute updated sea level data
@@ -141,7 +146,7 @@ class MainView extends Component {
   }
 
   // Water temp API call - sent as props to Data cmp
-  async waterTemplNOAA() {
+  async waterTempNOAA() {
     let { year, month, day } = DateCalculator();
     let noaaDay = `${year}${month}${day}`;
     let noaaDayPlusOne = `${year}${month}${day + 1}`;
@@ -202,13 +207,13 @@ class MainView extends Component {
             <Parallax.Layer offset={0 // 0 means start, 1 second page, 1.5 second and half, and so on ... // Page offset, or where the layer will be at when scrolled to
               } speed={0}>
               <div style={{ fontSize: ".5em", marginLeft: "26%" }}>
-                <span class="letter" data-letter="W">
+                <span className="letter" data-letter="W">
                   Welcome to
                 </span>
-                <span class="letter" data-letter="S">
+                <span className="letter" data-letter="S">
                   SLR
                 </span>
-                <span class="letter" data-letter="M">
+                <span className="letter" data-letter="M">
                   Maine
                 </span>
               </div>

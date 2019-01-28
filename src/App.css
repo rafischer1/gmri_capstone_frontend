@@ -147,14 +147,6 @@ nav ul a:active {transform: translate(1px, 1px);}
   width: 90%;
 }
 
-.adminPage {text-align: center;}
-.topOfAdminPage {text-align: center}
-
-.topOfAdminPage > .row {
-  margin: 0;
-  width: 100% !important;
-}
-
 .btn.teal {
   margin-top: 1%;
   background-color: #DE6262 !important; 
@@ -192,22 +184,9 @@ nav ul a:active {transform: translate(1px, 1px);}
 
 #icon_email {width: 300px;}
 
-.barChart > .rv-xy-plot__inner {
-  margin: 0;
- 
-}
-
-.barChart > .rv-xy-plot__inner > g > line {
-  margin: 0;
-  text-shadow: none;
-}
-
-tr:nth-child(even) {
-  background-color: #f2f2f2
-}
-
 .FooterPage {
   font-family: Aleo, menlo;
+  background-color: rgba(218, 233, 131, 0.103);
 }
 
 .FooterPage table {
@@ -231,6 +210,7 @@ tr:nth-child(even) {
 footer {
   left: 0;
   bottom: 0;
+  position: absolute;
   width: 100%;
   height: 50px;
   background-color: rgba(255, 130, 130, 0.274);
@@ -238,11 +218,23 @@ footer {
   text-align: center;
 }
 
+.infoLinks {
+  font-family: "Aleo", sans-serif;
+  font-size: 2em;
+  margin: 2%;
+
+}
+
+.infoLinks > a:hover {
+  color: rgb(235, 117, 117);
+  background-color: rgba(69, 109, 78, 0.103);
+}
+
 .mediaTable > .letter {
   font-size: 34px;
 }
 
-table > tr > td {
+table > tbody > tr > td {
   font-size: 16px;
 }
 
@@ -250,6 +242,7 @@ table > tr > td {
    color: white; 
    border: 1px solid white; 
    width: 200px; 
+   font-weight: bold;
    float: right;
    margin-right: 20%;
    padding: 2%;
@@ -259,17 +252,9 @@ table > tr > td {
   position: relative !important;
   border: 1px solid white; 
   width: 200px; 
-   float: right;
-   margin-right: 20%;
-   margin-bottom: 10%;
-   padding: 2%;
+  float: right;
+  margin-right: 20%;
+  margin-bottom: 10%;
+  padding: 2%;
 }
-
-
-
-
-
-
-
-
 

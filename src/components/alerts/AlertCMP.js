@@ -3,14 +3,16 @@ import { Modal, Button} from "react-materialize";
 
 
 export default class AlertCMP extends React.Component {
+
   warningModalCss = {
     marginLeft: "12.5%",
     marginTop: "2%",
   }
+  
   buttonStyle = {
     cursor: "pointer",
     width: "80%",
-}
+  }
   
  render() {
    return !this.props.props ? <div /> : <div className="alertDiv" style={this.warningModalCss}>

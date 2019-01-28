@@ -42,7 +42,7 @@ const SignUp = ({ subscribeCall, toastMsg }) => {
                   <div className="form-group">
                     <Row>
                       <Input s={12} id="location" type="select" label="Select Location:" defaultValue="1">
-                        <option defaultChecked value="1">
+                        <option defaultChecked={true} value="1">
                           Portland
                         </option>
                         <option value="2">South Portland</option>

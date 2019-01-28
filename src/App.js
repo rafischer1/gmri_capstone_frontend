@@ -35,7 +35,7 @@ export default class App extends Component {
 
   */
   unsubscribeCall = async(phone) => {
-    let response = await fetch(`${process.env.REACT_APP_DEV_API_URL}/subscribe/${phone}`, {
+    let response = await fetch(`${process.env.REACT_APP_API_DEV_URL}/subscribe/${phone}`, {
       method: "DELETE",
     });
 
@@ -54,7 +54,7 @@ export default class App extends Component {
 
   async postSMSCall() {
     let postBody = {}
-    let response = await fetch(`${process.env.REACT_APP_DEV_API_URL}/data`, {
+    let response = await fetch(`${process.env.REACT_APP_API_DEV_URL}/data`, {
       method: "POST",
       body: JSON.stringify(postBody),
       headers: {

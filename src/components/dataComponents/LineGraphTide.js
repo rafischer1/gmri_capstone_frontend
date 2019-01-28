@@ -28,7 +28,6 @@ export default class LineGraphTide extends React.Component {
   };
   render() {
     let count = 0
-    console.log("tide data", this.props.tideData)
       const dataArr = this.props.tideData.map((day) => {
         count++    
         return {

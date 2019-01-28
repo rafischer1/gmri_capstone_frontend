@@ -1,7 +1,8 @@
 import React from "react";
-import { Modal, Button, Toast, Row, Input } from "react-materialize";
+import { Modal, Button, Toast, Row, Input, Container } from "react-materialize";
 import FloodDataList from '../dataComponents/FloodDataList'
 import SubscribeLocationChart from '../dataComponents/SubscribeLocationChart'
+import "../../CSS/Admin.css";
 import Typist from 'react-typist'
 
 export default class Admin extends React.Component {
@@ -40,7 +41,7 @@ export default class Admin extends React.Component {
   checkPassword = async(ev) => {
     ev.preventDefault()
 
-    let response = await fetch(`${process.env.REACT_APP_DEV_API_URL}/admin/${ev.target[0].value}`);
+    let response = await fetch(`${process.env.REACT_APP_API_DEV_URL}/admin/${ev.target[0].value}`);
     let resJson = await response.json()
 
     if (resJson === 200) {
@@ -85,7 +86,7 @@ export default class Admin extends React.Component {
 
     console.log("postbody data:", postBody)
 
-    let response = await fetch(`${process.env.REACT_APP_DEV_API_URL}/data`, {
+    let response = await fetch(`${process.env.REACT_APP_API_DEV_URL}/data`, {
       method: "POST",
       body: JSON.stringify(postBody),
       headers: {
@@ -117,7 +118,7 @@ export default class Admin extends React.Component {
    */
 
   getSubscribers = async() => {
-    let response = await fetch(`${process.env.REACT_APP_DEV_API_URL}/subscribe`)
+    let response = await fetch(`${process.env.REACT_APP_API_DEV_URL}/subscribe`)
     let resJson = await response.json()
     this.setState({
       subscribers: resJson.length,
@@ -125,7 +126,7 @@ export default class Admin extends React.Component {
     })
   }
   getAlertData = async() => {
-    let response = await fetch(`${process.env.REACT_APP_DEV_API_URL}/data`)
+    let response = await fetch(`${process.env.REACT_APP_API_DEV_URL}/data`)
     let resJson = await response.json()
  
     this.setState({
@@ -153,9 +154,7 @@ export default class Admin extends React.Component {
     margin: "5%"
   }
 
-  curUsersCss = {
-    fontSize: "20px"
-  }
+
 
   hidden = {
     display: "none"
@@ -194,28 +193,33 @@ export default class Admin extends React.Component {
                   </Button>
                 </form>
 
-                <Typist>
-                  <span className="my-custom-class">
-                    {" "}
-                    <h5>Example template for SMS:</h5>{" "}
-                  </span>
-                  <br />
-                  <div className="container">
-                    <h6>{" "}Flooding expected (time of day) Portland Harbor.
-                    High tide: (so many ft). (Any other information
-                    regarding the weather system or important notice)
-                    (Link to SLR Maine site) or (Link to City fo
-                    Portland Twitter){" "}</h6>
-                  </div>
-                </Typist>
+                <span className="my-custom-class">
+                  <h5>Example template for SMS:</h5>
+                </span>
+                <br />
+                <div className="container">
+                  <h6>
+                    Flooding expected (time of day) Portland Harbor. High
+                    tide: (so many ft). (Any other information regarding the
+                    weather system or important notice) (Link to SLR Maine
+                    site) or (Link to City fo Portland Twitter)
+                  </h6>
+                </div>
               </Row>
             </div>
             <hr />
-            <div style={this.curUsersCss}>
-              Current # of subscribers in system
-              <h4>{this.state.subscribers}</h4>
-              <SubscribeLocationChart subscribeData={this.state.subscribeData} />
-            </div>
+            <h4><u>Data Display and Messages Sent</u></h4>
+            <Container style={{ display: "flex", padding: "2%" }}>
+              <Row>
+                <SubscribeLocationChart subscribeData={this.state.subscribeData} />
+              </Row>
+              <Row>
+                <div className="curUsers">
+                  Current # of subscribers in system:
+                  <h4>{this.state.subscribers}</h4>
+                </div>
+              </Row>
+            </Container>
             <table>
               <FloodDataList floodData={this.state.floodData} />
             </table>

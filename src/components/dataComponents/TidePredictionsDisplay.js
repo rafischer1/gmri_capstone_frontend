@@ -20,8 +20,7 @@ const TidePredictionsDisplay = (data) => {
         y: +(day.v)
       }
     })
-    console.log("dates:", datesArr)
-
+  
     return <div className="tideChartCss" >
        <div id="tideChartTitle" style={{color: "white", marginLeft: "20%", fontSize:"24px"}}>Tide Chart for {datesArr[0]} to {datesArr[datesArr.length - 1]}</div>
       <div id="tideChartLegend"><span style={{ color: "#19F5CB" }}>tide</span><br /><span style={{ color: "#F37B6F"}}>flood line @ 11.3 ft</span></div>

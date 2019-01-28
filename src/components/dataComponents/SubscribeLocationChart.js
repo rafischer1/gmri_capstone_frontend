@@ -57,15 +57,15 @@ export default class SubscribeLocationChart extends React.Component {
     return <MediaQuery minDeviceWidth={950}>
         {(matches) => {
           if (matches) {
-            return <XYPlot className="barChart" xType="ordinal" width={400} height={150}>
+            return <XYPlot className="barChart" xType="ordinal" width={550} height={200}>
                 <YAxis style={{ width: "11px", textShadow: "none" }} />
-                <XAxis style={{ fontSize: "11px", marginRight: "5%", textShadow: "none" }} />
+                <XAxis style={{ fontSize: "12px", marginRight: "5%", textShadow: "none" }} />
                 <VerticalBarSeries data={blueData} style={{ stroke: "#DE6262", fill: "#DE6262" }} />
               </XYPlot>;
           } else {
             return <XYPlot className="barChart" xType="ordinal" width={600} height={250}>
               <YAxis style={{ width: "15px", textShadow: "none" }} />
-              <XAxis style={{ fontSize: "13px", marginRight: "20%", textShadow: "none" }} />
+              <XAxis style={{ fontSize: "18px", marginRight: "20%", textShadow: "none" }} />
               <VerticalBarSeries data={blueData} style={{ stroke: "#DE6262", fill: "#DE6262" }} />
             </XYPlot>
           }
