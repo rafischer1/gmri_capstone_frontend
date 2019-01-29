@@ -44,8 +44,8 @@ Resources
 
 ---
 
-![image](./src/images/SMS_Screenshot.png)
+![image](./gitPhotos/SMS_Screenshot.png)
 
-![image](./src/images/main_View_Screenshot.png)
+![image](./gitPhotos/main_View_Screenshot.png)
 
-![image](./src/images/data_view_screenshot.png)
+![image](./gitPhotos/data_view_screenshot.png)
