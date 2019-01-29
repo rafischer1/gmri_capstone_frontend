@@ -1,9 +1,9 @@
-import React from "react";
-import { Modal, Button, Toast, Row, Input, Container } from "react-materialize";
+import React from 'react';
+import { Modal, Button, Toast, Row, Input, Container } from 'react-materialize';
 import FloodDataList from '../dataComponents/FloodDataList'
 import SubscribeLocationChart from '../dataComponents/SubscribeLocationChart'
-import "../../CSS/Admin.css";
-import Typist from 'react-typist'
+import '../../CSS/Admin.css';
+// import Typist from 'react-typist'
 
 export default class Admin extends React.Component {
   constructor(props) {
@@ -143,15 +143,14 @@ export default class Admin extends React.Component {
   formStyle = {
     textAlign: "center",
     width: "80%",
-    border: "2px solid black",
-    borderRadius: "10px",
     padding: "3%",
     marginTop: "5%"
-
   }
 
   buttonStyle = {
-    margin: "5%"
+    margin: "5%",
+    width: "33%",
+    borderRadius: "10px"
   }
 
 
@@ -162,7 +161,7 @@ export default class Admin extends React.Component {
 
   render() {
     return this.props.props === false ? <div /> : <div className="adminPage">
-        {!this.state.adminToastMsg && !this.state.passwordVerified ? <Modal header="Admin Page" trigger={<Button className="teal">
+        {!this.state.adminToastMsg && !this.state.passwordVerified ? <Modal header="Admin Page" trigger={<Button className="teal slide">
                 Password Verification
               </Button>}>
             <form id="form1" name="form1" onSubmit={this.checkPassword}>
@@ -215,12 +214,12 @@ export default class Admin extends React.Component {
               </Row>
               <Row>
                 <div className="curUsers">
-                  Current # of subscribers in system:
-                  <h4>{this.state.subscribers}</h4>
+                  # of subscribers in system:
+                  <h4 style={{ color:"#DE6262"}}><b>{this.state.subscribers}</b></h4>
                 </div>
               </Row>
             </Container>
-            <table>
+            <table className="messagesTable">
               <FloodDataList floodData={this.state.floodData} />
             </table>
           </div>}

@@ -56,10 +56,8 @@ export default class Unsubscribe extends React.Component {
         Explore Maine GIS SLR Maps
       </a>
    </div>
-   
-  
+
  }
-  
 
 }
 

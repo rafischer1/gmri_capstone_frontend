@@ -1,5 +1,5 @@
-import React from "react";
-import UnsubscribeInfo from "../visualComponents/UnsubscribeInfo";
+import React from 'react';
+import UnsubscribeInfo from '../visualComponents/UnsubscribeInfo';
 import FormUnsubscribe from './FormUnsubscribe'
 
 const Unsubscribe = ({unsubscribeCall, toastMsg}) => {

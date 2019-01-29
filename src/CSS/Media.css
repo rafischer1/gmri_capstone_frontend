@@ -74,7 +74,7 @@
     margin-top: -1%;
   }
 
-  .rv-hint {margin: -1% 0 2% 5% !important;}
+
 
   .unsubscribe {
     display: inline-block;
@@ -88,9 +88,32 @@
     background-color: rgba(255, 255, 255, 0.733);
   }
 
-  .FooterPage::after {
-    background: url(https://images.unsplash.com/photo-1530778371056-14819149fb48?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80);
-  background-size: 100% 100% !important;
-}
+  .tideChartCss {
+    width: 100%;
+  }
+
+  #tideChartTitle {
+   font-size: 20px !important;
+   margin-left: 0 !important;
+   margin-bottom: 10%;
+   margin-top: -5%;
+   text-transform: uppercase;
+   width: 100%; 
+   background-color: rgb(44, 157, 177);
+   color: white;
+  }
+
+  #tideChartLegend {
+    border-radius: 10px;
+    margin-bottom: 3%;
+    margin-left: 0 !important;
+  }
+
+  .tideChartMedia {
+    width: 100%
+  }
+
+  .rv-hint {margin: -1% 0 2% 1% !important;}
 
 }
+

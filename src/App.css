@@ -8,12 +8,12 @@ body {
 .toast {margin-bottom: 3%;}
 table {border: 1px solid rgb(123, 189, 228);}
 tr:hover {background-color: rgb(221, 255, 244);}
-nav ul a {color: rgb(44, 157, 177);}
+nav ul a {color: rgb(44, 157, 177); font-size: 18px;}
 
 nav ul a:hover {
   color: rgb(250, 229, 134);
   padding: -1%;
-  background-color: rgba(17, 17, 17, 0.678);
+  background-color: rgba(17, 17, 17, 0.472);
   border-radius: 5%;
   transform: translate(2px, -3px);
 }
@@ -147,10 +147,18 @@ nav ul a:active {transform: translate(1px, 1px);}
   width: 90%;
 }
 
+.btn.teal.slide {
+  margin-top: 1%;
+  background-color: rgb(78, 138, 173) !important; 
+  margin-left: 20%;
+  border-radius: 10px;
+}
+
 .btn.teal {
   margin-top: 1%;
-  background-color: #DE6262 !important; 
+  background-color: rgb(78, 138, 173) !important; 
   margin-left: 10%;
+  border-radius: 10px;
 }
 
 .unsubscribe {
@@ -187,11 +195,10 @@ nav ul a:active {transform: translate(1px, 1px);}
 .FooterPage {
   font-family: Aleo, menlo;
   background-color: rgba(218, 233, 131, 0.103);
+  padding: 2%;
 }
 
-.FooterPage table {
-  font-size: 24px;
-}
+
 
 .FooterPage:after {
   content: "";
@@ -221,7 +228,8 @@ footer {
 .infoLinks {
   font-family: "Aleo", sans-serif;
   font-size: 2em;
-  margin: 2%;
+  margin: 4%;
+
 
 }
 
@@ -241,10 +249,11 @@ table > tbody > tr > td {
 #tideChartLegend {
    color: white; 
    border: 1px solid white; 
+   border-radius: 10px;
    width: 200px; 
    font-weight: bold;
    float: right;
-   margin-right: 20%;
+   margin-right: 27%;
    padding: 2%;
 }
 
@@ -262,3 +271,28 @@ table > tbody > tr > td {
   font-size: 1.3em;
 }
 
+.slide {
+	-webkit-animation: slide-fwd-left 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	animation: slide-fwd-left 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@-webkit-keyframes slide-fwd-left {
+  0% {
+    -webkit-transform: translateZ(0) translateX(0);
+            transform: translateZ(0) translateX(0);
+  }
+  100% {
+    -webkit-transform: translateZ(160px) translateX(-100px);
+            transform: translateZ(160px) translateX(-100px);
+  }
+}
+@keyframes slide-fwd-left {
+  0% {
+    -webkit-transform: translateZ(0) translateX(0);
+            transform: translateZ(0) translateX(0);
+  }
+  100% {
+    -webkit-transform: translateZ(160px) translateX(-100px);
+            transform: translateZ(160px) translateX(-100px);
+  }
+}

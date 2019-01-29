@@ -1,7 +1,7 @@
 import React from 'react'
 import LineGraphTide from './LineGraphTide';
 import { FormatDateApi } from '../function_exports/ConversionFuncs';
-const Spinner = require("react-spinkit");
+const Spinner = require('react-spinkit');
 
 
 const TidePredictionsDisplay = (data) => {
@@ -23,12 +23,16 @@ const TidePredictionsDisplay = (data) => {
   
     return <div className="tideChartCss" >
        <div id="tideChartTitle" style={{color: "white", marginLeft: "20%", fontSize:"24px"}}>Tide Chart for {datesArr[0]} to {datesArr[datesArr.length - 1]}</div>
-      <div id="tideChartLegend"><span style={{ color: "#19F5CB" }}>tide</span><br /><span style={{ color: "#F37B6F" }}>flood line @ 11.3 ft</span><br /><span style={{color: "#ffe987"}}>Hover/Click to see tide</span></div>
+      <div id="tideChartLegend">
+        <span style={{ color: "#19F5CB" }}>tide</span>
+        <br />
+        <span style={{ color: "#F37B6F" }}>flood line @ 11.3 ft</span>
+        <br />
+        <span style={{color: "#ffe987"}}>Hover/Click to see tide</span>
+      </div>
       <br />
-
-       <br />
+      <br />
         <LineGraphTide dataArr={dataArr} tideData={tideData} datesArr={datesArr}/>
-        {/* <div style={{ color: "white", fontFamily: "Aleo" }}>{datesArr.map((day) => `${day.split(" ")[0]} ${day.split(" ")[1]} `)}</div> */}
       </div>;
   }
 }

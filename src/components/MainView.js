@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import "../CSS/Letter.css";
-import MediaQuery from "react-responsive";
-import Parallax from "react-springy-parallax";
-import { Spring, animated } from "react-spring";
-import { WindConversion, TempConversion, DateCalculator} from "./function_exports/ConversionFuncs";
+import React, { Component } from 'react';
+import '../CSS/Letter.css';
+import MediaQuery from 'react-responsive';
+import Parallax from 'react-springy-parallax';
+import { Spring, animated } from 'react-spring';
+import { WindConversion, TempConversion, DateCalculator} from './function_exports/ConversionFuncs';
 
 // Component Imports
 import SignUp from './coreComponents/SignUp';
@@ -15,8 +15,10 @@ import InformationCarousel from './visualComponents/InformationCarousel';
 import SeptemberRainInfo from './visualComponents/SeptemberRainInfo';
 import TidePredictionsDisplay from './dataComponents/TidePredictionsDisplay';
 import FooterPage from './visualComponents/FooterPage';
+import MediaFooterPage from "./visualComponents/MediaFooterPage";
 
-const Spinner = require("react-spinkit");
+
+const Spinner = require('react-spinkit');
 
 class MainView extends Component {
   constructor(props) {
@@ -204,8 +206,7 @@ class MainView extends Component {
             <AlertCMP props={this.state.alertValue} />
             {/* SignUp layer at the top */}
 
-            <Parallax.Layer offset={0 // 0 means start, 1 second page, 1.5 second and half, and so on ... // Page offset, or where the layer will be at when scrolled to
-              } speed={0}>
+            <Parallax.Layer offset={0} speed={0}>
               <div style={{ fontSize: ".5em", marginLeft: "26%" }}>
                 <span className="letter" data-letter="W">
                   Welcome to
@@ -226,7 +227,7 @@ class MainView extends Component {
             </Parallax.Layer>
 
             {/* Moon layer */}
-            <Parallax.Layer offset={0.94} speed={-0.4} factor={0.25}>
+            <Parallax.Layer offset={0.94} speed={-0.4} factor={0.35}>
               <div className="moonDiv">
                 <Spring native from={{ opacity: 0 }} to={{ opacity: 1 }}>
                   {props => <animated.div style={props}>
@@ -237,97 +238,91 @@ class MainView extends Component {
             </Parallax.Layer>
 
             {/* Tide layer */}
-            <Parallax.Layer offset={1.8} speed={0.85} style={this.tideLayer} factor={0.63}>
+            <Parallax.Layer offset={1.8} speed={0.65} style={this.tideLayer} factor={0.63}>
               <br />
               <Moon />
               <TidePredictionsDisplay water_level_noaa={this.state.water_level_noaa} />
             </Parallax.Layer>
 
             {/* Six feet info box */}
-            <Parallax.Layer offset={2.2} speed={0}>
+            <Parallax.Layer offset={2.2} speed={-3} factor={.5}>
               <SixFeetInfo />
             </Parallax.Layer>
 
             {/* carousel of flooding pics */}
-            <Parallax.Layer offset={3} speed={1}>
+            <Parallax.Layer offset={2.9} speed={.75}>
               <InformationCarousel />
             </Parallax.Layer>
 
             {/* september rain box */}
-            <Parallax.Layer offset={3.9} speed={1.5}>
+            <Parallax.Layer offset={3.6} speed={1.2} factor={.85}>
               <SeptemberRainInfo />
             </Parallax.Layer>
-            <Parallax.Layer offset={4.2} speed={-0.01}>
+
+            <Parallax.Layer offset={4.1} speed={-0.01}>
               <FooterPage />
             </Parallax.Layer>
           </Parallax>
         </MediaQuery>
+      {/* phone sizing media queries */}
+      <MediaQuery query="(max-device-width: 950px)">
+        <Parallax ref="parallax" pages={4} scrolling={true}>
+          <AlertCMP props={this.state.alertValue} />
+          {/* SignUp layer at the top */}
 
-        {/* phone sizing media queries */}
-        <MediaQuery query="(max-device-width: 950px)">
-          <Parallax ref="parallax" pages={4} scrolling={true}>
-            <AlertCMP props={this.state.alertValue} />
-            {/* SignUp layer at the top */}
-
-            <Parallax.Layer offset={0 // 0 means start, 1 second page, 1.5 second and half, and so on ... // Page offset, or where the layer will be at when scrolled to
-              } speed={0}>
-              <div style={{ fontSize: ".3em", marginLeft: "7.5%" }}>
-                <span class="letter" data-letter="W">
-                  Welcome to
+          <Parallax.Layer offset={0} speed={0}>
+            <div style={{ fontSize: ".3em", marginLeft: "7.5%" }}>
+              <span className="letter" data-letter="W">
+                Welcome to
                 </span>
-                <span class="letter" data-letter="S">
-                  SLR
+              <span className="letter" data-letter="S">
+                SLR
                 </span>
-                <span class="letter" data-letter="M">
-                  Maine
+              <span className="letter" data-letter="M">
+                Maine
                 </span>
-              </div>
-              <SignUp style={{padding: "0", margin: "0", width: "100%"}} subscribeCall={this.subscribeCall} toastMsg={this.state.viewToastMsg} />
-            </Parallax.Layer>
+            </div>
+            <SignUp style={{ padding: "0", margin: "0", width: "100%" }} subscribeCall={this.subscribeCall} toastMsg={this.state.viewToastMsg} />
+          </Parallax.Layer>
 
-            {/* data info layer/current conditions */}
-            <Parallax.Layer offset={.95} speed={0.1} factor={0.5}>
-              <Data wind_speed={this.state.wind_speed} water_level={this.state.water_level} air_temp={this.state.air_temp} wind_card={this.state.wind_card} todaysDate={this.state.todaysDate} currentTime={this.state.currentTime} water_level_noaa={this.state.water_level_noaa} water_temp_noaa={this.state.water_temp_noaa} />
-            </Parallax.Layer>
+          {/* data info layer/current conditions */}
+          <Parallax.Layer offset={.95} speed={0.1} factor={0.5}>
+            <Data wind_speed={this.state.wind_speed} water_level={this.state.water_level} air_temp={this.state.air_temp} wind_card={this.state.wind_card} todaysDate={this.state.todaysDate} currentTime={this.state.currentTime} water_level_noaa={this.state.water_level_noaa} water_temp_noaa={this.state.water_temp_noaa} />
+          </Parallax.Layer>
+  
+          {/* Moon layer */}
+          {/* <Parallax.Layer offset={0.94} speed={-3} factor={0.85}>
+            <div className="moonDiv">
+              <Spring native from={{ opacity: 0 }} to={{ opacity: 1 }}>
+                {props => <animated.div style={props}>
+                  <Moon />
+                </animated.div>}
+              </Spring>
+            </div>
+          </Parallax.Layer> */}
 
-            {/* Moon layer */}
-            <Parallax.Layer offset={0.94} speed={-0.4} factor={0.25}>
-              <div className="moonDiv">
-                <Spring native from={{ opacity: 0 }} to={{ opacity: 1 }}>
-                  {props => <animated.div style={props}>
-                      <Moon />
-                    </animated.div>}
-                </Spring>
-              </div>
-            </Parallax.Layer>
+          {/* Tide layer */}
+          <Parallax.Layer offset={1.8} speed={0.85} style={this.tideLayer} factor={0.83}>
+            <br />
+            <TidePredictionsDisplay water_level_noaa={this.state.water_level_noaa} />
+          </Parallax.Layer>
 
-            {/* Tide layer */}
-            <Parallax.Layer offset={1.8} speed={0.85} style={this.tideLayer} factor={0.63}>
-              <br />
-              <Moon />
-              <TidePredictionsDisplay water_level_noaa={this.state.water_level_noaa} />
-            </Parallax.Layer>
+          {/* Six feet info box */}
+          <Parallax.Layer offset={2.3} speed={-3}>
+            <SixFeetInfo />
+          </Parallax.Layer>
 
-            {/* Six feet info box */}
-            <Parallax.Layer offset={2} speed={0}>
-              <SixFeetInfo />
-            </Parallax.Layer>
-
-            {/* september rain box */}
-            <Parallax.Layer offset={2.7} speed={1.5} factor={.8}>
-              <SeptemberRainInfo />
-            </Parallax.Layer>
-            <Parallax.Layer offset={3.2} speed={-0.01}>
-              <FooterPage />
-            </Parallax.Layer>
-          </Parallax>
-        </MediaQuery>
+          {/* september rain box */}
+          <Parallax.Layer offset={2.7} speed={1.5} factor={.8}>
+            <SeptemberRainInfo />
+          </Parallax.Layer>
+          <Parallax.Layer offset={3.2} speed={-0.01}>
+            <MediaFooterPage />
+          </Parallax.Layer>
+        </Parallax>
+      </MediaQuery>
       </div>;
   }
 }
 
-
-
 export default MainView;
-
-

@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 import {FormatDate} from '../function_exports/ConversionFuncs'
-const Spinner = require("react-spinkit");
+const Spinner = require('react-spinkit');
 
 const FloodDataList = ({floodData}) => {
    
@@ -21,6 +21,5 @@ const FloodDataList = ({floodData}) => {
       }
     );
 }
-
 
 export default FloodDataList

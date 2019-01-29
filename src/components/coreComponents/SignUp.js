@@ -1,8 +1,8 @@
 import React from 'react'
 import {Row, Input, Toast} from 'react-materialize'
 import {PhoneFormat} from '../function_exports/ConversionFuncs'
-import "react-phone-number-input/style.css";
-import ScrollAnimation from "react-animate-on-scroll";
+import 'react-phone-number-input/style.css';
+import ScrollAnimation from 'react-animate-on-scroll';
 
 
 const SignUp = ({ subscribeCall, toastMsg }) => {

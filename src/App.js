@@ -4,6 +4,7 @@ import './App.css';
 import './CSS/Media.css'
 import './CSS/SignUp.css'
 import './CSS/Moon.css'
+import './CSS/FooterMedia.css'
 
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";

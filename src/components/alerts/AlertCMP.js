@@ -1,5 +1,5 @@
-import React from "react";
-import { Modal, Button} from "react-materialize";
+import React from 'react';
+import { Modal, Button} from 'react-materialize';
 
 
 export default class AlertCMP extends React.Component {

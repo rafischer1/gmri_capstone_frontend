@@ -1,11 +1,6 @@
 import React from 'react';
-import MediaQuery from 'react-responsive'
-import {
-  XYPlot,
-  XAxis,
-  YAxis,
-  VerticalBarSeries,
-} from "react-vis";
+import MediaQuery from 'react-responsive';
+import { XYPlot, XAxis, YAxis, VerticalBarSeries } from 'react-vis';
 
 export default class SubscribeLocationChart extends React.Component {
   constructor(props) {
@@ -51,25 +46,26 @@ export default class SubscribeLocationChart extends React.Component {
   
   render() {
     let location = this.props.subscribeData
-    let locData = this.getLocationData(location)
+    let l = this.getLocationData(location)
 
-    const blueData = [{ x: "Portland", y: locData.Portland }, { x: 'South Portland', y: locData["South Portland"] }, { x: "Westbrook", y: locData.Westbrook }, { x: "Falmouth", y: locData.Falmouth }, { x: 'Cape Elizabeth', y: locData["Cape Elizabeth"] }, {x: "Other", y:locData.Other}];
+    const locationData = [{ x: "Portland", y: l.Portland }, { x: 'South Portland', y: l["South Portland"] }, { x: "Westbrook", y: l.Westbrook }, { x: "Falmouth", y: l.Falmouth }, { x: 'Cape Elizabeth', y: l["Cape Elizabeth"] }, {x: "Other", y:l.Other}];
+
     return <MediaQuery minDeviceWidth={950}>
         {(matches) => {
           if (matches) {
             return <XYPlot className="barChart" xType="ordinal" width={550} height={200}>
                 <YAxis style={{ width: "11px", textShadow: "none" }} />
                 <XAxis style={{ fontSize: "12px", marginRight: "5%", textShadow: "none" }} />
-                <VerticalBarSeries data={blueData} style={{ stroke: "#DE6262", fill: "#DE6262" }} />
+                <VerticalBarSeries data={locationData} style={{ stroke: "#DE6262", fill: "#DE6262" }} />
               </XYPlot>;
           } else {
             return <XYPlot className="barChart" xType="ordinal" width={600} height={250}>
               <YAxis style={{ width: "15px", textShadow: "none" }} />
               <XAxis style={{ fontSize: "18px", marginRight: "20%", textShadow: "none" }} />
-              <VerticalBarSeries data={blueData} style={{ stroke: "#DE6262", fill: "#DE6262" }} />
+              <VerticalBarSeries data={locationData} style={{ stroke: "#DE6262", fill: "#DE6262" }} />
             </XYPlot>
           }
         }}
-      </MediaQuery>
+      </MediaQuery>;
   }
 }

@@ -1,0 +1,36 @@
+.mediaFooterPage {
+  padding: 2%;
+}
+
+.mediaFooterPage .letter {
+  font-size: 32px;
+  text-shadow: 2px 2px 2px #faef8836;
+  margin-bottom: 3%;
+}
+
+.mediaInfoLinks {
+   font-size: 20px;
+   cursor: pointer;
+}
+
+.mediaInfoLinks > a {
+  text-shadow: 2px 2px 2px #faef8871;
+}
+
+.mediaInfoLinks > a:active {
+  color: #faef88;
+}
+
+.mediaFooterPage:after {
+  content: "";
+  background: url(https://images.unsplash.com/photo-1530123985359-4fd0cce1ea8b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2691&q=80);
+  background-size: 200% 100%;
+  background-repeat: no-repeat;
+  opacity: 0.5;
+  top: 0px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;   
+}
