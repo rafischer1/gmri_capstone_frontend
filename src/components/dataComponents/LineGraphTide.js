@@ -12,8 +12,7 @@ export default class LineGraphTide extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: null,
-      floodingLine: {x: 0, y: 11.3}
+      value: { 'Date': Date, 'Feet': 0.0 },
     };
   }
 
@@ -37,14 +36,14 @@ export default class LineGraphTide extends React.Component {
       })
     const { value } = this.state;
 
-    const lineData = [{ x: 1, y: 11.3 }, { x: 2, y: 11.3 }, { x: 3, y: 11.3 }, { x: 4, y: 11.3 }, { x: 5, y: 11.3 }, { x: 6, y: 11.3 }, { x: 7, y: 11.3 }];
+    const lineData = [{ x: 1, y: 11.8 }, { x: 2, y: 11.8 }, { x: 3, y: 11.8 }, { x: 4, y: 11.8 }, { x: 5, y: 11.8 }, { x: 6, y: 11.8 }, { x: 7, y: 11.8 }];
 
-    return <div className="tideChartMedia"><XYPlot width={500} height={300} yDomain={[-2, 12]}>
+    return <div className="tideChartMedia"><XYPlot width={550} height={350} yDomain={[-2, 12]}>
         <YAxis style={{color: "white"}} title="Tide FT" tickValues={[-2, 0, 2, 4, 6, 8, 10, 12]} />
         <LineSeries data={lineData} style={{ stroke: "#F37B6F", strokeWidth: 2 }} />
         <MarkSeries onNearestX={this._rememberValue} data={dataArr} style={{ stroke: "black", strokeWidth: 1 }} />
         <LineSeries onValueMouseOver={this._rememberValue} onValueMouseOut={this._forgetValue} data={dataArr} curve={"curveMonotoneX"} style={{ stroke: "#19F5CB", strokeWidth: 2, fill: "none" }} />
-        {value ? <Hint value={value} align={{ vertical: Hint.ALIGN.AUTO }} /> : null}
+        <Hint value={value} align={{ vertical: Hint.ALIGN.AUTO }} /> 
       </XYPlot>
     </div>;
   }

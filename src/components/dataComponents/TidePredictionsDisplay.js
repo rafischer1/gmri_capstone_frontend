@@ -26,7 +26,7 @@ const TidePredictionsDisplay = (data) => {
       <div id="tideChartLegend">
         <span style={{ color: "#19F5CB" }}>tide</span>
         <br />
-        <span style={{ color: "#F37B6F" }}>flood line @ 11.3 ft</span>
+        <span style={{ color: "#F37B6F" }}>flood line @ 11.8 ft</span>
         <br />
         <span style={{color: "#ffe987"}}>Hover/Click to see tide</span>
       </div>

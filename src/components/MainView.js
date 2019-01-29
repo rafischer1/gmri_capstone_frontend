@@ -11,7 +11,7 @@ import AlertCMP from './alerts/AlertCMP';
 import Data from './coreComponents/Data';
 import Moon from "./visualComponents/Moon";
 import SixFeetInfo from './visualComponents/SixFeetInfo';
-import InformationCarousel from './visualComponents/InformationCarousel';
+import CarouselCMP from './visualComponents/CarouselCMP';
 import SeptemberRainInfo from './visualComponents/SeptemberRainInfo';
 import TidePredictionsDisplay from './dataComponents/TidePredictionsDisplay';
 import FooterPage from './visualComponents/FooterPage';
@@ -250,12 +250,12 @@ class MainView extends Component {
             </Parallax.Layer>
 
             {/* carousel of flooding pics */}
-            <Parallax.Layer offset={2.9} speed={.75}>
-              <InformationCarousel />
+            <Parallax.Layer offset={2.8} speed={.75} factor={.6}>
+              <CarouselCMP />
             </Parallax.Layer>
 
             {/* september rain box */}
-            <Parallax.Layer offset={3.6} speed={1.2} factor={.85}>
+            <Parallax.Layer offset={3.3} speed={1.8} factor={.85}>
               <SeptemberRainInfo />
             </Parallax.Layer>
 
@@ -272,15 +272,9 @@ class MainView extends Component {
 
           <Parallax.Layer offset={0} speed={0}>
             <div style={{ fontSize: ".3em", marginLeft: "7.5%" }}>
-              <span className="letter" data-letter="W">
-                Welcome to
-                </span>
-              <span className="letter" data-letter="S">
-                SLR
-                </span>
-              <span className="letter" data-letter="M">
-                Maine
-                </span>
+              <span className="letter" data-letter="W">Welcome to</span>
+              <span className="letter" data-letter="S">SLR</span>
+              <span className="letter" data-letter="M">Maine</span>
             </div>
             <SignUp style={{ padding: "0", margin: "0", width: "100%" }} subscribeCall={this.subscribeCall} toastMsg={this.state.viewToastMsg} />
           </Parallax.Layer>
@@ -289,17 +283,6 @@ class MainView extends Component {
           <Parallax.Layer offset={.95} speed={0.1} factor={0.5}>
             <Data wind_speed={this.state.wind_speed} water_level={this.state.water_level} air_temp={this.state.air_temp} wind_card={this.state.wind_card} todaysDate={this.state.todaysDate} currentTime={this.state.currentTime} water_level_noaa={this.state.water_level_noaa} water_temp_noaa={this.state.water_temp_noaa} />
           </Parallax.Layer>
-  
-          {/* Moon layer */}
-          {/* <Parallax.Layer offset={0.94} speed={-3} factor={0.85}>
-            <div className="moonDiv">
-              <Spring native from={{ opacity: 0 }} to={{ opacity: 1 }}>
-                {props => <animated.div style={props}>
-                  <Moon />
-                </animated.div>}
-              </Spring>
-            </div>
-          </Parallax.Layer> */}
 
           {/* Tide layer */}
           <Parallax.Layer offset={1.8} speed={0.85} style={this.tideLayer} factor={0.83}>

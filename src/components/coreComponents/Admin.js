@@ -161,7 +161,7 @@ export default class Admin extends React.Component {
 
   render() {
     return this.props.props === false ? <div /> : <div className="adminPage">
-        {!this.state.adminToastMsg && !this.state.passwordVerified ? <Modal header="Admin Page" trigger={<Button className="teal slide">
+        {!this.state.adminToastMsg && !this.state.passwordVerified ? <Modal header="Admin Page" trigger={<Button className="teal slide-fwd">
                 Password Verification
               </Button>}>
             <form id="form1" name="form1" onSubmit={this.checkPassword}>
@@ -179,8 +179,7 @@ export default class Admin extends React.Component {
             <div className="container topOfAdminPage">
               <Row style={this.formStyle}>
                 <form onSubmit={this.postSMS}>
-                  {" "}
-                  Enter Data for SMS Message
+                  <h4>Enter SMS Message</h4>
                   <Input type="textarea" label="SMS Message" s={12} />
                   <Input type="number" step="0.01" s={4} label="Sea Level Ft" />
                   <Input type="number" step="0.01" s={4} label="Wind Mph" />

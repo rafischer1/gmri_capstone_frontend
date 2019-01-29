@@ -49,3 +49,5 @@ Resources
 ![image](./gitPhotos/main_View_Screenshot.png)
 
 ![image](./gitPhotos/data_view_screenshot.png)
+
+![image](./gitPhotos/tide_screenshot.png)
