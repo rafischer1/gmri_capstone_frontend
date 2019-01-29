@@ -43,7 +43,7 @@ export default class LineGraphTide extends React.Component {
         <LineSeries data={lineData} style={{ stroke: "#F37B6F", strokeWidth: 2 }} />
         <MarkSeries onNearestX={this._rememberValue} data={dataArr} style={{ stroke: "black", strokeWidth: 1 }} />
         <LineSeries onValueMouseOver={this._rememberValue} onValueMouseOut={this._forgetValue} data={dataArr} curve={"curveMonotoneX"} style={{ stroke: "#19F5CB", strokeWidth: 2, fill: "none" }} />
-        {value ? <Hint value={value} align={{ vertical: Hint.ALIGN.AUTO }} style={{ background: "white", margin: "0", borderRadius: "10px", padding: "1%" }} /> : null}
+        {value ? <Hint value={value} align={{ vertical: Hint.ALIGN.AUTO }} /> : null}
       </XYPlot>;
       
     </div>

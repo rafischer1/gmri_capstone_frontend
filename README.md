@@ -45,3 +45,7 @@ Resources
 ---
 
 ![image](./src/images/SMS_Screenshot.png)
+
+![image](./src/images/main_View_Screenshot.png)
+
+![image](./src/images/data_view_screenshot.png)

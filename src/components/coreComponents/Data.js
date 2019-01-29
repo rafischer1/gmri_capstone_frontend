@@ -27,15 +27,15 @@ const Data = ({wind_speed, wind_card, air_temp, water_level, water_level_noaa, w
      let tideTime = day.t.split(' ')[1].split(":")[0]
      let tmpHour = currentTime.split(":")[0]
     //  console.log("tide time, tmptime", tideTime, tmpHour)
-      if (tideTime > tmpHour && (day.type === "H")) {
-        // console.log(day.v, day.type)
+      if (tideTime > tmpHour && day.type === "H") {
+        console.log(day.v, day.type)
         if (day.v) {
           let tmp = +day.v
           tmpArrFt.push(tmp.toFixed(2))
           nextHigh = MilToStrdTime(day.t.split(" ")[1]);
           tmpArrTime.push(nextHigh);
           return tmpArrTime[0];
-        }
+        } 
       }
       return null
    })
