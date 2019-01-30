@@ -75,9 +75,9 @@ export default class App extends Component {
                 <li>
                   <Link to="/">SLR Maine</Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link to="/admin">Admin</Link>
-                </li>
+                </li> */}
                 <li>
                   <Link to="/unsubscribe">Unsubscribe</Link>
                 </li>

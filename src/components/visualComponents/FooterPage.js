@@ -34,6 +34,11 @@ const FooterPage = () => {
                 CSRI Sea Level Rise Resources
               </a>
             </div>
+        <div className="infoLinks">
+          <a href="https://coast.noaa.gov/digitalcoast/tools/slr" rel="noopener noreferrer" target="_blank">
+            NOAA Digital Coast SLR Tool
+              </a>
+        </div>
           </Row>
           <Row>
             <div className="infoLinks">
@@ -51,11 +56,7 @@ const FooterPage = () => {
                 Natural Resources Council of Maine
               </a>
             </div>
-          <div className="infoLinks">
-            <a href="https://www.ipcc.ch/" rel="noopener noreferrer" target="_blank">
-              Intergovernmental Panel on Climate Change
-              </a>
-          </div>
+        
           </Row>
         </Container>
 

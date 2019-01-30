@@ -205,7 +205,7 @@ class MainView extends Component {
           <Parallax ref="parallax" pages={5} scrolling={true}>
             <AlertCMP props={this.state.alertValue} />
             {/* SignUp layer at the top */}
-
+      
             <Parallax.Layer offset={0} speed={0}>
               <div style={{ fontSize: ".5em", marginLeft: "26%" }}>
                 <span className="letter" data-letter="W">
@@ -250,8 +250,10 @@ class MainView extends Component {
             </Parallax.Layer>
 
             {/* carousel of flooding pics */}
-            <Parallax.Layer offset={2.8} speed={.75} factor={.6}>
+            <Parallax.Layer offset={2.8} speed={.75} factor={.75}>
+            <div className="container carouselContainer">
               <CarouselCMP />
+              </div>
             </Parallax.Layer>
 
             {/* september rain box */}
@@ -289,11 +291,11 @@ class MainView extends Component {
             <br />
             <TidePredictionsDisplay water_level_noaa={this.state.water_level_noaa} />
           </Parallax.Layer>
-
           {/* Six feet info box */}
           <Parallax.Layer offset={2.3} speed={-3}>
             <SixFeetInfo />
           </Parallax.Layer>
+
 
           {/* september rain box */}
           <Parallax.Layer offset={2.7} speed={1.5} factor={.8}>
