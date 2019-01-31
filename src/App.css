@@ -73,7 +73,9 @@ nav ul a:active {transform: translate(1px, 1px);}
 #GISLinkTwo {
   border: 2px solid white;
   padding: 1%;
+  font-size: 1.2em;
   color: white;
+  background-color: rgba(36, 33, 33, 0.226);
   margin-left: 10%;
   text-shadow: none;
   font-weight: bold;
@@ -109,10 +111,9 @@ nav ul a:active {transform: translate(1px, 1px);}
   color: white;
   border-radius: 10px;
   padding: 2%;
-  width: 60%;
-  margin-top: 8%;
-  margin-left: 10%;
-  font-size: 20px;
+  width: 70%;
+  margin-left: 4%;
+  font-size: 18px;
   text-shadow: 1px 1px black;
   box-shadow: 3px 5px 3px rgb(202, 202, 202);
 }
@@ -145,21 +146,21 @@ nav ul a:active {transform: translate(1px, 1px);}
 
 .btn.teal.slide {
   margin-top: 1%;
-  background-color: rgb(78, 138, 173) !important; 
+  background-color: #6262DE !important; 
   margin-left: 20%;
   border-radius: 10px;
 }
 
 .btn.teal {
   margin-top: 1%;
-  background-color: rgb(78, 138, 173) !important; 
+  background-color: #6262DE !important; 
   margin-left: 10%;
   border-radius: 10px;
 }
 
 .unsubscribe {
   display: flex;
-  margin: 2%;
+  margin: 4%;
 }
 
 .unsubInfoPage {
@@ -167,23 +168,15 @@ nav ul a:active {transform: translate(1px, 1px);}
   background-size:cover;
   color: rgb(0, 0, 0);
   border-radius: 10px;
-  padding: 2%;
-  margin: 2%;
+  padding: 3%;
+  margin-left: 12.5%;
   width: 75%;
   text-shadow: 1px 1px rgb(255, 255, 255);
 }
 
 .unsubscribe-form {
   margin: 0 !important;
-  height: 60%;
   background-color: rgba(255, 255, 255, 0.733);
-}
-
-.rv-xy-plot__axis__tick__text {text-shadow: 2px 2px 1px rgb(252, 230, 133);}
-
-.rv-xy-plot__inner {
-  margin-left: 50%;
-  margin-top: -20%;
 }
 
 #icon_email {width: 300px;}
@@ -238,6 +231,10 @@ table > tbody > tr > td {
   font-size: 16px;
 }
 
+.tideChartCss {
+   display: inline-flex;
+}
+
 #tideChartLegend {
    color: white; 
    border: 1px solid white; 
@@ -249,16 +246,35 @@ table > tbody > tr > td {
    padding: 2%;
 }
 
+#floodCatLegend {
+   color: white; 
+   font-size: 1.24em;
+   border: 1px solid white; 
+   border-radius: 10px;
+   width: 300px; 
+   font-weight: bold;
+   float: right;
+   margin-right: 5%;
+   margin-top: -12%;
+   padding: 2%;
+}
+
+.rv-xy-plot__axis__tick__text {text-shadow: 2px 2px 1px rgb(252, 230, 133);}
+
+.rv-xy-plot__inner {
+  margin-left: 7.5%;
+  cursor: crosshair;
+}
+
 .rv-hint {
   text-align: center;
   position: relative !important;
-  border-top: 4px solid #ffe987; 
+  border-top: 4px solid #FBE07C; 
   border-radius: none;
-  width: 400px; 
+  width: 500px; 
   background-color: rgb(0, 0, 0) !important;
   color: rgb(255, 235, 235);;
-  margin-left: 66%;
-  margin-top: -10%;
+  margin-left: 15%;
   padding: 2%;
   font-size: 1.3em;
 }
@@ -266,11 +282,23 @@ table > tbody > tr > td {
 .carouselPage {
   width: 60%;
   margin-left: 20%;
+  zoom: 115%;
 }
 
 .carouselContainer {
-padding: 1%;
+  padding: 1%;
+}
 
+p.legend {
+  background-color: rgb(44, 157, 177);
+  font-size: 13px !important;
+
+}
+
+p.carousel-status {
+  font-family: sans-serif;
+  background-color: rgba(255, 255, 255, 0.246);
+  color: rgb(48, 201, 228) !important;
 }
 
 .carouselContainer:after {
@@ -291,6 +319,8 @@ padding: 1%;
 	-webkit-animation: slide-fwd-left 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 	animation: slide-fwd-left 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
+
+
 
 @-webkit-keyframes slide-fwd-left {
   0% {

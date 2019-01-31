@@ -1,11 +1,12 @@
 import React from 'react';
-import UnsubscribeInfo from '../visualComponents/UnsubscribeInfo';
+// import UnsubscribeInfo from '../visualComponents/UnsubscribeInfo';
+import SeptemberRainInfo from '../visualComponents/SeptemberRainInfo'
 import FormUnsubscribe from './FormUnsubscribe'
 
 const Unsubscribe = ({unsubscribeCall, toastMsg}) => {
   return <div className="unsubscribe">
       <FormUnsubscribe unsubscribeCall={unsubscribeCall} toastMsg={toastMsg}/>
-      <UnsubscribeInfo number={1}/>
+      <SeptemberRainInfo />
     </div>;
 }
 

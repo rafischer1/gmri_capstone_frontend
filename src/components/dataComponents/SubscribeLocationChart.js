@@ -56,13 +56,13 @@ export default class SubscribeLocationChart extends React.Component {
             return <XYPlot className="barChart" xType="ordinal" width={550} height={200}>
                 <YAxis style={{ width: "11px", textShadow: "none" }} />
                 <XAxis style={{ fontSize: "12px", marginRight: "5%", textShadow: "none" }} />
-                <VerticalBarSeries data={locationData} style={{ stroke: "#DE6262", fill: "#DE6262" }} />
+                <VerticalBarSeries data={locationData} style={{ stroke: "darkgrey", fill: "darkgrey" }} />
               </XYPlot>;
           } else {
             return <XYPlot className="barChart" xType="ordinal" width={600} height={250}>
               <YAxis style={{ width: "15px", textShadow: "none" }} />
               <XAxis style={{ fontSize: "18px", marginRight: "20%", textShadow: "none" }} />
-              <VerticalBarSeries data={locationData} style={{ stroke: "#DE6262", fill: "#DE6262" }} />
+              <VerticalBarSeries data={locationData} style={{ stroke: "darkgrey", fill: "darkgrey" }} />
             </XYPlot>
           }
         }}

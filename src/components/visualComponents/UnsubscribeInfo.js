@@ -52,6 +52,7 @@ export default class Unsubscribe extends React.Component {
         history. We're experiencing the impacts of sea level rise today, with
         every extreme high tide, heavy precipitation event, and coastal storm.
       </h5>
+      <br />
       <a id="GISLinkTwo" href="https://www.maine.gov/dacf/mgs/hazards/slr_ss/index.shtml" target="_blank" rel="noopener noreferrer">
         Explore Maine GIS SLR Maps
       </a>

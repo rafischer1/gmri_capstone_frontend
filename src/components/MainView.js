@@ -16,6 +16,7 @@ import SeptemberRainInfo from './visualComponents/SeptemberRainInfo';
 import TidePredictionsDisplay from './dataComponents/TidePredictionsDisplay';
 import FooterPage from './visualComponents/FooterPage';
 import MediaFooterPage from "./visualComponents/MediaFooterPage";
+import UnsubscribeInfo from "./visualComponents/UnsubscribeInfo"
 
 
 const Spinner = require('react-spinkit');
@@ -27,6 +28,7 @@ class MainView extends Component {
       water_level_noaa: [],
       water_temp_noaa: [],
       todaysDate: "",
+      tomorrowsDate: "",
       currentTime: "",
       water_level: 0,
       air_temp: 80,
@@ -35,7 +37,8 @@ class MainView extends Component {
       wind_speed: 0,
       show: false,
       alertValue: 0,
-      viewToastMsg: ''
+      viewToastMsg: '',
+      flooding: false
     };
   }
 
@@ -88,18 +91,20 @@ class MainView extends Component {
 
   // converts new Date object to current date in API format and calls API
   dateConverter() {
-    let { year, month, day } = DateCalculator();
+    let { year, month, day, tomorrowDay, nextMo, nextYear } = DateCalculator();
     let noaaDate = `${year}${month}${day}`;
+    let tomorrowDate = `${nextYear}${nextMo}${tomorrowDay}`;
     this.setState({
-      todaysDate: `${year}${month}${day}`
+      todaysDate: `${year}${month}${day}`,
+      tomorrowsDate: `${nextYear}${nextMo}${tomorrowDay}`
     });
-    this.getNOAAInfo(noaaDate);
+    this.getNOAAInfo(noaaDate, tomorrowDate);
   }
 
-  getNOAAInfo(noaaDate) {
-    this.waterLevelNOAA(noaaDate);
-    this.currentWaterLevel(noaaDate);
-    this.waterTempNOAA();
+  getNOAAInfo(noaaDate, tomorrowDate) {
+    this.waterLevelNOAA(noaaDate, tomorrowDate);
+    this.currentWaterLevel(noaaDate, tomorrowDate);
+    this.waterTempNOAA(noaaDate, tomorrowDate);
   }
 
   // converts new Date object to current time in API format
@@ -110,10 +115,9 @@ class MainView extends Component {
   }
 
   // Water level predictions API call - sent as props to Data cmp
-  async waterLevelNOAA(noaaDate) {
+  async waterLevelNOAA(noaaDate, tomorrowDate) {
     let response = await fetch(
-      `https://tidesandcurrents.noaa.gov/api/datagetter?product=predictions&application=NOS.COOPS.TAC.WL&begin_date=${noaaDate}&end_date=${+noaaDate +
-      1}&datum=MLLW&station=8418150&time_zone=lst_ldt&units=english&interval=hilo&format=json`
+      `https://tidesandcurrents.noaa.gov/api/datagetter?product=predictions&application=NOS.COOPS.TAC.WL&begin_date=${noaaDate}&end_date=${tomorrowDate}&datum=MLLW&station=8418150&time_zone=lst_ldt&units=english&interval=hilo&format=json`
     );
 
     let resJson = await response.json();
@@ -136,24 +140,25 @@ class MainView extends Component {
   }
 
   // currentWaterLevel grabs the last item in the array as the last 6 minute updated sea level data
-  async currentWaterLevel(noaaDate) {
-    let response = await fetch(`https://tidesandcurrents.noaa.gov/api/datagetter?product=water_level&application=NOS.COOPS.TAC.WL&begin_date=${noaaDate}&end_date=${+noaaDate +
-      1}&datum=MLLW&station=8418150&time_zone=lst_ldt&units=english&format=json`);
+  async currentWaterLevel(noaaDate, tomorrowDate) {
+    console.log("resjson tide:", noaaDate, tomorrowDate);
+    let response = await fetch(`https://tidesandcurrents.noaa.gov/api/datagetter?product=water_level&application=NOS.COOPS.TAC.WL&begin_date=${noaaDate}&end_date=${tomorrowDate}&datum=MLLW&station=8418150&time_zone=lst_ldt&units=english&format=json`);
     let resJson = await response.json()
+    
     let tmp = resJson.data
-    if (tmp.length === undefined) {
+    if (tmp === undefined) {
       return <Spinner className="spinner" name="line-scale" color="teal" />;
+    }
+    if (+tmp[tmp.length - 1].v > 11.4) {
+      this.setState({flooding: true})
     }
     this.setState({ water_level: +(tmp[tmp.length - 1].v) });
   }
 
   // Water temp API call - sent as props to Data cmp
-  async waterTempNOAA() {
-    let { year, month, day } = DateCalculator();
-    let noaaDay = `${year}${month}${day}`;
-    let noaaDayPlusOne = `${year}${month}${day + 1}`;
+  async waterTempNOAA(noaaDate, tomorrowDate) {
     let response = await fetch(
-      `https://tidesandcurrents.noaa.gov/api/datagetter?product=water_temperature&application=NOS.COOPS.TAC.PHYSOCEAN&begin_date=${+noaaDay}&end_date=${+noaaDayPlusOne}&station=8418150&time_zone=GMT&units=english&interval=6&format=json`
+      `https://tidesandcurrents.noaa.gov/api/datagetter?product=water_temperature&application=NOS.COOPS.TAC.PHYSOCEAN&begin_date=${+noaaDate}&end_date=${+tomorrowDate}&station=8418150&time_zone=GMT&units=english&interval=6&format=json`
     );
 
     let resJson = await response.json();
@@ -193,19 +198,20 @@ class MainView extends Component {
     });
   }
 
- 
   // css styles for scroll layer
   tideLayer = {
     backgroundColor: "black"
   };
-  // horizontal
+
   render() {
-    return <div className="App">
+    return (
+      <div className="App">
         <MediaQuery minDeviceWidth={951}>
           <Parallax ref="parallax" pages={5} scrolling={true}>
+            
             <AlertCMP props={this.state.alertValue} />
             {/* SignUp layer at the top */}
-      
+            
             <Parallax.Layer offset={0} speed={0}>
               <div style={{ fontSize: ".5em", marginLeft: "26%" }}>
                 <span className="letter" data-letter="W">
@@ -218,47 +224,70 @@ class MainView extends Component {
                   Maine
                 </span>
               </div>
-              <SignUp subscribeCall={this.subscribeCall} toastMsg={this.state.viewToastMsg} />
+              <SignUp
+                subscribeCall={this.subscribeCall}
+                toastMsg={this.state.viewToastMsg}
+              />
+              
             </Parallax.Layer>
 
             {/* data info layer/current conditions */}
             <Parallax.Layer offset={1} speed={0.2} factor={0.75}>
-              <Data wind_speed={this.state.wind_speed} water_level={this.state.water_level} air_temp={this.state.air_temp} wind_card={this.state.wind_card} todaysDate={this.state.todaysDate} currentTime={this.state.currentTime} water_level_noaa={this.state.water_level_noaa} water_temp_noaa={this.state.water_temp_noaa} />
+              <Data
+                wind_speed={this.state.wind_speed}
+                water_level={this.state.water_level}
+                air_temp={this.state.air_temp}
+                wind_card={this.state.wind_card}
+                todaysDate={this.state.todaysDate}
+                currentTime={this.state.currentTime}
+                water_level_noaa={this.state.water_level_noaa}
+                water_temp_noaa={this.state.water_temp_noaa}
+              />
             </Parallax.Layer>
 
             {/* Moon layer */}
             <Parallax.Layer offset={0.94} speed={-0.4} factor={0.35}>
               <div className="moonDiv">
                 <Spring native from={{ opacity: 0 }} to={{ opacity: 1 }}>
-                  {props => <animated.div style={props}>
-                      <Moon />
-                    </animated.div>}
+                  {props => (
+                    <animated.div style={props}>
+                     <Moon flooding={this.state.flooding}/>  
+                    </animated.div>
+                  )}
                 </Spring>
               </div>
             </Parallax.Layer>
 
             {/* Tide layer */}
-            <Parallax.Layer offset={1.8} speed={0.65} style={this.tideLayer} factor={0.63}>
+            <Parallax.Layer
+              offset={1.8}
+              speed={0.65}
+              style={this.tideLayer}
+              factor={0.63}
+            >
               <br />
               <Moon />
-              <TidePredictionsDisplay water_level_noaa={this.state.water_level_noaa} />
+              <TidePredictionsDisplay
+                water_level_noaa={this.state.water_level_noaa}
+              />
             </Parallax.Layer>
 
             {/* Six feet info box */}
-            <Parallax.Layer offset={2.2} speed={-3} factor={.5}>
+            <Parallax.Layer offset={2.2} speed={-3} factor={0.5}>
               <SixFeetInfo />
             </Parallax.Layer>
 
             {/* carousel of flooding pics */}
-            <Parallax.Layer offset={2.8} speed={.75} factor={.75}>
-            <div className="container carouselContainer">
-              <CarouselCMP />
+            <Parallax.Layer offset={2.8} speed={0.75} factor={0.75}>
+              <div className="container carouselContainer">
+                <CarouselCMP />
               </div>
             </Parallax.Layer>
 
             {/* september rain box */}
-            <Parallax.Layer offset={3.3} speed={1.8} factor={.85}>
-              <SeptemberRainInfo />
+            <Parallax.Layer offset={3.3} speed={1.8} factor={0.85}>
+              {/* <SeptemberRainInfo /> */}
+              <UnsubscribeInfo />
             </Parallax.Layer>
 
             <Parallax.Layer offset={4.1} speed={-0.01}>
@@ -266,47 +295,73 @@ class MainView extends Component {
             </Parallax.Layer>
           </Parallax>
         </MediaQuery>
-      {/* phone sizing media queries */}
-      <MediaQuery query="(max-device-width: 950px)">
-        <Parallax ref="parallax" pages={4} scrolling={true}>
-          <AlertCMP props={this.state.alertValue} />
-          {/* SignUp layer at the top */}
+        {/* phone sizing media queries */}
+        <MediaQuery query="(max-device-width: 950px)">
+          <Parallax ref="parallax" pages={4} scrolling={true}>
+            <AlertCMP props={this.state.alertValue} />
+            {/* SignUp layer at the top */}
 
-          <Parallax.Layer offset={0} speed={0}>
-            <div style={{ fontSize: ".3em", marginLeft: "7.5%" }}>
-              <span className="letter" data-letter="W">Welcome to</span>
-              <span className="letter" data-letter="S">SLR</span>
-              <span className="letter" data-letter="M">Maine</span>
-            </div>
-            <SignUp style={{ padding: "0", margin: "0", width: "100%" }} subscribeCall={this.subscribeCall} toastMsg={this.state.viewToastMsg} />
-          </Parallax.Layer>
+            <Parallax.Layer offset={0} speed={0}>
+              <div style={{ fontSize: ".3em", marginLeft: "7.5%" }}>
+                <span className="letter" data-letter="W">
+                  Welcome to
+                </span>
+                <span className="letter" data-letter="S">
+                  SLR
+                </span>
+                <span className="letter" data-letter="M">
+                  Maine
+                </span>
+              </div>
+              <SignUp
+                style={{ padding: "0", margin: "0", width: "100%" }}
+                subscribeCall={this.subscribeCall}
+                toastMsg={this.state.viewToastMsg}
+              />
+            </Parallax.Layer>
 
-          {/* data info layer/current conditions */}
-          <Parallax.Layer offset={.95} speed={0.1} factor={0.5}>
-            <Data wind_speed={this.state.wind_speed} water_level={this.state.water_level} air_temp={this.state.air_temp} wind_card={this.state.wind_card} todaysDate={this.state.todaysDate} currentTime={this.state.currentTime} water_level_noaa={this.state.water_level_noaa} water_temp_noaa={this.state.water_temp_noaa} />
-          </Parallax.Layer>
+            {/* data info layer/current conditions */}
+            <Parallax.Layer offset={0.95} speed={0.1} factor={0.5}>
+              <Data
+                wind_speed={this.state.wind_speed}
+                water_level={this.state.water_level}
+                air_temp={this.state.air_temp}
+                wind_card={this.state.wind_card}
+                todaysDate={this.state.todaysDate}
+                currentTime={this.state.currentTime}
+                water_level_noaa={this.state.water_level_noaa}
+                water_temp_noaa={this.state.water_temp_noaa}
+              />
+            </Parallax.Layer>
 
-          {/* Tide layer */}
-          <Parallax.Layer offset={1.8} speed={0.85} style={this.tideLayer} factor={0.83}>
-            <br />
-            <TidePredictionsDisplay water_level_noaa={this.state.water_level_noaa} />
-          </Parallax.Layer>
-          {/* Six feet info box */}
-          <Parallax.Layer offset={2.3} speed={-3}>
-            <SixFeetInfo />
-          </Parallax.Layer>
+            {/* Tide layer */}
+            <Parallax.Layer
+              offset={1.8}
+              speed={0.85}
+              style={this.tideLayer}
+              factor={0.83}
+            >
+              <br />
+              <TidePredictionsDisplay
+                water_level_noaa={this.state.water_level_noaa}
+              />
+            </Parallax.Layer>
+            {/* Six feet info box */}
+            <Parallax.Layer offset={2.3} speed={-3}>
+              <SixFeetInfo />
+            </Parallax.Layer>
 
-
-          {/* september rain box */}
-          <Parallax.Layer offset={2.7} speed={1.5} factor={.8}>
-            <SeptemberRainInfo />
-          </Parallax.Layer>
-          <Parallax.Layer offset={3.2} speed={-0.01}>
-            <MediaFooterPage />
-          </Parallax.Layer>
-        </Parallax>
-      </MediaQuery>
-      </div>;
+            {/* september rain box */}
+            <Parallax.Layer offset={2.7} speed={1.5} factor={0.8}>
+              <SeptemberRainInfo />
+            </Parallax.Layer>
+            <Parallax.Layer offset={3.2} speed={-0.01}>
+              <MediaFooterPage />
+            </Parallax.Layer>
+          </Parallax>
+        </MediaQuery>
+      </div>
+    );
   }
 }
 

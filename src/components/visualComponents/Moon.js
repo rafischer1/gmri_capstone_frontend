@@ -24,15 +24,14 @@ var lune = require("lune");
  * 
  */
 
-const Moon = () => {
+const Moon = (flooding) => {
   let current_phase = lune.phase();
   let current_moon_age = Math.floor(current_phase.age);
   let moon_phase_src = '' 
   moon_phase_src = moonPhaseCalc(current_moon_age, moon_phase_src);
-  return <div className="moonPage"><img src={moon_phase_src} alt="Moon Phase" />
-  </div >
-    ;
-  
+    return flooding === true ? <div className="moonPage floodingMoon"><img src = { moon_phase_src } alt = "Moon Phase" /></div> : <div className="moonPage"><img src={moon_phase_src} alt="Moon Phase" />
+    </div >
+  ;
 }
 export default Moon
 

@@ -13,6 +13,7 @@ const FloodDataList = ({floodData}) => {
         <tr>
           <td>{elDate}</td>
             <td >Message: {el.msg}</td>
+            <td>Category: {el.category}</td>
             <td>Sea Level Ft: {el.sealevelft.toFixed(1)}</td>
             <td >Wind Mph: {el.windmph.toFixed(2)}</td>
             <td>Wind Direction: {el.winddir}</td>

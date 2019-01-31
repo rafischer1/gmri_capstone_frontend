@@ -1,6 +1,7 @@
 // DateCalculator modular method to calculate and return date
 const DateCalculator = () => {
   let d = new Date();
+  console.log("date", d)
   let year = d.getFullYear();
   let month = d.getMonth();
   if (month.toString().length === 1) {
@@ -9,7 +10,12 @@ const DateCalculator = () => {
     month = month + 1;
   }
   let day = d.getDate();
-  return { year, month, day };
+  var tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  let nextYear = tomorrow.getFullYear()
+  let nextMo = FormatMonth(tomorrow.getMonth() + 1)
+  let tomorrowDay = tomorrow.toString().split(" ")[2]
+  return { year, month, day, tomorrowDay , nextYear, nextMo };
 };
 
 // TempConversion converts kelvin to fahrenheit
@@ -93,6 +99,14 @@ const MilToStrdTime = (militaryTime) => {
   } else {
     return `${tmp}:${minutes}AM`
   }
+}
+
+const FormatMonth = (month) => {
+  let result = ""
+ if (month.toString().length === 1) {
+   result = `0${month}`
+ }
+ return result
 }
 
 // FormatDate returns a US style date `day/month/year` from a timestamp

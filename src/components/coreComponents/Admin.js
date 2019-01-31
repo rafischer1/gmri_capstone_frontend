@@ -1,7 +1,8 @@
 import React from 'react';
-import { Modal, Button, Toast, Row, Input, Container } from 'react-materialize';
+import { Modal, Button, Toast, Row, Input, Container, Col } from 'react-materialize';
 import FloodDataList from '../dataComponents/FloodDataList'
 import SubscribeLocationChart from '../dataComponents/SubscribeLocationChart'
+import FloodingDatumChart from "../dataComponents/FloodingDatumChart";
 import '../../CSS/Admin.css';
 // import Typist from 'react-typist'
 
@@ -14,16 +15,29 @@ export default class Admin extends React.Component {
       floodData: [], 
       subscribers: 0, 
       showToast: false,
-      subscribeData: []
+      subscribeData: [],
+      sms: ""
     };
     }
   
   renderToast = (msg) => {
-    this.setState({
-      showToast: true,
-      adminToastMsg: msg,
-      passwordVerified: true,
-    })
+    if (msg === `SMS Sent!`) {
+      console.log("msg:", msg)
+      this.setState({
+        showToast: true,
+        adminToastMsg: msg,
+        sms: "sms",
+        passwordVerified: true,
+      })
+    } else {
+      this.setState({
+        showToast: true,
+        sms: "",
+        adminToastMsg: msg,
+        passwordVerified: true,
+      })
+    }
+   
   }
     renderErrorToast = (msg) => {
       this.setState({
@@ -47,7 +61,7 @@ export default class Admin extends React.Component {
     if (resJson === 200) {
       let msg = `Password Verified!`;
       this.renderToast(msg);
-
+      
       setTimeout(() => {
         msg = "";
         this.renderToast(msg);
@@ -81,7 +95,8 @@ export default class Admin extends React.Component {
       Msg: ev.target[0].value,
       WindMPH: +(ev.target[2].value),
       WindDir: ev.target[3].value,
-      SeaLevelFt: +(ev.target[1].value)
+      SeaLevelFt: +(ev.target[1].value),
+      Category: ev.target[4].value
     }
 
     console.log("postbody data:", postBody)
@@ -93,12 +108,13 @@ export default class Admin extends React.Component {
         "Content-Type": "application/json"
       }
     });
+   
+    
     let resJson = await response.json()
-
+    // console.log(resJson)
     if (resJson === null) {
       let msg = `SMS Sent!`;
       this.renderToast(msg);
-
       setTimeout(() => {
         msg = "";
         this.renderToast(msg);
@@ -106,17 +122,15 @@ export default class Admin extends React.Component {
           showToast: false
         })
       }, 2000);
-
       this.getAlertData()
     }
   }
-  
+ 
   /***
    * Two component did mount functions
    * to retrieve the # of subscribers
    * and posted SMS data posts
    */
-
   getSubscribers = async() => {
     let response = await fetch(`${process.env.REACT_APP_API_DEV_URL}/subscribe`)
     let resJson = await response.json()
@@ -140,30 +154,31 @@ export default class Admin extends React.Component {
   }
 
   // in component styles for select elements
-  formStyle = {
-    textAlign: "center",
-    width: "80%",
-    padding: "3%",
-    marginTop: "5%"
-  }
-
   buttonStyle = {
     margin: "5%",
     width: "33%",
-    borderRadius: "10px"
+    borderRadius: "10px",
+    backgroundColor: "#576FC9"
   }
-
-
 
   hidden = {
     display: "none"
   }
 
   render() {
-    return this.props.props === false ? <div /> : <div className="adminPage">
-        {!this.state.adminToastMsg && !this.state.passwordVerified ? <Modal header="Admin Page" trigger={<Button className="teal slide-fwd">
+    return this.props.props === false ? (
+      <div />
+    ) : (
+      <div className="adminPage">
+        {!this.state.adminToastMsg && !this.state.passwordVerified ? (
+          <Modal
+            header="Admin Page"
+            trigger={
+              <Button className="teal slide-fwd">
                 Password Verification
-              </Button>}>
+              </Button>
+            }
+          >
             <form id="form1" name="form1" onSubmit={this.checkPassword}>
               Sign In
               <input type="password" required placeholder="password" />
@@ -172,56 +187,116 @@ export default class Admin extends React.Component {
               </button>
             </form>
             <div>{this.passwordCorrect}</div>
-          </Modal> : this.state.showToast ? <Toast className="btn teal" toast={this.state.adminToastMsg}>
+          </Modal>
+        ) : this.state.showToast ? (
+          <Toast
+            className={`btn teal toast" ${this.state.sms}`}
+            toast={this.state.adminToastMsg}
+          >
             {this.state.adminToastMsg}
-          </Toast> : <div />}
-        {!this.state.passwordVerified ? <div /> : <div>
+          </Toast>
+        ) : (
+          <div />
+        )}
+        {!this.state.passwordVerified ? (
+          <div />
+        ) : (
+          <div>
             <div className="container topOfAdminPage">
-              <Row style={this.formStyle}>
-                <form onSubmit={this.postSMS}>
-                  <h4>Enter SMS Message</h4>
-                  <Input type="textarea" label="SMS Message" s={12} />
-                  <Input type="number" step="0.01" s={4} label="Sea Level Ft" />
-                  <Input type="number" step="0.01" s={4} label="Wind Mph" />
-                  <br />
-                  <Input type="text" s={4} label="Wind Direction" />
-                  <br />
-                  <Button style={this.buttonStyle} type="submit">
-                    Submit
-                  </Button>
-                </form>
+              <Container className="adminStats">
+                <Row>
+                  <Col className="s12">
+                    <SubscribeLocationChart
+                      subscribeData={this.state.subscribeData}
+                    />
+                    <h5>Subscribers/Location</h5>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col className="s12 curUsers">
+                                      <div>
+                      # of subscribers in system:
+                      <h4 style={{ color: "#576FC9" }}>
+                        <b>{this.state.subscribers}</b>
+                      </h4>
+                    </div>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col className="s12">
+                    <FloodingDatumChart floodData={this.state.floodData} />
+                    <h5>Flood Category/Event</h5>
+                  </Col>
+                </Row>
+              </Container>
+              <Container className="smsContainer">
+                <Row style={this.formStyle}>
+                  <Col className="s12">
+                    <form onSubmit={this.postSMS}>
+                      <h4>Enter SMS Message</h4>
+                      <Input type="textarea" label="SMS Message" s={12} />
+                      <Input
+                        type="number"
+                        step="0.01"
+                        s={4}
+                        label="Sea Level Ft"
+                      />
+                      <Input
+                        type="number"
+                        step="0.01"
+                        s={4}
+                        label="Wind Mph"
+                      />
+                      <Input type="text" s={4} label="Wind Direction" />
+                      <Input
+                        s={12}
+                        id="location"
+                        type="select"
+                        label="Flooding Category"
+                        defaultValue="2"
+                      >
+                        <option defaultChecked={true} value="1">
+                          Splash Over
+                        </option>
+                        <option value="2">Minor</option>
+                        <option value="3">Moderate</option>
+                        <option value="4">Major</option>
+                        <option value="4">Extreme</option>
+                      </Input>
+                      <br />
 
-                <span className="my-custom-class">
-                  <h5>Example template for SMS:</h5>
-                </span>
-                <br />
-                <div className="container">
-                  <h6>
-                    Flooding expected (time of day) Portland Harbor. High
-                    tide: (so many ft). (Any other information regarding the
-                    weather system or important notice) (Link to SLR Maine
-                    site) or (Link to City fo Portland Twitter)
-                  </h6>
-                </div>
-              </Row>
+                      <br />
+                      <Button style={this.buttonStyle} type="submit">
+                        Submit
+                      </Button>
+                    </form>
+
+                    <span className="my-custom-class">
+                      <h5>Example template for SMS:</h5>
+                    </span>
+                    <br />
+                    <div className="container">
+                      <h6>
+                        Flooding expected (time of day) Portland Harbor.
+                        High tide: (so many ft). (Any other information
+                        regarding the weather system or important notice)
+                        (Link to SLR Maine site) or (Link to City fo
+                        Portland Twitter)
+                      </h6>
+                    </div>
+                  </Col>
+                </Row>
+              </Container>
             </div>
-            <hr />
-            <h4><u>Data Display and Messages Sent</u></h4>
-            <Container style={{ display: "flex", padding: "2%" }}>
-              <Row>
-                <SubscribeLocationChart subscribeData={this.state.subscribeData} />
-              </Row>
-              <Row>
-                <div className="curUsers">
-                  # of subscribers in system:
-                  <h4 style={{ color:"#DE6262"}}><b>{this.state.subscribers}</b></h4>
-                </div>
-              </Row>
-            </Container>
+
+            <h5 className="h5">Data Display and Messages Sent</h5>
+
             <table className="messagesTable">
               <FloodDataList floodData={this.state.floodData} />
             </table>
-          </div>}
-      </div>;
+          </div>
+        )}
+      </div>
+    );
   }
 };
