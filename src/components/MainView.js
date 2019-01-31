@@ -6,6 +6,7 @@ import { Spring, animated } from 'react-spring';
 import { WindConversion, TempConversion, DateCalculator} from './function_exports/ConversionFuncs';
 
 // Component Imports
+import HundredYearGraph from './dataComponents/HundredYearGraph'
 import SignUp from './coreComponents/SignUp';
 import AlertCMP from './alerts/AlertCMP';
 import Data from './coreComponents/Data';
@@ -243,6 +244,7 @@ class MainView extends Component {
                 water_level_noaa={this.state.water_level_noaa}
                 water_temp_noaa={this.state.water_temp_noaa}
               />
+             
             </Parallax.Layer>
 
             {/* Moon layer */}
@@ -263,7 +265,7 @@ class MainView extends Component {
               offset={1.8}
               speed={0.65}
               style={this.tideLayer}
-              factor={0.63}
+              factor={0.73}
             >
               <br />
               <Moon />
@@ -274,6 +276,7 @@ class MainView extends Component {
 
             {/* Six feet info box */}
             <Parallax.Layer offset={2.2} speed={-3} factor={0.5}>
+             
               <SixFeetInfo />
             </Parallax.Layer>
 
@@ -286,7 +289,7 @@ class MainView extends Component {
 
             {/* september rain box */}
             <Parallax.Layer offset={3.3} speed={1.8} factor={0.85}>
-              {/* <SeptemberRainInfo /> */}
+              <HundredYearGraph />
               <UnsubscribeInfo />
             </Parallax.Layer>
 
@@ -300,6 +303,7 @@ class MainView extends Component {
           <Parallax ref="parallax" pages={4} scrolling={true}>
             <AlertCMP props={this.state.alertValue} />
             {/* SignUp layer at the top */}
+          
 
             <Parallax.Layer offset={0} speed={0}>
               <div style={{ fontSize: ".3em", marginLeft: "7.5%" }}>

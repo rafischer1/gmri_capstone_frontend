@@ -320,6 +320,9 @@ p.carousel-status {
 	animation: slide-fwd-left 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
+.hundredYearChart {
+  margin-left: 10%;
+}
 
 
 @-webkit-keyframes slide-fwd-left {
