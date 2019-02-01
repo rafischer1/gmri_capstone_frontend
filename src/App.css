@@ -37,8 +37,9 @@ nav ul a:active {transform: translate(1px, 1px);}
   background: url(https://images.unsplash.com/photo-1488921618671-463b781ac428?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);
   background-size:cover;
   border-radius: 10px;
-  padding: 2%;
+  padding: 4%;
   width: 66%;
+  /* height: 50%; */
   margin-top: 6%;
   margin-left: 16.5%;
   font-size: 20px;
@@ -105,9 +106,9 @@ nav ul a:active {transform: translate(1px, 1px);}
 
 .septemberPage {
   display: flex;
-   background: url(https://services3.arcgis.com/IWh1Id1sBCnK9p7O/arcgis/rest/services/Portland_Flooding/FeatureServer/0/2/attachments/3);
-   background-size: 115% 100%;
-   background-repeat: no-repeat;
+  background: url(https://services3.arcgis.com/IWh1Id1sBCnK9p7O/arcgis/rest/services/Portland_Flooding/FeatureServer/0/2/attachments/3);
+  background-size: 115% 100%;
+  background-repeat: no-repeat;
   color: white;
   border-radius: 10px;
   padding: 2%;
@@ -154,8 +155,12 @@ nav ul a:active {transform: translate(1px, 1px);}
 .btn.teal {
   margin-top: 1%;
   background-color: #6262DE !important; 
-  margin-left: 10%;
   border-radius: 10px;
+}
+
+.btn.teal:active {
+  padding: none;
+  animation: pulse .2s linear;
 }
 
 .unsubscribe {
@@ -218,9 +223,9 @@ footer {
   margin: 4%;
 }
 
+
 .infoLinks > a:hover {
   color: rgb(235, 117, 117);
-  background-color: rgba(69, 109, 78, 0.103);
 }
 
 .mediaTable > .letter {
@@ -244,6 +249,7 @@ table > tbody > tr > td {
    float: right;
    margin-right: 27%;
    padding: 2%;
+   box-shadow: 3px 2px 4px rgb(104, 104, 104);
 }
 
 #floodCatLegend {
@@ -257,6 +263,7 @@ table > tbody > tr > td {
    margin-right: 5%;
    margin-top: -12%;
    padding: 2%;
+   box-shadow: 3px 2px 4px rgb(104, 104, 104);
 }
 
 .rv-xy-plot__axis__tick__text {text-shadow: 2px 2px 1px rgb(252, 230, 133);}
@@ -269,7 +276,7 @@ table > tbody > tr > td {
 .rv-hint {
   text-align: center;
   position: relative !important;
-  border-top: 4px solid #FBE07C; 
+  border-top: 2px solid #FBE07C; 
   border-radius: none;
   width: 500px; 
   background-color: rgb(0, 0, 0) !important;
@@ -277,6 +284,8 @@ table > tbody > tr > td {
   margin-left: 15%;
   padding: 2%;
   font-size: 1.3em;
+  border-bottom: 2px solid  #FBE07C;
+  border-radius: 10px;
 }
 
 .carouselPage {
@@ -285,9 +294,7 @@ table > tbody > tr > td {
   zoom: 115%;
 }
 
-.carouselContainer {
-  padding: 1%;
-}
+.carouselContainer {padding: 1%;}
 
 p.legend {
   background-color: rgb(44, 157, 177);
@@ -322,6 +329,29 @@ p.carousel-status {
 
 .hundredYearChart {
   margin-left: 10%;
+  margin-top: -20%;
+}
+
+.hundredYearHeading {
+  margin-left: 10%;
+  margin-bottom: 5%;
+  margin-top: -4%;
+}
+
+rect:hover {
+  animation: pulse .2s linear;
+}
+
+rect:active {
+  animation: fadeOutLeft 2s linear;
+}
+
+button.btn:hover {
+  height: 38px;
+}
+
+button.btn:active {
+  animation: pulse .2s linear;
 }
 
 

@@ -61,6 +61,9 @@ const MediaFooterPage = () => {
               </a>
         </div>
       </Row>
+      <br />
+      <br />
+      <br />
     </Container>
 
     <footer>Contact, C 2019, Fischer</footer>

@@ -55,7 +55,7 @@ export default class Admin extends React.Component {
   checkPassword = async(ev) => {
     ev.preventDefault()
 
-    let response = await fetch(`${process.env.REACT_APP_API_DEV_URL}/admin/${ev.target[0].value}`);
+    let response = await fetch(`${process.env.REACT_APP_API_URL}/admin/${ev.target[0].value}`);
     let resJson = await response.json()
 
     if (resJson === 200) {
@@ -101,7 +101,7 @@ export default class Admin extends React.Component {
 
     console.log("postbody data:", postBody)
 
-    let response = await fetch(`${process.env.REACT_APP_API_DEV_URL}/data`, {
+    let response = await fetch(`${process.env.REACT_APP_API_URL}/data`, {
       method: "POST",
       body: JSON.stringify(postBody),
       headers: {
@@ -132,7 +132,7 @@ export default class Admin extends React.Component {
    * and posted SMS data posts
    */
   getSubscribers = async() => {
-    let response = await fetch(`${process.env.REACT_APP_API_DEV_URL}/subscribe`)
+    let response = await fetch(`${process.env.REACT_APP_API_URL}/subscribe`)
     let resJson = await response.json()
     this.setState({
       subscribers: resJson.length,
@@ -140,7 +140,7 @@ export default class Admin extends React.Component {
     })
   }
   getAlertData = async() => {
-    let response = await fetch(`${process.env.REACT_APP_API_DEV_URL}/data`)
+    let response = await fetch(`${process.env.REACT_APP_API_URL}/data`)
     let resJson = await response.json()
  
     this.setState({
@@ -174,7 +174,7 @@ export default class Admin extends React.Component {
           <Modal
             header="Admin Page"
             trigger={
-              <Button className="teal slide-fwd">
+              <Button className="teal signInAdmin">
                 Password Verification
               </Button>
             }
@@ -234,26 +234,29 @@ export default class Admin extends React.Component {
                   <Col className="s12">
                     <form onSubmit={this.postSMS}>
                       <h4>Enter SMS Message</h4>
-                      <Input type="textarea" label="SMS Message" s={12} />
+                      <Input type="textarea" label="SMS Message" s={12} required/>
                       <Input
                         type="number"
                         step="0.01"
                         s={4}
                         label="Sea Level Ft"
+                        required
                       />
                       <Input
                         type="number"
                         step="0.01"
                         s={4}
                         label="Wind Mph"
+                        required
                       />
-                      <Input type="text" s={4} label="Wind Direction" />
+                      <Input type="text" s={4} label="Wind Direction" required/>
                       <Input
                         s={12}
                         id="location"
                         type="select"
                         label="Flooding Category"
                         defaultValue="2"
+                        required
                       >
                         <option defaultChecked={true} value="1">
                           Splash Over

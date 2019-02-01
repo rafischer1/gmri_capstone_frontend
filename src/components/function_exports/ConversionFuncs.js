@@ -18,6 +18,7 @@ const DateCalculator = () => {
   return { year, month, day, tomorrowDay , nextYear, nextMo };
 };
 
+
 // TempConversion converts kelvin to fahrenheit
 const TempConversion = tempK => {
   let tempF = ((tempK - 273.15) * 9) / 5 + 32;

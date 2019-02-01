@@ -36,7 +36,7 @@ export default class App extends Component {
 
   */
   unsubscribeCall = async(phone) => {
-    let response = await fetch(`${process.env.REACT_APP_API_DEV_URL}/subscribe/${phone}`, {
+    let response = await fetch(`${process.env.REACT_APP_API_URL}/subscribe/${phone}`, {
       method: "DELETE",
     });
 
@@ -55,7 +55,7 @@ export default class App extends Component {
 
   async postSMSCall() {
     let postBody = {}
-    let response = await fetch(`${process.env.REACT_APP_API_DEV_URL}/data`, {
+    let response = await fetch(`${process.env.REACT_APP_API_URL}/data`, {
       method: "POST",
       body: JSON.stringify(postBody),
       headers: {
@@ -75,9 +75,9 @@ export default class App extends Component {
                 <li>
                   <Link to="/">SLR Maine</Link>
                 </li>
-                {/* <li>
+                <li>
                   <Link to="/admin">Admin</Link>
-                </li> */}
+                </li>
                 <li>
                   <Link to="/unsubscribe">Unsubscribe</Link>
                 </li>
@@ -92,7 +92,7 @@ export default class App extends Component {
               </ul>
             </Navbar>
             <Route exact path="/" component={MainView} />
-            <Route path="/admin" component={() => <Admin postSMSCall={this.portSMSCall} />} />
+          <Route path="/admin" component={() => <Admin postSMSCall={this.portSMSCall} />} />
             <Route path="/unsubscribe" component={() => <Unsubscribe unsubscribeCall={this.unsubscribeCall} toastMsg={this.state.toastMsg} />} />
           </div>
         </Router>

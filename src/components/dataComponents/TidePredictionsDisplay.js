@@ -28,7 +28,7 @@ const TidePredictionsDisplay = (data) => {
           id="tideChartTitle"
           style={{ color: "white", marginLeft: "20%", fontSize: "24px" }}
         >
-          Tide Chart for {datesArr[0]} to {datesArr[datesArr.length - 1]}
+          Tide Chart for <br />{datesArr[0]} to {datesArr[datesArr.length - 1]}
         </div>
         <div className="tideChartCss">
           <Row>
@@ -39,7 +39,6 @@ const TidePredictionsDisplay = (data) => {
                 datesArr={datesArr}
               />
             </Col>
-            
           </Row>
           <Row>
             <Col className="s6">

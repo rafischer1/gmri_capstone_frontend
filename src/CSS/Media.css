@@ -69,41 +69,40 @@
   .rv-xy-plot__axis__tick__text {text-shadow: 2px 2px 1px rgb(252, 230, 133);}
 
   .rv-xy-plot__inner {
-    width: 75%;
-    margin-left: 0;
-    margin-top: -1%;
+    width: 60%;
+    margin-left: -2% !important;
+    margin-top: 20%;
   }
 
-  .unsubscribe {
-    display: inline-block;
-    margin-left: 2.5% !important;
-    background-image: linear-gradient(#ffffff, #56d7db65);
+  .rv-hint {
+    width: 60%;
+    font-size: 16px;
   }
 
-  .unsubscribe-form {
-    margin: 1.33% !important;
-    width: 96% !important;
-    background-color: rgba(255, 255, 255, 0.733);
+  #floodCatLegend {
+ display: none;
   }
+
 
   .tideChartCss {
     width: 100%;
   }
 
   #tideChartTitle {
-   font-size: 20px !important;
-   margin-left: 0 !important;
-   margin-bottom: 10%;
+   font-weight: bold;
+   font-size: 16px !important;
+   margin-left: 10% !important;
    margin-top: -5%;
    text-transform: uppercase;
    width: 100%; 
-   background-color: rgb(44, 157, 177);
    color: white;
+   margin-bottom: 1%;
   }
 
   #tideChartLegend {
     border-radius: 10px;
-    margin-bottom: 3%;
+    margin-bottom: 2%;
+    margin-right: 120%;
     margin-left: 0 !important;
   }
 
@@ -112,6 +111,114 @@
   }
 
   .rv-hint {margin: -1% 0 2% 1% !important;}
-  
+
+  .unsubscribe {
+    display: inline-block;
+    margin-left: 2.5% !important;
+    background: none !important;
+  }
+
+  .unsubscribe-form {
+    margin: 1.33% !important;
+    width: 96% !important;
+    background-color: rgb(255, 255, 255);
+  }
+
+  .septemberPage {
+    margin: 1.33% !important;
+    width: 96%;
+  }
+
+  .septemberPage:after {
+    background: radial-gradient(rgb(152, 255, 169), rgb(38, 123, 180));
+    
+  }
+
+  .adminPage {
+    display: inline;
+    align-content: row;
+    text-align: center;
+  }
+
+  .carouselContainer {
+    padding: 0;
+    width: 100% !important;
+  }
+
+  .carouselContainer::after {
+    background: none;
+  }
+
+  .carouselPage {
+    width: 100% !important;
+    margin-left: 0;
+  }
+
+li.thumb {
+    display: none !important;
+  }
+.adminStats {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 2%;
+}
+
+.curUsers {
+  font-size: 1em !important; 
+  border: 2px solid #DE6262;
+  border-radius: 10px;
+  margin-right: 5%;
+  height: 60%;
+}
+
+.curUsers > div {
+  color: rgb(44, 44, 44);
+}
+
+.barChart {
+  width: 120% !important;
+  border-left: 2px solid #7C97FB;
+  border-right: 2px solid #7C97FB; 
+  border-bottom: 2px solid #7C97FB; 
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.barChart > .rv-xy-plot__inner {
+  margin: 0;
+}
+
+.smsContainer {
+  border-top: 2px solid #7C97FB; 
+  border-bottom: 2px solid #7C97FB; 
+}
+
+.messagesTable {
+  font-size: 12px !important;
+}
+
+.btn.teal.toast.sms {
+  position: relative;
+  top: 300px;
+}
+ .barChart {
+   margin-right: 50%;
+   border: none !important;
+ }
+ rect {
+   width: 10%;
+ }
+ .barChart > .rv-xy-plot__inner {
+   width: 100% !important;
+   margin-left: -30% !important;
+ }
+
+  .subscribeTicks {
+    color: pink;
+  }
+
+ 
+
 }
 

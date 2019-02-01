@@ -1,5 +1,6 @@
 .mediaFooterPage {
   padding: 2%;
+  margin-bottom: 40%;
 }
 
 .mediaFooterPage .letter {
@@ -11,10 +12,13 @@
 .mediaInfoLinks {
    font-size: 20px;
    cursor: pointer;
+   text-align: center;
 }
 
 .mediaInfoLinks > a {
   text-shadow: 2px 2px 2px #faef8871;
+  margin-left: 3%;
+  color: rgb(49, 49, 49);
 }
 
 .mediaInfoLinks > a:active {

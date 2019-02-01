@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../CSS/Letter.css';
 import MediaQuery from 'react-responsive';
 import Parallax from 'react-springy-parallax';
-import { Spring, animated } from 'react-spring';
+import { Spring, animated, Trail  } from 'react-spring';
 import { WindConversion, TempConversion, DateCalculator} from './function_exports/ConversionFuncs';
 
 // Component Imports
@@ -39,7 +39,7 @@ class MainView extends Component {
       show: false,
       alertValue: 0,
       viewToastMsg: '',
-      flooding: false
+      flooding: false,
     };
   }
 
@@ -67,7 +67,7 @@ class MainView extends Component {
       location
     };
     let response = await fetch(
-      `${process.env.REACT_APP_API_DEV_URL}/subscribe`,
+      `${process.env.REACT_APP_API_URL}/subscribe`,
       {
         method: "POST",
         body: JSON.stringify(postBody),
@@ -93,6 +93,10 @@ class MainView extends Component {
   // converts new Date object to current date in API format and calls API
   dateConverter() {
     let { year, month, day, tomorrowDay, nextMo, nextYear } = DateCalculator();
+    if (day.toString().length === 1) {
+      day = `0${day}`
+    }
+    console.log("day:", day)
     let noaaDate = `${year}${month}${day}`;
     let tomorrowDate = `${nextYear}${nextMo}${tomorrowDay}`;
     this.setState({
@@ -126,8 +130,9 @@ class MainView extends Component {
     if (resJson.predictions === undefined) {
       return "wait";
     } else {
-      // console.log(resJson.predictions)
+      console.log(resJson.predictions)
       resJson.predictions.map((day) => {
+        // mock an alert by dropping this and hardcoding the msg
         if (+(day.v) > 11.4) {
           return this.renderAlert(+(day.v))
         }
@@ -209,10 +214,9 @@ class MainView extends Component {
       <div className="App">
         <MediaQuery minDeviceWidth={951}>
           <Parallax ref="parallax" pages={5} scrolling={true}>
-            
             <AlertCMP props={this.state.alertValue} />
             {/* SignUp layer at the top */}
-            
+
             <Parallax.Layer offset={0} speed={0}>
               <div style={{ fontSize: ".5em", marginLeft: "26%" }}>
                 <span className="letter" data-letter="W">
@@ -229,7 +233,6 @@ class MainView extends Component {
                 subscribeCall={this.subscribeCall}
                 toastMsg={this.state.viewToastMsg}
               />
-              
             </Parallax.Layer>
 
             {/* data info layer/current conditions */}
@@ -244,7 +247,6 @@ class MainView extends Component {
                 water_level_noaa={this.state.water_level_noaa}
                 water_temp_noaa={this.state.water_temp_noaa}
               />
-             
             </Parallax.Layer>
 
             {/* Moon layer */}
@@ -253,7 +255,7 @@ class MainView extends Component {
                 <Spring native from={{ opacity: 0 }} to={{ opacity: 1 }}>
                   {props => (
                     <animated.div style={props}>
-                     <Moon flooding={this.state.flooding}/>  
+                      <Moon flooding={this.state.flooding} />
                     </animated.div>
                   )}
                 </Spring>
@@ -276,7 +278,6 @@ class MainView extends Component {
 
             {/* Six feet info box */}
             <Parallax.Layer offset={2.2} speed={-3} factor={0.5}>
-             
               <SixFeetInfo />
             </Parallax.Layer>
 
@@ -303,7 +304,6 @@ class MainView extends Component {
           <Parallax ref="parallax" pages={4} scrolling={true}>
             <AlertCMP props={this.state.alertValue} />
             {/* SignUp layer at the top */}
-          
 
             <Parallax.Layer offset={0} speed={0}>
               <div style={{ fontSize: ".3em", marginLeft: "7.5%" }}>
@@ -343,7 +343,7 @@ class MainView extends Component {
               offset={1.8}
               speed={0.85}
               style={this.tideLayer}
-              factor={0.83}
+              factor={1}
             >
               <br />
               <TidePredictionsDisplay
@@ -351,15 +351,17 @@ class MainView extends Component {
               />
             </Parallax.Layer>
             {/* Six feet info box */}
-            <Parallax.Layer offset={2.3} speed={-3}>
+            <Parallax.Layer offset={2.3} speed={-2.5}>
               <SixFeetInfo />
             </Parallax.Layer>
 
             {/* september rain box */}
-            <Parallax.Layer offset={2.7} speed={1.5} factor={0.8}>
-              <SeptemberRainInfo />
+            <Parallax.Layer offset={2.4} speed={1.5} factor={0.8}>
+              <div className="container carouselContainer">
+                <CarouselCMP />
+              </div>
             </Parallax.Layer>
-            <Parallax.Layer offset={3.2} speed={-0.01}>
+            <Parallax.Layer offset={3.1} speed={-0.01}>
               <MediaFooterPage />
             </Parallax.Layer>
           </Parallax>
