@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  XYPlot,
-  YAxis,
-  LineSeries,
-  MarkSeries,
-  Hint
-} from "react-vis"
-
+import {XYPlot, YAxis, LineSeries, MarkSeries, Hint} from "react-vis"
 
 export default class LineGraphTide extends React.Component {
   constructor(props) {

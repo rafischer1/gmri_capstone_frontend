@@ -1,5 +1,3 @@
-/* media screen declarations */
-
 /* iphone 6,7,8 */
 @media only screen 
 and (min-device-width : 375px) 
@@ -300,23 +298,5 @@ and (max-device-width : 768px) {
     font-size: 14px !important;
   }
 }
-
-
-/* iphone 10 */
-/* @media only screen 
-and (min-device-width : 375px) 
-and (max-device-width : 812px) 
-and (-webkit-device-pixel-ratio : 3)
-and (orientation : portrait) { STYLES GO HERE  } */
-
-
-
-/* galaxy s4 Portrait and Landscape */
-/* @media screen 
-  and (device-width: 320px) 
-  and (device-height: 640px) 
-  and (-webkit-device-pixel-ratio: 3) {
-
-} */
 
 

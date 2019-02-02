@@ -15,8 +15,7 @@ import SixFeetInfo from './visualComponents/SixFeetInfo';
 import CarouselCMP from './visualComponents/CarouselCMP';
 import TidePredictionsDisplay from './dataComponents/TidePredictionsDisplay';
 import FooterPage from './visualComponents/FooterPage';
-import UnsubscribeInfo from "./visualComponents/UnsubscribeInfo"
-
+import UnsubscribeInfo from './visualComponents/UnsubscribeInfo';
 
 const Spinner = require('react-spinkit');
 
@@ -53,7 +52,6 @@ class MainView extends Component {
     })
   }
 
-
   /**
    * subscribeCall to POST a subscriber
    * @param {*} phone
@@ -86,7 +84,6 @@ class MainView extends Component {
       }, 3000)
     }
   }
-
 
   // converts new Date object to current date in API format and calls API
   dateConverter() {
@@ -138,9 +135,7 @@ class MainView extends Component {
       return this.setState({
         water_level_noaa: resJson.predictions
       });
-   
     }
-
   }
 
   // currentWaterLevel grabs the last item in the array as the last 6 minute updated sea level data
@@ -292,15 +287,15 @@ class MainView extends Component {
               <UnsubscribeInfo />
             </Parallax.Layer>
 
+            {/* footer page and links */}
             <Parallax.Layer offset={4} speed={-0.01} >
               <FooterPage />
             </Parallax.Layer>
           </Parallax>
         </MediaQuery>
-       
       </div>
-    );
+    )
   }
-}
+};
 
 export default MainView;

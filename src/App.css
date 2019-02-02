@@ -6,11 +6,10 @@ body {
   color: #161C32;
 }
 
- .btn.red {
-    font-size: 20px;
-    animation: flash 1s 1.5s linear;
-
-  }
+.btn.red {
+  font-size: 20px;
+  animation: flash 1s 1.5s linear;
+}
 
 .spinner {margin-left: 50%;}
 .toast {margin-bottom: 3%;}
@@ -27,7 +26,6 @@ nav ul a:hover {
 }
 
 nav ul a:active {transform: translate(1px, 1px);}
-
 .button-collapse {color: rgb(44, 157, 177);}
 
 .button-collapse:hover {
@@ -46,7 +44,6 @@ nav ul a:active {transform: translate(1px, 1px);}
   border-radius: 10px;
   padding: 4%;
   width: 66%;
-  /* height: 50%; */
   margin-top: 6%;
   margin-left: 16.5%;
   font-size: 20px;
@@ -66,7 +63,7 @@ nav ul a:active {transform: translate(1px, 1px);}
 }
 
 .sixFtPage {
-   background: url(https://images.unsplash.com/photo-1464925257126-6450e871c667?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1867&q=80);
+  background: url(https://images.unsplash.com/photo-1464925257126-6450e871c667?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1867&q=80);
   background-size:cover;
   color: white;
   border-radius: 10px;
@@ -92,7 +89,6 @@ nav ul a:active {transform: translate(1px, 1px);}
 #GISLinkTwo:hover {
   border: 2px solid rgb(65, 219, 194);
   color: rgb(52, 156, 139);
-  
 }
 
 .unsubscribe-form > div > h5 {
@@ -220,22 +216,10 @@ nav ul a:active {transform: translate(1px, 1px);}
   margin: 4%;
 }
 
-
-.infoLinks > a:hover {
-  color: rgb(235, 117, 117);
-}
-
-.mediaTable > .letter {
-  font-size: 34px;
-}
-
-table > tbody > tr > td {
-  font-size: 16px;
-}
-
-.tideChartCss {
-   display: inline-flex;
-}
+.infoLinks > a:hover {color: rgb(235, 117, 117);}
+.mediaTable > .letter {font-size: 34px;}
+table > tbody > tr > td {font-size: 16px;}
+.tideChartCss {display: inline-flex;}
 
 #tideChartLegend {
    color: white; 
@@ -297,7 +281,6 @@ table > tbody > tr > td {
 p.legend {
   background-color: rgb(44, 157, 177);
   font-size: 13px !important;
-
 }
 
 p.carousel-status {
@@ -336,17 +319,11 @@ p.carousel-status {
   margin-top: -4%;
 }
 
-rect:hover {
-  animation: pulse .2s linear;
-}
+rect:hover {animation: pulse .2s linear;}
+button.btn:hover {height: 38px;}
+button.btn:active {animation: pulse .2s linear;}
 
-button.btn:hover {
-  height: 38px;
-}
 
-button.btn:active {
-  animation: pulse .2s linear;
-}
 
 
 @-webkit-keyframes slide-fwd-left {

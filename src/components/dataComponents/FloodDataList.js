@@ -20,7 +20,7 @@ const FloodDataList = ({floodData}) => {
             </tr>
           </thead>;
       }
-    );
+  );
 }
 
 export default FloodDataList

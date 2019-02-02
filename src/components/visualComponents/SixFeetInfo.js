@@ -1,7 +1,7 @@
 import React from 'react';
 import { Spring, config } from "react-spring";
 
-const SixFeetInfo = ({ weatherApi, water_level_noaa, water_temp_noaa, currentTime }) => {
+const SixFeetInfo = () => {
   
  const largeSix = {
    fontFamily: "Aleo",
@@ -22,9 +22,6 @@ const SixFeetInfo = ({ weatherApi, water_level_noaa, water_temp_noaa, currentTim
       <a id="GISLink" href="https://www.maine.gov/dacf/mgs/hazards/slr_ss/index.shtml" target="_blank" rel="noopener noreferrer">
         Explore Maine GIS SLR Maps
       </a>
-
-      {/* <img alt="slr scenarios" height="600" style={{ marginLeft: "2%" }} src="http://www.neracoos.org/sites/neracoos.org/files/images/slr/scenario_high_0.png"></img> */}
-   
     </div>;
 }
 

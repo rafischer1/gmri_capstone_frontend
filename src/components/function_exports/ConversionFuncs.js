@@ -130,7 +130,6 @@ const FormatDateApi = createdAt => {
   return date
 }
 
-
 module.exports = {
   WindConversion, TempConversion, DateCalculator, PhoneFormat, MilToStrdTime, FormatDate,
   FormatDateApi

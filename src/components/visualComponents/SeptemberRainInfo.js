@@ -1,7 +1,5 @@
-
 import React from 'react'
 import {Row} from 'react-materialize'
-
 
 const SeptemberRainInfo = () => {
 
@@ -11,9 +9,8 @@ const SeptemberRainInfo = () => {
     padding: "1%"
   }
 
-  return <div className="septemberPage container" >
-  <Row>
-    
+  return <div className="septemberPage container">
+     <Row>
       <span style={largeSix}>5.63</span>
       <br />
       <h4>
@@ -24,11 +21,8 @@ const SeptemberRainInfo = () => {
       <a id="SeptLink" href="https://www.pressherald.com/2015/09/30/heavy-rains-slowing-morning-commute-across-southern-maine/" target="_blank" rel="noopener noreferrer">
         Portland Press Herald Article
       </a>
-  </Row>
- 
-    
-   
-    </div>;
+    </Row>
+  </div>;
 
 }
 

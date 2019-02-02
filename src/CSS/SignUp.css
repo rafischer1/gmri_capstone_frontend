@@ -3,13 +3,8 @@
   margin-top: 1%;
 }
 
-.dropdown-content {
-  font-size: 14px;
-}
-
-div.animated.infinite.bounce.delay-4s {
-  width: 44px;
-}
+.dropdown-content {font-size: 14px;}
+div.animated.infinite.bounce.delay-4s {width: 44px;}
 
 .login-block {
   border: 1px solid rgba(139, 0, 0, 0.137);
@@ -19,10 +14,7 @@ div.animated.infinite.bounce.delay-4s {
   background-color: rgba(193, 193, 248, 0.096);
 }
 
-.login-block:hover {
-  border: 1px solid rgba(139, 0, 0, 0.514);
-}
-
+.login-block:hover {border: 1px solid rgba(139, 0, 0, 0.514);}
 .login-sec {padding: 2%; position:relative;}
 
 .login-sec .copy-text {

@@ -6,16 +6,12 @@ import "./CSS/Media_iPhone5.css";
 import './CSS/Media_iPad.css';
 import './CSS/SignUp.css';
 import './CSS/Moon.css';
-
-
-
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 // Component Imports
 import Admin from './components/coreComponents/Admin'
 import MainView from './components/MainView'
 import Unsubscribe from './components/coreComponents/Unsubscribe'
-
 
 export default class App extends Component {
   constructor(props) {
@@ -43,7 +39,6 @@ export default class App extends Component {
     });
 
     let res = await response.json();
-
 
     if (res === 200) {
       let msg = `${phone} Unsubscribed`;

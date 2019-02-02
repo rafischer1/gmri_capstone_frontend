@@ -1,6 +1,4 @@
-/* media screen declarations */
-
-/* iphone 6,7,8 */
+/* iphone 5 */
 @media only screen 
 and (min-device-width : 300px) 
 and (max-device-width : 568px) { 
@@ -13,20 +11,25 @@ and (max-device-width : 568px) {
   }
 
   .siteHeading > .letter {
-    font-size: 4em !important;
+    font-size: 3.5em !important;
   }
 
   .btn.red {
-    width: 85% !important;
-    font-size: 12px;
+    width: 95% !important;
+    font-size: 10px;
+    margin-left: -4%;
+  }
+
+  #modal_0 > .modal-content > h5 {
+    font-size: 18px !important;
   }
 
   #modal_0 > .modal-content > h4 {
-    font-size: 24px !important;
+    font-size: 16px !important;
   }
 
   #modal_0 > .modal-content > h3 {
-    font-size: 20px !important;
+    font-size: 16px !important;
   }
 
   #modal_0 > .modal-content > a {
@@ -34,8 +37,8 @@ and (max-device-width : 568px) {
   }
 
    #modal_0 > .modal-content > a > img {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
   }
 
   .moonPage {display: none;}
@@ -46,23 +49,23 @@ and (max-device-width : 568px) {
     width: 98% !important;
     margin: 0 !important;
     padding: 0;
-    font-size: 14px; 
+    font-size: 13px; 
   }
 
   .login-sec h2 {
-    font-size: 20px !important;
-    margin: 2%;
+    font-size: 18px !important;
+    margin: 1%;
   }
  
   .signUp {width: 100%;}
   .login-sec {padding: 0;max-width: 700px;}
   .tideChartCss {margin: 0% !important;}
-  .rv-xy-plot_inner {width: 20px !important;}
+  .rv-xy-plot_inner {width: 16px !important;}
 
   .dataPage {
     width: 95%;
-    margin: 2.5%;
-    font-size: 14px;
+    margin: 2%;
+    font-size: 13px;
   }
 
   .dataPage > div {
@@ -92,14 +95,16 @@ and (max-device-width : 568px) {
   .rv-xy-plot__axis__tick__text {text-shadow: 2px 2px 1px rgb(252, 230, 133);}
 
   .rv-xy-plot__inner {
-    width: 60%;
-    margin-left: -2% !important;
-    margin-top: 20%;
+    height: 90% !important;
+    margin-left: -2.25% !important;
+    margin-top: 12%;
   }
 
   .rv-hint {
-    width: 60%;
-    font-size: 16px;
+    border: 2px solid #7C97FB;
+    margin: -6% 0% 2% -18% !important;
+    font-size: 14px;
+    margin-right: 0 !important;
   }
 
   #floodCatLegend {
@@ -112,7 +117,7 @@ and (max-device-width : 568px) {
 
   #tideChartTitle {
    font-weight: bold;
-   font-size: 16px !important;
+   font-size: 14px !important;
    margin-left: 10% !important;
    margin-top: -5%;
    text-transform: uppercase;
@@ -123,6 +128,7 @@ and (max-device-width : 568px) {
 
   #tideChartLegend {
     border-radius: 10px;
+    font-size: 13px !important;
     margin-bottom: 0%;
     margin-top: 1%;
     margin-right: 200%;
@@ -133,12 +139,6 @@ and (max-device-width : 568px) {
     width: 100%
   }
 
-  .rv-hint {
-    border: 2px solid #7C97FB;
-    width: 100%;
-    margin: -6% 0% 2% -18% !important;
-  }
-
   .sixFtPage {
     width: 96%;
     font-size: 10px;
@@ -146,11 +146,18 @@ and (max-device-width : 568px) {
     box-shadow: none;
   }
 
+  .sixFtPage > h4 {
+    font-size: 16px;
+  }
+
+  .sixFtPage > div {
+    font-size: 16px;
+  }
+
   .unsubscribe {
     display: inline-block;
     margin-left: 2.5% !important;
     background: none !important;
-    background-size: 300%;
   }
 
   .unsubscribe-form {
@@ -159,23 +166,27 @@ and (max-device-width : 568px) {
     background-color: rgb(255, 255, 255);
   }
 
+  .unsubscribe-form > .row > h5 {
+    font-size: 18px;
+  }
+
+  .unsubscribe-form > .btn {
+    font-size: 10px;
+    height: 30px !important;
+    
+  }
+
   .septemberPage {
     margin: 1.33% !important;
     width: 96%;
   }
 
   .septemberPage:after {
-    background: radial-gradient(rgb(152, 255, 169), rgb(38, 123, 180));
-  }
-
-  .adminPage {
-    display: inline;
-    align-content: row;
-    text-align: center;
+    background: none;
+  
   }
 
   .carouselContainer {
-    padding: 0;
     width: 100% !important;
   }
 
@@ -192,6 +203,15 @@ and (max-device-width : 568px) {
     display: none !important;
   }
 
+
+
+  /* admin page */
+  .adminPage {
+    display: inline;
+    align-content: row;
+    text-align: center;
+  }
+
   .adminStats {
     display: flex;
     flex-direction: column;
@@ -200,33 +220,25 @@ and (max-device-width : 568px) {
   }
 
   .curUsers {
-    font-size: 1em !important; 
+    font-size: .90em !important; 
     border: 2px solid #DE6262;
     border-radius: 10px;
     margin-right: 5%;
-    height: 60%;
+    height: 50%;
   }
 
-  .curUsers > div {
-    color: rgb(44, 44, 44);
+  .curUsers > div > h4 > b {
+    font-size: 24px;
+    padding: 0 !important;
+    margin: 0 !important;
   }
 
   .barChart {
     width: 120% !important;
-    border-left: 2px solid #7C97FB;
-    border-right: 2px solid #7C97FB; 
-    border-bottom: 2px solid #7C97FB; 
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
   }
 
   .barChart > .rv-xy-plot__inner {
     margin: 0;
-  }
-
-  .smsContainer {
-    border-top: 2px solid #7C97FB; 
-    border-bottom: 2px solid #7C97FB; 
   }
 
   .messagesTable {
@@ -239,12 +251,21 @@ and (max-device-width : 568px) {
   }
 
   .barChart {
-    width: 100%;
+    width: 320px !important;
     border: none !important;
+    height: 300px !important;
   }
 
   rect {
-    width: 10%;
+    width: 8%;
+  }
+
+  h5 {
+    font-size: 18px;
+  }
+
+  h4 {
+    font-size: 22px;
   }
   
   .barChart > .rv-xy-plot__inner {
@@ -252,8 +273,8 @@ and (max-device-width : 568px) {
     margin-left: -15% !important;
   }
 
-  .subscribeChart > svg > g > .subscribeTicks  {
-    width: 20%;
+  .subscribeTicks > line {
+    margin-bottom: 3% !important;
   }
 
   .hundredYearChart {
@@ -270,6 +291,10 @@ and (max-device-width : 568px) {
     font-size: 10px;
     margin: 4%;
     box-shadow: none;
+  }
+
+  .unsubInfoPage > h5 {
+    font-size: 18px;
   }
 
   .FooterPage {
@@ -300,23 +325,4 @@ and (max-device-width : 568px) {
     font-size: 14px !important;
   }
 }
-
-
-/* iphone 10 */
-/* @media only screen 
-and (min-device-width : 375px) 
-and (max-device-width : 812px) 
-and (-webkit-device-pixel-ratio : 3)
-and (orientation : portrait) { STYLES GO HERE  } */
-
-
-
-/* galaxy s4 Portrait and Landscape */
-/* @media screen 
-  and (device-width: 320px) 
-  and (device-height: 640px) 
-  and (-webkit-device-pixel-ratio: 3) {
-
-} */
-
 

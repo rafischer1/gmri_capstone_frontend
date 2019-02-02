@@ -4,7 +4,6 @@ import {Row, Col} from 'react-materialize'
 import { FormatDateApi } from '../function_exports/ConversionFuncs';
 const Spinner = require('react-spinkit');
 
-
 const TidePredictionsDisplay = (data) => {
 
   let tideData = data.water_level_noaa

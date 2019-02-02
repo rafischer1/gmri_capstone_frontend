@@ -15,19 +15,13 @@ import moon26 from "../../images/moon_phases/moon_26.jpg";
 import moon28 from "../../images/moon_phases/moon_28.jpg";
 import moon29 from "../../images/moon_phases/moon_29.jpg";
 
-import React from 'react'
+import React from "react"
 var lune = require("lune");
-
-/***
- * 
- * Simple calculator component to display image of moon phase
- * 
- */
 
 const Moon = (flooding) => {
   let current_phase = lune.phase();
   let current_moon_age = Math.floor(current_phase.age);
-  let moon_phase_src = '' 
+  let moon_phase_src = "" 
   moon_phase_src = moonPhaseCalc(current_moon_age, moon_phase_src);
     return flooding === true ? <div className="moonPage floodingMoon"><img src = {moon15} alt = "Moon Phase" /></div> : <div className="moonPage"><img src={moon15} alt="Moon Phase" />
     </div >
@@ -35,6 +29,11 @@ const Moon = (flooding) => {
 }
 export default Moon
 
+/***
+ * 
+ * Simple calculator component to display image of moon phase
+ * 
+ */
 
 function moonPhaseCalc(current_moon_age, moon_phase_src) {
   if (current_moon_age === 0 || current_moon_age === 1) {

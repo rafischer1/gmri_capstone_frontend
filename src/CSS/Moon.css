@@ -14,6 +14,4 @@
 
 .moonPage > img:hover {border:2px solid rgb(23, 202, 134);}
 
-.floodingMoon > img {
-  border: 2px solid red !important;
-}
+.floodingMoon > img {border: 2px solid red !important;}
