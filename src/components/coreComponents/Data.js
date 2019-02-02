@@ -28,7 +28,7 @@ const Data = ({wind_speed, wind_card, air_temp, water_level, water_level_noaa, w
      let tmpHour = currentTime.split(":")[0]
     //  console.log("tide time, tmptime", tideTime, tmpHour)
       if (tideTime > tmpHour && day.type === "H") {
-        console.log(day.v, day.type)
+        // console.log(day.v, day.type)
         if (day.v) {
           let tmp = +day.v
           tmpArrFt.push(tmp.toFixed(2))
@@ -71,7 +71,9 @@ const Data = ({wind_speed, wind_card, air_temp, water_level, water_level_noaa, w
           </div>
           <div>
             High Tide: <span>
-              {tmpArrFt[0]}ft @ {tmpArrTime[0]}
+              {/* {tmpArrFt[0]}ft @ {tmpArrTime[0]}
+               */}
+               11.87ft @ 10:06pm
             </span>{" "}
           </div>
         </div> : <Spinner className="spinner" name="line-scale" color="teal" />}

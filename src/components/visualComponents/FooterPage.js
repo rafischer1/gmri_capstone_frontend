@@ -56,11 +56,10 @@ const FooterPage = () => {
                 Natural Resources Council of Maine
               </a>
             </div>
-        
           </Row>
+          <br />
+          <br />
         </Container>
-
-        <footer>Contact, C 2019, Fischer</footer>
     </div>;
 }
 

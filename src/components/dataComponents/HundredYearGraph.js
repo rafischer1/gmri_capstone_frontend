@@ -5,7 +5,7 @@ import {HundredYearData} from '../function_exports/hundredYearData'
 import {
   XYPlot,
   YAxis,
-  LineSeries,Hint
+  LineSeries
 } from "react-vis"
 
 
@@ -19,7 +19,7 @@ export default class HundredYearGraph extends React.Component {
 
 
   render() {
-  console.log(HundredYearData[0])
+  // console.log(HundredYearData[0])
   let dataArr = HundredYearData.map((year) => {
      return {
        x: +(year.Year),
@@ -49,22 +49,22 @@ export default class HundredYearGraph extends React.Component {
           />
           <LineSeries
             data={dataArr}
-            style={{ stroke: "#7C97FB  ", strokeWidth: 3, fill: "#7C97FB" }}
+            style={{ stroke: "#576FC9 ", strokeWidth: 3, fill: "#576FC9" }}
           />
           <LineSeries
             data={highestArr}
-            style={{ stroke: "#F37B6F  ", strokeWidth: 2, fill: "none" }}
+            style={{ stroke: "#C97857 ", strokeWidth: 2, fill: "none" }}
           />
         </XYPlot>
         <div className="hundredYearHeading">
           <h5>
             January 1912 to January 2019
             <br />
-            <span style={{ color: "#F37B6F" }}>
+            <span style={{ color: "#C97857 " }}>
               Top: Highest recorded water level per month (107 years)
             </span>
             <br />
-            <span style={{ color: "#7C97FB" }}>
+            <span style={{ color: "#576FC9 " }}>
               Bottom: Mean High Water per month (107 years)
             </span>
           </h5>

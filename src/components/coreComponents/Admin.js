@@ -215,7 +215,7 @@ export default class Admin extends React.Component {
                 <Row>
                   <Col className="s12 curUsers">
                                       <div>
-                      # of subscribers in system:
+                      # of subscribers
                       <h4 style={{ color: "#576FC9" }}>
                         <b>{this.state.subscribers}</b>
                       </h4>

@@ -77,3 +77,11 @@ if (Winds.length > 0) {
 				  break;
       }
 ```
+
+## what to change back after demo mode is up and complete:
+
+* moon page back to moon variable
+* flooding on mainview set back to 11.8
+* flooding variable back to false mainview
+* Data unhardcoded tide level
+* tide graph: set back to actual data arr not mock arr

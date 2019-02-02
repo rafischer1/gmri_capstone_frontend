@@ -1,6 +1,6 @@
 import React from 'react';
 import MediaQuery from 'react-responsive';
-import { XYPlot, XAxis, YAxis, VerticalBarSeries, Crosshair } from 'react-vis';
+import { XYPlot, XAxis, YAxis, VerticalBarSeries } from 'react-vis';
 
 export default class SubscribeLocationChart extends React.Component {
   constructor(props) {
@@ -83,13 +83,13 @@ export default class SubscribeLocationChart extends React.Component {
           } else {
             return (
               <XYPlot
-                className="barChart"
+                className="barChart subscribeChart"
                 xType="ordinal"
-                width={400}
+                width={350}
                 height={250}
               >
                 <YAxis
-                  style={{ width: "10px", textShadow: "none" }}
+                  style={{ width: "12px", textShadow: "none" }}
                 />
                 <XAxis
                   className="subscribeTicks"

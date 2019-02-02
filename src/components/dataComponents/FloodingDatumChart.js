@@ -55,9 +55,9 @@ export default class FloodingDatumChart extends React.Component {
     return <MediaQuery minDeviceWidth={950}>
       {(matches) => {
         if (matches) {
-          return <XYPlot className="barChart" xType="ordinal" width={350} height={200}>
-            <YAxis style={{ width: "10px", textShadow: "none" }} />
-            <XAxis style={{ fontSize: "10px", textShadow: "none" }} />
+          return <XYPlot className="barChart" xType="ordinal" width={550} height={200}>
+            <YAxis style={{ width: "12px", textShadow: "none" }} />
+            <XAxis style={{ fontSize: "12px", textShadow: "none" }} />
             <VerticalBarSeries data={categoryData} style={{ stroke: "#576FC9", fill: "#576FC9" }} />
           </XYPlot>;
         } else {

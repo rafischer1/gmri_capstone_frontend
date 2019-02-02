@@ -1,10 +1,41 @@
-/* media screen declarations */
+/* ipad */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px)  {
+.row {width: 100%;}
 
-@media only screen and (max-width: 949px) {
-  .row {width: 100%;}
+  /* site heading and alert */
 
-  .moonPage {display: none;}
+  .siteHeading {
+    margin-left: 3% !important;
+  }
 
+  .siteHeading > .letter {
+    font-size: 4em !important;
+  }
+
+  .btn.red {
+    font-size: 12px;
+  }
+
+  #modal_0 > .modal-content > h4 {
+    font-size: 24px !important;
+  }
+
+  #modal_0 > .modal-content > h3 {
+    font-size: 20px !important;
+  }
+
+  #modal_0 > .modal-content > a {
+    font-size: 12px !important;
+  }
+
+   #modal_0 > .modal-content > a > img {
+    width: 40px;
+    height: 40px;
+  }
+
+ /* login page */
   .login-block {
     width: 98% !important;
     margin: 0 !important;
@@ -30,20 +61,6 @@
 
   .dataPage > div {
     width: auto;
-  }
-
-  .sixFtPage {
-    width: 96%;
-    font-size: 12px;
-    margin: 1%;
-    box-shadow: none;
-  }
-
-  .unsubInfoPage {
-    width: 96%;
-    font-size: 12px;
-    margin: 1%;
-    box-shadow: none;
   }
 
   .septemberPage {
@@ -80,9 +97,8 @@
   }
 
   #floodCatLegend {
- display: none;
+    display: none;
   }
-
 
   .tideChartCss {
     width: 100%;
@@ -110,7 +126,18 @@
     width: 100%
   }
 
-  .rv-hint {margin: -1% 0 2% 1% !important;}
+  .rv-hint {
+    border: 2px solid #7C97FB;
+    width: 100%;
+    margin: -6% 0% 2% -18% !important;
+  }
+
+  .sixFtPage {
+    width: 96%;
+    font-size: 10px;
+    margin: 1%;
+    box-shadow: none;
+  }
 
   .unsubscribe {
     display: inline-block;
@@ -131,7 +158,6 @@
 
   .septemberPage:after {
     background: radial-gradient(rgb(152, 255, 169), rgb(38, 123, 180));
-    
   }
 
   .adminPage {
@@ -154,71 +180,90 @@
     margin-left: 0;
   }
 
-li.thumb {
+  li.thumb {
     display: none !important;
   }
-.adminStats {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  padding: 2%;
-}
 
-.curUsers {
-  font-size: 1em !important; 
-  border: 2px solid #DE6262;
-  border-radius: 10px;
-  margin-right: 5%;
-  height: 60%;
-}
-
-.curUsers > div {
-  color: rgb(44, 44, 44);
-}
-
-.barChart {
-  width: 120% !important;
-  border-left: 2px solid #7C97FB;
-  border-right: 2px solid #7C97FB; 
-  border-bottom: 2px solid #7C97FB; 
-  border-bottom-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-}
-
-.barChart > .rv-xy-plot__inner {
-  margin: 0;
-}
-
-.smsContainer {
-  border-top: 2px solid #7C97FB; 
-  border-bottom: 2px solid #7C97FB; 
-}
-
-.messagesTable {
-  font-size: 12px !important;
-}
-
-.btn.teal.toast.sms {
-  position: relative;
-  top: 300px;
-}
- .barChart {
-   margin-right: 50%;
-   border: none !important;
- }
- rect {
-   width: 10%;
- }
- .barChart > .rv-xy-plot__inner {
-   width: 100% !important;
-   margin-left: -30% !important;
- }
-
-  .subscribeTicks {
-    color: pink;
+  .adminStats {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 2%;
   }
 
- 
+  .curUsers {
+    width: 50% !important;
+    font-size: 1.1em !important;    
+  }
 
+  .curUsers > div {
+    color: rgb(44, 44, 44);
+  }
+
+  .smsContainer {
+    border-top: 2px solid #7C97FB; 
+    border-bottom: 2px solid #7C97FB; 
+  }
+
+  .messagesTable {
+    font-size: 12px !important;
+  }
+
+  .btn.teal.toast.sms {
+    position: relative;
+    top: 300px;
+  }
+
+  .barChart {
+    width: 100% !important;
+    border: none !important;
+  }
+
+  rect {
+    width: 5%;
+  }
+
+  .hundredYearChart {
+    display: none;
+  } 
+
+  button.btn {
+    width: 60% !important;
+  }
+
+  .unsubInfoPage {
+    width: 90%;
+    background-size: 150% 50%;
+    font-size: 10px;
+    margin: 4%;
+    box-shadow: none;
+  }
+
+  .FooterPage {
+    margin-bottom: 20% !important;
+  }
+
+  .FooterPage:after {
+    content: "";
+    background: url(https://images.unsplash.com/photo-1530123985359-4fd0cce1ea8b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2691&q=80);
+    background-size: 200% 100%;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+    top: 0px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;   
+  }
+
+  .letter {
+    font-size: 32px !important;
+  }
+
+  .infoLinks {
+    display: inline-block;
+    margin: 10%;
+    font-size: 14px !important;
+  }
 }
-

@@ -3,7 +3,14 @@ body {
   height:auto;
   margin:0;
   background-color: rgb(250, 250, 250);
+  color: #161C32;
 }
+
+ .btn.red {
+    font-size: 20px;
+    animation: flash 1s 1.5s linear;
+
+  }
 
 .spinner {margin-left: 50%;}
 .toast {margin-bottom: 3%;}
@@ -190,6 +197,7 @@ nav ul a:active {transform: translate(1px, 1px);}
   font-family: Aleo, menlo;
   background-color: rgba(218, 233, 131, 0.103);
   padding: 2%;
+  margin-bottom: 10%;
 }
 
 .FooterPage:after {
@@ -204,17 +212,6 @@ nav ul a:active {transform: translate(1px, 1px);}
   right: 0;
   position: absolute;
   z-index: -1;   
-}
-
-footer {
-  left: 0;
-  bottom: 0;
-  position: absolute;
-  width: 100%;
-  height: 50px;
-  background-color: rgba(255, 130, 130, 0.274);
-  color: white;
-  text-align: center;
 }
 
 .infoLinks {
@@ -247,7 +244,8 @@ table > tbody > tr > td {
    width: 200px; 
    font-weight: bold;
    float: right;
-   margin-right: 27%;
+   margin-right: 12%;
+   margin-top: -12%;
    padding: 2%;
    box-shadow: 3px 2px 4px rgb(104, 104, 104);
 }
@@ -260,7 +258,7 @@ table > tbody > tr > td {
    width: 300px; 
    font-weight: bold;
    float: right;
-   margin-right: 5%;
+   margin-right: -10%;
    margin-top: -12%;
    padding: 2%;
    box-shadow: 3px 2px 4px rgb(104, 104, 104);
@@ -340,10 +338,6 @@ p.carousel-status {
 
 rect:hover {
   animation: pulse .2s linear;
-}
-
-rect:active {
-  animation: fadeOutLeft 2s linear;
 }
 
 button.btn:hover {

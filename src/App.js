@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import {Navbar} from 'react-materialize'
+import {Navbar} from 'react-materialize';
 import './App.css';
-import './CSS/Media.css'
-import './CSS/SignUp.css'
-import './CSS/Moon.css'
-import './CSS/FooterMedia.css'
+import './CSS/Media_iPhone678.css';
+import "./CSS/Media_iPhone5.css";
+import './CSS/Media_iPad.css';
+import './CSS/SignUp.css';
+import './CSS/Moon.css';
+
 
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";

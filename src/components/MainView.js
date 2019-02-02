@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../CSS/Letter.css';
 import MediaQuery from 'react-responsive';
 import Parallax from 'react-springy-parallax';
-import { Spring, animated, Trail  } from 'react-spring';
+import { Spring, animated  } from 'react-spring';
 import { WindConversion, TempConversion, DateCalculator} from './function_exports/ConversionFuncs';
 
 // Component Imports
@@ -13,10 +13,8 @@ import Data from './coreComponents/Data';
 import Moon from "./visualComponents/Moon";
 import SixFeetInfo from './visualComponents/SixFeetInfo';
 import CarouselCMP from './visualComponents/CarouselCMP';
-import SeptemberRainInfo from './visualComponents/SeptemberRainInfo';
 import TidePredictionsDisplay from './dataComponents/TidePredictionsDisplay';
 import FooterPage from './visualComponents/FooterPage';
-import MediaFooterPage from "./visualComponents/MediaFooterPage";
 import UnsubscribeInfo from "./visualComponents/UnsubscribeInfo"
 
 
@@ -39,7 +37,7 @@ class MainView extends Component {
       show: false,
       alertValue: 0,
       viewToastMsg: '',
-      flooding: false,
+      flooding: true,
     };
   }
 
@@ -96,7 +94,7 @@ class MainView extends Component {
     if (day.toString().length === 1) {
       day = `0${day}`
     }
-    console.log("day:", day)
+    // console.log("day:", day)
     let noaaDate = `${year}${month}${day}`;
     let tomorrowDate = `${nextYear}${nextMo}${tomorrowDay}`;
     this.setState({
@@ -130,10 +128,10 @@ class MainView extends Component {
     if (resJson.predictions === undefined) {
       return "wait";
     } else {
-      console.log(resJson.predictions)
+      // console.log(resJson.predictions)
       resJson.predictions.map((day) => {
         // mock an alert by dropping this and hardcoding the msg
-        if (+(day.v) > 11.4) {
+        if (+(day.v) > 3) {
           return this.renderAlert(+(day.v))
         }
       })
@@ -147,7 +145,7 @@ class MainView extends Component {
 
   // currentWaterLevel grabs the last item in the array as the last 6 minute updated sea level data
   async currentWaterLevel(noaaDate, tomorrowDate) {
-    console.log("resjson tide:", noaaDate, tomorrowDate);
+    // console.log("resjson tide:", noaaDate, tomorrowDate);
     let response = await fetch(`https://tidesandcurrents.noaa.gov/api/datagetter?product=water_level&application=NOS.COOPS.TAC.WL&begin_date=${noaaDate}&end_date=${tomorrowDate}&datum=MLLW&station=8418150&time_zone=lst_ldt&units=english&format=json`);
     let resJson = await response.json()
     
@@ -212,13 +210,13 @@ class MainView extends Component {
   render() {
     return (
       <div className="App">
-        <MediaQuery minDeviceWidth={951}>
+        <MediaQuery minDeviceWidth={101}>
           <Parallax ref="parallax" pages={5} scrolling={true}>
             <AlertCMP props={this.state.alertValue} />
             {/* SignUp layer at the top */}
 
             <Parallax.Layer offset={0} speed={0}>
-              <div style={{ fontSize: ".5em", marginLeft: "26%" }}>
+              <div className="siteHeading" style={{ fontSize: ".5em", marginLeft: "26%" }}>
                 <span className="letter" data-letter="W">
                   Welcome to
                 </span>
@@ -294,78 +292,12 @@ class MainView extends Component {
               <UnsubscribeInfo />
             </Parallax.Layer>
 
-            <Parallax.Layer offset={4.1} speed={-0.01}>
+            <Parallax.Layer offset={4} speed={-0.01} >
               <FooterPage />
             </Parallax.Layer>
           </Parallax>
         </MediaQuery>
-        {/* phone sizing media queries */}
-        <MediaQuery query="(max-device-width: 950px)">
-          <Parallax ref="parallax" pages={4} scrolling={true}>
-            <AlertCMP props={this.state.alertValue} />
-            {/* SignUp layer at the top */}
-
-            <Parallax.Layer offset={0} speed={0}>
-              <div style={{ fontSize: ".3em", marginLeft: "7.5%" }}>
-                <span className="letter" data-letter="W">
-                  Welcome to
-                </span>
-                <span className="letter" data-letter="S">
-                  SLR
-                </span>
-                <span className="letter" data-letter="M">
-                  Maine
-                </span>
-              </div>
-              <SignUp
-                style={{ padding: "0", margin: "0", width: "100%" }}
-                subscribeCall={this.subscribeCall}
-                toastMsg={this.state.viewToastMsg}
-              />
-            </Parallax.Layer>
-
-            {/* data info layer/current conditions */}
-            <Parallax.Layer offset={0.95} speed={0.1} factor={0.5}>
-              <Data
-                wind_speed={this.state.wind_speed}
-                water_level={this.state.water_level}
-                air_temp={this.state.air_temp}
-                wind_card={this.state.wind_card}
-                todaysDate={this.state.todaysDate}
-                currentTime={this.state.currentTime}
-                water_level_noaa={this.state.water_level_noaa}
-                water_temp_noaa={this.state.water_temp_noaa}
-              />
-            </Parallax.Layer>
-
-            {/* Tide layer */}
-            <Parallax.Layer
-              offset={1.8}
-              speed={0.85}
-              style={this.tideLayer}
-              factor={1}
-            >
-              <br />
-              <TidePredictionsDisplay
-                water_level_noaa={this.state.water_level_noaa}
-              />
-            </Parallax.Layer>
-            {/* Six feet info box */}
-            <Parallax.Layer offset={2.3} speed={-2.5}>
-              <SixFeetInfo />
-            </Parallax.Layer>
-
-            {/* september rain box */}
-            <Parallax.Layer offset={2.4} speed={1.5} factor={0.8}>
-              <div className="container carouselContainer">
-                <CarouselCMP />
-              </div>
-            </Parallax.Layer>
-            <Parallax.Layer offset={3.1} speed={-0.01}>
-              <MediaFooterPage />
-            </Parallax.Layer>
-          </Parallax>
-        </MediaQuery>
+       
       </div>
     );
   }
