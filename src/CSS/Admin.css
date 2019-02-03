@@ -39,7 +39,7 @@
 .smsContainer {
   border-top: 2px solid #7C97FB; 
   border-bottom: 2px solid #7C97FB; 
-  background-color: rgb(248, 241, 234);
+  background-color: rgba(209, 209, 209, 0.068);
 }
 
 .messagesTable {

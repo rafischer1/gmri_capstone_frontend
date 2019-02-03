@@ -6,6 +6,10 @@ body {
   color: #161C32;
 }
 
+.siteHeading {
+  margin-left: 33% !important;
+}
+
 .btn.red {
   font-size: 20px;
   animation: flash 1s 1.5s linear;
@@ -213,7 +217,7 @@ nav ul a:active {transform: translate(1px, 1px);}
 .infoLinks {
   font-family: "Aleo", sans-serif;
   font-size: 2em;
-  margin: 4%;
+  margin: 5%;
 }
 
 .infoLinks > a:hover {color: rgb(235, 117, 117);}

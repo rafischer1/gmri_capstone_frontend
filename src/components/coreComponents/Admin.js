@@ -233,7 +233,7 @@ export default class Admin extends React.Component {
                 <Row style={this.formStyle}>
                   <Col className="s12">
                     <form onSubmit={this.postSMS}>
-                      <h4>Enter SMS Message</h4>
+                      <h4>Compose SMS Message</h4>
                       <Input type="textarea" label="SMS Message" s={12} required/>
                       <Input
                         type="number"

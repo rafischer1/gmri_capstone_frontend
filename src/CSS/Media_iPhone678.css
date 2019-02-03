@@ -1,7 +1,8 @@
 /* iphone 6,7,8 */
 @media only screen 
 and (min-device-width : 375px) 
-and (max-device-width : 768px) { 
+and (max-device-width : 768px)
+and (-webkit-min-device-pixel-ratio: 2) { 
   .row {width: 100%;}
 
   /* site heading and alert */
