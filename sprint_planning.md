@@ -85,3 +85,5 @@ if (Winds.length > 0) {
 * flooding variable back to false mainview
 * Data unhardcoded tide level
 * tide graph: set back to actual data arr not mock arr
+
+> "Major flooding predicted for Portland - 10pm with a tide of 11.87ft. Winds 30-35mph and steady rain through the afternoon will lead to increased storm surge in low-lying areas. Visit slr-maine.com for more information."

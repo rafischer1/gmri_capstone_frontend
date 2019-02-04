@@ -1,7 +1,6 @@
 // DateCalculator modular method to calculate and return date
 const DateCalculator = () => {
   let d = new Date();
-  console.log("date", d)
   let year = d.getFullYear();
   let month = d.getMonth();
   if (month.toString().length === 1) {

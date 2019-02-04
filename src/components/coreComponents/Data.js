@@ -71,9 +71,7 @@ const Data = ({wind_speed, wind_card, air_temp, water_level, water_level_noaa, w
           </div>
           <div>
             High Tide: <span>
-              {/* {tmpArrFt[0]}ft @ {tmpArrTime[0]}
-               */}
-               11.87ft @ 10:06pm
+              {tmpArrFt[0]}ft @ {tmpArrTime[0]}
             </span>{" "}
           </div>
         </div> : <Spinner className="spinner" name="line-scale" color="teal" />}

@@ -21,24 +21,24 @@ export default class LineGraphTide extends React.Component {
   render() {
 
     let count = 0
-    const mockTideArray = [{ t: "2019-02-02 03:16", v: "0.967", type: "L" }, { t: "2019-02-02 09:29", v: "11.607", type: "H" }, { t: "2019-02-02 15:56", v: "-0.045", type: "L" }, { t: "2019-02-02 22:06", v: "11.874", type: "H" }, { t: "2019-02-03 04:00", v: "0.861", type: "L" }, { t: "2019-02-03 10:12", v: "12.1", type: "H" }, { t: "2019-02-03 16:37", v: "-0.117", type: "L" }, { t: "2019-02-03 22:48", v: "11.379", type: "H" } ]
+    // const mockTideArray = [{ t: "2019-02-02 03:16", v: "0.967", type: "L" }, { t: "2019-02-02 09:29", v: "11.607", type: "H" }, { t: "2019-02-02 15:56", v: "-0.045", type: "L" }, { t: "2019-02-02 22:06", v: "11.874", type: "H" }, { t: "2019-02-03 04:00", v: "0.861", type: "L" }, { t: "2019-02-03 10:12", v: "12.1", type: "H" }, { t: "2019-02-03 16:37", v: "-0.117", type: "L" }, { t: "2019-02-03 22:48", v: "11.379", type: "H" } ]
     // console.log(this.props.tideData)
 
-    const dataArr = mockTideArray.map((day) => {
-      count++
-      return {
-        x: count,
-        y: +(day.v)
-      }
-    })
+    // const dataArr = mockTideArray.map((day) => {
+    //   count++
+    //   return {
+    //     x: count,
+    //     y: +(day.v)
+    //   }
+    // })
     // For mocking a flooding event:
-      // const dataArr = this.props.tideData.map((day) => {
-      //   count++    
-      //   return {
-      //     x: count,
-      //     y: +(day.v)
-      //   }
-      // })
+      const dataArr = this.props.tideData.map((day) => {
+        count++    
+        return {
+          x: count,
+          y: +(day.v)
+        }
+      })
     const { value } = this.state;
 
     const lineData = [{ x: 1, y: 11.8 }, { x: 2, y: 11.8 }, { x: 3, y: 11.8 }, { x: 4, y: 11.8 }, { x: 5, y: 11.8 }, { x: 6, y: 11.8 }, { x: 7, y: 11.8 }];

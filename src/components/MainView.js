@@ -36,7 +36,7 @@ class MainView extends Component {
       show: false,
       alertValue: 0,
       viewToastMsg: '',
-      flooding: true,
+      flooding: false
     };
   }
 
@@ -128,7 +128,7 @@ class MainView extends Component {
       // console.log(resJson.predictions)
       resJson.predictions.map((day) => {
         // mock an alert by dropping this and hardcoding the msg
-        if (+(day.v) > 3) {
+        if (+(day.v) > 11.8) {
           return this.renderAlert(+(day.v))
         }
       })

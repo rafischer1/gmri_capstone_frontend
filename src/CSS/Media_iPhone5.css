@@ -302,6 +302,10 @@ and (-webkit-min-device-pixel-ratio: 2) {
     margin-bottom: 20% !important;
   }
 
+  .FooterPage > .foo > .letter {
+    font-size: 2em !important;
+  }
+
   .FooterPage:after {
     content: "";
     background: url(https://images.unsplash.com/photo-1530123985359-4fd0cce1ea8b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2691&q=80);
@@ -316,9 +320,7 @@ and (-webkit-min-device-pixel-ratio: 2) {
     z-index: -1;   
   }
 
-  .letter {
-    font-size: 32px !important;
-  }
+  .letter {font-size: 32px !important;}
 
   .infoLinks {
     display: inline-block;
