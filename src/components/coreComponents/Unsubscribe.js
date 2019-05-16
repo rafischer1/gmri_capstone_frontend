@@ -7,5 +7,4 @@ const Unsubscribe = ({unsubscribeCall, toastMsg}) => <div className="unsubscribe
       <SeptemberRainInfo />
     </div>;
 
-
 export default Unsubscribe

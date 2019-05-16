@@ -7,13 +7,9 @@ and (-webkit-min-device-pixel-ratio: 2) {
 
   /* site heading and alert */
 
-  .siteHeading {
-    margin-left: 3% !important;
-  }
+  .siteHeading {margin-left: 3% !important;}
 
-  .siteHeading > .letter {
-    font-size: 3.5em !important;
-  }
+  .siteHeading > .letter {font-size: 3.5em !important;}
 
   .btn.red {
     width: 95% !important;
@@ -21,21 +17,13 @@ and (-webkit-min-device-pixel-ratio: 2) {
     margin-left: -4%;
   }
 
-  #modal_5 > .modal-content > h5 {
-    font-size: 14px !important;
-  }
+  #modal_5 > .modal-content > h5 {font-size: 14px !important;}
 
-  #modal_5 > .modal-content > h4 {
-    font-size: 14px !important;
-  }
+  #modal_5 > .modal-content > h4 {font-size: 14px !important;}
 
-  #modal_5 > .modal-content > h3 {
-    font-size: 18px !important;
-  }
+  #modal_5 > .modal-content > h3 {font-size: 18px !important;}
 
-  #modal_0 > .modal-content > a {
-    font-size: 12px !important;
-  }
+  #modal_0 > .modal-content > a {font-size: 12px !important;}
 
    #modal_0 > .modal-content > a > img {
     width: 30px;
@@ -69,9 +57,7 @@ and (-webkit-min-device-pixel-ratio: 2) {
     font-size: 13px;
   }
 
-  .dataPage > div {
-    width: auto;
-  }
+  .dataPage > div {width: auto;}
 
   .septemberPage {
     background: url(https://services3.arcgis.com/IWh1Id1sBCnK9p7O/arcgis/rest/services/Portland_Flooding/FeatureServer/0/2/attachments/3);
@@ -89,9 +75,7 @@ and (-webkit-min-device-pixel-ratio: 2) {
   }
 
   .septemberPage > .row > h4 {font-size: 16px !important; padding: 1%;}
-  .septemberPage::after {
-     background-size: 100% 80%;
-  }
+  .septemberPage::after {background-size: 100% 80%;}
   .btn.teal {margin-left: 0;}
   .rv-xy-plot__axis__tick__text {text-shadow: 2px 2px 1px rgb(252, 230, 133);}
 
@@ -108,13 +92,9 @@ and (-webkit-min-device-pixel-ratio: 2) {
     margin-right: 0 !important;
   }
 
-  #floodCatLegend {
-    display: none;
-  }
+  #floodCatLegend {display: none;}
 
-  .tideChartCss {
-    width: 100%;
-  }
+  .tideChartCss {width: 100%;}
 
   #tideChartTitle {
    font-weight: bold;
@@ -136,9 +116,7 @@ and (-webkit-min-device-pixel-ratio: 2) {
     margin-left: 0 !important;
   }
 
-  .tideChartMedia {
-    width: 100%
-  }
+  .tideChartMedia {width: 100%;}
 
   .sixFtPage {
     width: 96%;
@@ -147,13 +125,9 @@ and (-webkit-min-device-pixel-ratio: 2) {
     box-shadow: none;
   }
 
-  .sixFtPage > h4 {
-    font-size: 16px;
-  }
+  .sixFtPage > h4 {font-size: 16px;}
 
-  .sixFtPage > div {
-    font-size: 16px;
-  }
+  .sixFtPage > div {font-size: 16px;}
 
   .unsubscribe {
     display: inline-block;
@@ -167,9 +141,7 @@ and (-webkit-min-device-pixel-ratio: 2) {
     background-color: rgb(255, 255, 255);
   }
 
-  .unsubscribe-form > .row > h5 {
-    font-size: 18px;
-  }
+  .unsubscribe-form > .row > h5 {font-size: 18px;}
 
   .unsubscribe-form > .btn {
     font-size: 10px;
@@ -182,29 +154,18 @@ and (-webkit-min-device-pixel-ratio: 2) {
     width: 96%;
   }
 
-  .septemberPage:after {
-    background: none;
-  
-  }
+  .septemberPage:after {background: none;}
 
-  .carouselContainer {
-    width: 100% !important;
-  }
+  .carouselContainer {width: 100% !important;}
 
-  .carouselContainer::after {
-    background: none;
-  }
+  .carouselContainer::after {background: none;}
 
   .carouselPage {
     width: 100% !important;
     margin-left: 0;
   }
 
-  li.thumb {
-    display: none !important;
-  }
-
-
+  li.thumb {display: none !important;}
 
   /* admin page */
   .adminPage {
@@ -234,17 +195,11 @@ and (-webkit-min-device-pixel-ratio: 2) {
     margin: 0 !important;
   }
 
-  .barChart {
-    width: 120% !important;
-  }
+  .barChart {width: 120% !important;}
 
-  .barChart > .rv-xy-plot__inner {
-    margin: 0;
-  }
+  .barChart > .rv-xy-plot__inner {margin: 0;}
 
-  .messagesTable {
-    font-size: 12px !important;
-  }
+  .messagesTable {font-size: 12px !important;}
 
   .btn.teal.toast.sms {
     position: relative;

@@ -4,12 +4,8 @@ const Spinner = require("react-spinkit");
 
 
 const Data = ({wind_speed, wind_card, air_temp, water_level, water_level_noaa, water_temp_noaa, currentTime}) => {
-     let showData = false
-    if (water_level_noaa) {
-      showData = true;
-    } else {
-      showData = false
-    }
+    let showData = false
+    if (water_level_noaa) {showData = true;} else {showData = false}
 
   let predictions = water_level_noaa
   let nextHigh = 0
