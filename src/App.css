@@ -1,9 +1,9 @@
 body {
-  font-family: 'Montserrat', sans-serif;
-  height:auto;
-  margin:0;
+  font-family: "Montserrat", sans-serif;
+  height: auto;
+  margin: 0;
   background-color: rgb(250, 250, 250);
-  color: #161C32;
+  color: #161c32;
 }
 
 .siteHeading {
@@ -15,11 +15,22 @@ body {
   animation: flash 1s 1.5s linear;
 }
 
-.spinner {margin-left: 50%;}
-.toast {margin-bottom: 3%;}
-table {border: 1px solid rgb(123, 189, 228);}
-tr:hover {background-color: rgb(221, 255, 244);}
-nav ul a {color: rgb(44, 157, 177); font-size: 18px;}
+.spinner {
+  margin-left: 50%;
+}
+.toast {
+  margin-bottom: 3%;
+}
+table {
+  border: 1px solid rgb(123, 189, 228);
+}
+tr:hover {
+  background-color: rgb(221, 255, 244);
+}
+nav ul a {
+  color: rgb(44, 157, 177);
+  font-size: 18px;
+}
 
 nav ul a:hover {
   color: rgb(250, 229, 134);
@@ -29,8 +40,12 @@ nav ul a:hover {
   transform: translate(2px, -3px);
 }
 
-nav ul a:active {transform: translate(1px, 1px);}
-.button-collapse {color: rgb(44, 157, 177);}
+nav ul a:active {
+  transform: translate(1px, 1px);
+}
+.button-collapse {
+  color: rgb(44, 157, 177);
+}
 
 .button-collapse:hover {
   color: rgb(250, 229, 134);
@@ -44,7 +59,7 @@ nav ul a:active {transform: translate(1px, 1px);}
 
 .dataPage {
   background: url(https://images.unsplash.com/photo-1488921618671-463b781ac428?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);
-  background-size:cover;
+  background-size: cover;
   border-radius: 10px;
   padding: 4%;
   width: 66%;
@@ -63,12 +78,12 @@ nav ul a:active {transform: translate(1px, 1px);}
   bottom: 0;
   right: 0;
   position: absolute;
-  z-index: -1;   
+  z-index: -1;
 }
 
 .sixFtPage {
   background: url(https://images.unsplash.com/photo-1464925257126-6450e871c667?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1867&q=80);
-  background-size:cover;
+  background-size: cover;
   color: white;
   border-radius: 10px;
   padding: 2%;
@@ -96,7 +111,7 @@ nav ul a:active {transform: translate(1px, 1px);}
 }
 
 .unsubscribe-form > div > h5 {
-  color: #DE6262;
+  color: #de6262;
   font-weight: bold;
 }
 
@@ -109,7 +124,9 @@ nav ul a:active {transform: translate(1px, 1px);}
   color: rgb(23, 202, 134);
 }
 
-#GISLink:hover {color: white;}
+#GISLink:hover {
+  color: white;
+}
 
 .septemberPage {
   display: flex;
@@ -137,7 +154,7 @@ nav ul a:active {transform: translate(1px, 1px);}
   bottom: 0;
   right: 0;
   position: absolute;
-  z-index: -1;   
+  z-index: -1;
 }
 
 #SeptLink {
@@ -150,24 +167,26 @@ nav ul a:active {transform: translate(1px, 1px);}
   color: rgb(236, 225, 118);
 }
 
-#SeptLink:hover {color: white;}
+#SeptLink:hover {
+  color: white;
+}
 
 .btn.teal.slide {
   margin-top: 1%;
-  background-color: #6262DE !important; 
+  background-color: #6262de !important;
   margin-left: 20%;
   border-radius: 10px;
 }
 
 .btn.teal {
   margin-top: 1%;
-  background-color: #6262DE !important; 
+  background-color: #6262de !important;
   border-radius: 10px;
 }
 
 .btn.teal:active {
   padding: none;
-  animation: pulse .2s linear;
+  animation: pulse 0.2s linear;
 }
 
 .unsubscribe {
@@ -177,7 +196,7 @@ nav ul a:active {transform: translate(1px, 1px);}
 
 .unsubInfoPage {
   background: url(./images/mapBackground.png);
-  background-size:cover;
+  background-size: cover;
   color: rgb(0, 0, 0);
   border-radius: 10px;
   padding: 3%;
@@ -191,7 +210,9 @@ nav ul a:active {transform: translate(1px, 1px);}
   background-color: rgba(255, 255, 255, 0.733);
 }
 
-#icon_email {width: 300px;}
+#icon_email {
+  width: 300px;
+}
 
 .FooterPage {
   font-family: Aleo, menlo;
@@ -211,7 +232,7 @@ nav ul a:active {transform: translate(1px, 1px);}
   bottom: 0;
   right: 0;
   position: absolute;
-  z-index: -1;   
+  z-index: -1;
 }
 
 .infoLinks {
@@ -220,39 +241,49 @@ nav ul a:active {transform: translate(1px, 1px);}
   margin: 5%;
 }
 
-.infoLinks > a:hover {color: rgb(235, 117, 117);}
-.mediaTable > .letter {font-size: 34px;}
-table > tbody > tr > td {font-size: 16px;}
-.tideChartCss {display: inline-flex;}
+.infoLinks > a:hover {
+  color: rgb(235, 117, 117);
+}
+.mediaTable > .letter {
+  font-size: 34px;
+}
+table > tbody > tr > td {
+  font-size: 16px;
+}
+.tideChartCss {
+  display: inline-flex;
+}
 
 #tideChartLegend {
-   color: white; 
-   border: 1px solid white; 
-   border-radius: 10px;
-   width: 200px; 
-   font-weight: bold;
-   float: right;
-   margin-right: 12%;
-   margin-top: -12%;
-   padding: 2%;
-   box-shadow: 3px 2px 4px rgb(104, 104, 104);
+  color: white;
+  border: 1px solid white;
+  border-radius: 10px;
+  width: 200px;
+  font-weight: bold;
+  float: right;
+  margin-right: 12%;
+  margin-top: -12%;
+  padding: 2%;
+  box-shadow: 3px 2px 4px rgb(104, 104, 104);
 }
 
 #floodCatLegend {
-   color: white; 
-   font-size: 1.24em;
-   border: 1px solid white; 
-   border-radius: 10px;
-   width: 300px; 
-   font-weight: bold;
-   float: right;
-   margin-right: -10%;
-   margin-top: -12%;
-   padding: 2%;
-   box-shadow: 3px 2px 4px rgb(104, 104, 104);
+  color: white;
+  font-size: 1.24em;
+  border: 1px solid white;
+  border-radius: 10px;
+  width: 300px;
+  font-weight: bold;
+  float: right;
+  margin-right: -10%;
+  margin-top: -12%;
+  padding: 2%;
+  box-shadow: 3px 2px 4px rgb(104, 104, 104);
 }
 
-.rv-xy-plot__axis__tick__text {text-shadow: 2px 2px 1px rgb(252, 230, 133);}
+.rv-xy-plot__axis__tick__text {
+  text-shadow: 2px 2px 1px rgb(252, 230, 133);
+}
 
 .rv-xy-plot__inner {
   margin-left: 7.5%;
@@ -262,15 +293,15 @@ table > tbody > tr > td {font-size: 16px;}
 .rv-hint {
   text-align: center;
   position: relative !important;
-  border-top: 2px solid #FBE07C; 
+  border-top: 2px solid #fbe07c;
   border-radius: none;
-  width: 500px; 
+  width: 500px;
   background-color: rgb(0, 0, 0) !important;
-  color: rgb(255, 235, 235);;
+  color: rgb(255, 235, 235);
   margin-left: 15%;
   padding: 2%;
   font-size: 1.3em;
-  border-bottom: 2px solid  #FBE07C;
+  border-bottom: 2px solid #fbe07c;
   border-radius: 10px;
 }
 
@@ -280,7 +311,9 @@ table > tbody > tr > td {font-size: 16px;}
   zoom: 115%;
 }
 
-.carouselContainer {padding: 1%;}
+.carouselContainer {
+  padding: 1%;
+}
 
 p.legend {
   background-color: rgb(44, 157, 177);
@@ -304,12 +337,13 @@ p.carousel-status {
   bottom: 0;
   right: 0;
   position: absolute;
-  z-index: -1;   
+  z-index: -1;
 }
 
 .slide-fwd {
-	-webkit-animation: slide-fwd-left 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-	animation: slide-fwd-left 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  -webkit-animation: slide-fwd-left 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+    both;
+  animation: slide-fwd-left 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
 .hundredYearChart {
@@ -323,30 +357,59 @@ p.carousel-status {
   margin-top: -4%;
 }
 
-rect:hover {animation: pulse .2s linear;}
-button.btn:hover {height: 38px;}
-button.btn:active {animation: pulse .2s linear;}
-
-
-
+rect:hover {
+  animation: pulse 0.2s linear;
+}
+button.btn:hover {
+  height: 38px;
+}
+button.btn:active {
+  animation: pulse 0.2s linear;
+}
 
 @-webkit-keyframes slide-fwd-left {
   0% {
     -webkit-transform: translateZ(0) translateX(0);
-            transform: translateZ(0) translateX(0);
+    transform: translateZ(0) translateX(0);
   }
   100% {
     -webkit-transform: translateZ(160px) translateX(-100px);
-            transform: translateZ(160px) translateX(-100px);
+    transform: translateZ(160px) translateX(-100px);
   }
 }
 @keyframes slide-fwd-left {
   0% {
     -webkit-transform: translateZ(0) translateX(0);
-            transform: translateZ(0) translateX(0);
+    transform: translateZ(0) translateX(0);
   }
   100% {
     -webkit-transform: translateZ(160px) translateX(-100px);
-            transform: translateZ(160px) translateX(-100px);
+    transform: translateZ(160px) translateX(-100px);
   }
+}
+
+.ChatParent {
+  font-size: 20px;
+}
+
+.chatLoginSuccess {
+  margin-top: -20%;
+}
+
+.ChatSignUpFlow {
+  margin: 2%;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 2%;
+}
+
+.ChatSignUpFlow > form > button {
+  border-radius: 10px;
+  color: white;
+  background-color: teal;
+}
+
+.ChatSignUpFlow > form > button:active {
+  padding: 0.25%;
+  background-color: pink;
 }

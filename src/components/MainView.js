@@ -1,23 +1,27 @@
-import React, { Component } from 'react';
-import '../CSS/Letter.css';
-import MediaQuery from 'react-responsive';
-import Parallax from 'react-springy-parallax';
-import { Spring, animated  } from 'react-spring';
-import { WindConversion, TempConversion, DateCalculator} from './function_exports/ConversionFuncs';
+import React, { Component } from "react";
+import "../CSS/Letter.css";
+import MediaQuery from "react-responsive";
+import Parallax from "react-springy-parallax";
+import { Spring, animated } from "react-spring";
+import {
+  WindConversion,
+  TempConversion,
+  DateCalculator
+} from "./function_exports/ConversionFuncs";
 
 // Component Imports
-import HundredYearGraph from './dataComponents/HundredYearGraph'
-import SignUp from './coreComponents/SignUp';
-import AlertCMP from './alerts/AlertCMP';
-import Data from './coreComponents/Data';
+import HundredYearGraph from "./dataComponents/HundredYearGraph";
+import SignUp from "./coreComponents/SignUp";
+import AlertCMP from "./alerts/AlertCMP";
+import Data from "./coreComponents/Data";
 import Moon from "./visualComponents/Moon";
-import SixFeetInfo from './visualComponents/SixFeetInfo';
-import CarouselCMP from './visualComponents/CarouselCMP';
-import TidePredictionsDisplay from './dataComponents/TidePredictionsDisplay';
-import FooterPage from './visualComponents/FooterPage';
-import UnsubscribeInfo from './visualComponents/UnsubscribeInfo';
+import SixFeetInfo from "./visualComponents/SixFeetInfo";
+import CarouselCMP from "./visualComponents/CarouselCMP";
+import TidePredictionsDisplay from "./dataComponents/TidePredictionsDisplay";
+import FooterPage from "./visualComponents/FooterPage";
+import UnsubscribeInfo from "./visualComponents/UnsubscribeInfo";
 
-const Spinner = require('react-spinkit');
+const Spinner = require("react-spinkit");
 
 class MainView extends Component {
   constructor(props) {
@@ -35,61 +39,58 @@ class MainView extends Component {
       wind_speed: 0,
       show: false,
       alertValue: 0,
-      viewToastMsg: '',
+      viewToastMsg: "",
       flooding: false
     };
   }
 
-  renderAlert = (value) => {
+  renderAlert = value => {
     this.setState({
       alertValue: value
-    })
-  }
+    });
+  };
 
-  renderToast = (msg) => {
-     this.setState({
+  renderToast = msg => {
+    this.setState({
       viewToastMsg: msg
-    })
-  }
+    });
+  };
 
   /**
    * subscribeCall to POST a subscriber
    * @param {*} phone
    * @param {*} location
    */
- subscribeCall = async(phone, location) => {
+  subscribeCall = async (phone, location) => {
     let postBody = {
       phone,
       location
     };
-    let response = await fetch(
-      `${process.env.REACT_APP_API_URL}/subscribe`,
-      {
-        method: "POST",
-        body: JSON.stringify(postBody),
-        headers: {
-          "Content-Type": "application/json"
-        }
+    let response = await fetch(`${process.env.REACT_APP_API_URL}/subscribe`, {
+      method: "POST",
+      body: JSON.stringify(postBody),
+      headers: {
+        "Content-Type": "application/json"
       }
-    );
+    });
 
     let res = await response.json();
     if (res === 200) {
-      let msg = `Subscription Successful!`
+      let msg = `Subscription Successful!`;
       // console.log(res, msg)
-      this.renderToast(msg)
+      this.renderToast(msg);
       setTimeout(() => {
-        msg = ''
-        this.renderToast(msg)
-      }, 3000)
+        msg = "";
+        this.renderToast(msg);
+      }, 3000);
     }
-  }
+  };
 
   // converts new Date object to current date in API format and calls API
   dateConverter() {
     let { year, month, day, tomorrowDay, nextMo, nextYear } = DateCalculator();
     if (day.toString().length === 1) {
-      day = `0${day}`
+      day = `0${day}`;
     }
     // console.log("day:", day)
     let noaaDate = `${year}${month}${day}`;
@@ -126,12 +127,12 @@ class MainView extends Component {
       return "wait";
     } else {
       // console.log(resJson.predictions)
-      resJson.predictions.map((day) => {
+      resJson.predictions.map(day => {
         // mock an alert by dropping this and hardcoding the msg
-        if (+(day.v) > 11.8) {
-          return this.renderAlert(+(day.v))
+        if (+day.v > 11.8) {
+          return this.renderAlert(+day.v);
         }
-      })
+      });
       return this.setState({
         water_level_noaa: resJson.predictions
       });
@@ -141,17 +142,19 @@ class MainView extends Component {
   // currentWaterLevel grabs the last item in the array as the last 6 minute updated sea level data
   async currentWaterLevel(noaaDate, tomorrowDate) {
     // console.log("resjson tide:", noaaDate, tomorrowDate);
-    let response = await fetch(`https://tidesandcurrents.noaa.gov/api/datagetter?product=water_level&application=NOS.COOPS.TAC.WL&begin_date=${noaaDate}&end_date=${tomorrowDate}&datum=MLLW&station=8418150&time_zone=lst_ldt&units=english&format=json`);
-    let resJson = await response.json()
-    
-    let tmp = resJson.data
+    let response = await fetch(
+      `https://tidesandcurrents.noaa.gov/api/datagetter?product=water_level&application=NOS.COOPS.TAC.WL&begin_date=${noaaDate}&end_date=${tomorrowDate}&datum=MLLW&station=8418150&time_zone=lst_ldt&units=english&format=json`
+    );
+    let resJson = await response.json();
+
+    let tmp = resJson.data;
     if (tmp === undefined) {
       return <Spinner className="spinner" name="line-scale" color="teal" />;
     }
     if (+tmp[tmp.length - 1].v > 11.4) {
-      this.setState({flooding: true})
+      this.setState({ flooding: true });
     }
-    this.setState({ water_level: +(tmp[tmp.length - 1].v) });
+    this.setState({ water_level: +tmp[tmp.length - 1].v });
   }
 
   // Water temp API call - sent as props to Data cmp
@@ -174,24 +177,28 @@ class MainView extends Component {
   async weatherApiCall() {
     const lat = 43.6567;
     const lon = -70.2467;
-    let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_WEATHER_KEY}`);
-    let weatherJson = await response.json()
-    let currentWind = weatherJson.wind.speed
-    let currentWindDir = weatherJson.wind.deg
-    let currentWindCard = WindConversion(currentWindDir)
-    let currentTemp = TempConversion(weatherJson.main.temp)
+    let response = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${
+        process.env.REACT_APP_WEATHER_KEY
+      }`
+    );
+    let weatherJson = await response.json();
+    let currentWind = weatherJson.wind.speed;
+    let currentWindDir = weatherJson.wind.deg;
+    let currentWindCard = WindConversion(currentWindDir);
+    let currentTemp = TempConversion(weatherJson.main.temp);
     this.setState({
       air_temp: currentTemp,
       wind_card: currentWindCard,
       wind_dir: currentWindDir,
       wind_speed: currentWind
-    })
+    });
   }
 
   componentDidMount() {
     this.dateConverter();
     this.hourConverter();
-    this.weatherApiCall()
+    this.weatherApiCall();
     this.setState({
       show: true
     });
@@ -211,7 +218,10 @@ class MainView extends Component {
             {/* SignUp layer at the top */}
 
             <Parallax.Layer offset={0} speed={0}>
-              <div className="siteHeading" style={{ fontSize: ".5em", marginLeft: "26%" }}>
+              <div
+                className="siteHeading"
+                style={{ fontSize: ".5em", marginLeft: "26%" }}
+              >
                 <span className="letter" data-letter="W">
                   Welcome to
                 </span>
@@ -288,14 +298,14 @@ class MainView extends Component {
             </Parallax.Layer>
 
             {/* footer page and links */}
-            <Parallax.Layer offset={4} speed={-0.01} >
+            <Parallax.Layer offset={4} speed={-0.01}>
               <FooterPage />
             </Parallax.Layer>
           </Parallax>
         </MediaQuery>
       </div>
-    )
+    );
   }
-};
+}
 
 export default MainView;
