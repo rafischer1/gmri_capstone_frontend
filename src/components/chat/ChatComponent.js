@@ -50,11 +50,9 @@ const ChatComponent = ({ username, token, water_level }) => {
       }
     );
 
-    console.log("token, client and channel:", token, chatClient, channel);
-
     return (
       <div className="chat">
-        <Chat client={chatClient} theme={"messaging light"}>
+        <Chat client={chatClient} theme={"messaging dark"}>
           <Channel channel={channel}>
             <Window>
               <ChannelHeader />
