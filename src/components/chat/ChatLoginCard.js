@@ -4,7 +4,10 @@ const ChatLoginCard = ({ chatLoginCallback }) => {
   /* login callback takes ev values for username and password */
   const loginSubmit = chatLoginCallback => ev => {
     ev.preventDefault();
-    chatLoginCallback(ev.target[0].value, ev.target[1].value);
+    chatLoginCallback(
+      ev.target[0].value.toLowerCase(),
+      ev.target[1].value.toLowerCase()
+    );
     ev.target[0].value = "";
     ev.target[1].value = "";
   };

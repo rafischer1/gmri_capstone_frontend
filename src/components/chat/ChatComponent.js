@@ -52,7 +52,7 @@ const ChatComponent = ({ username, token, water_level }) => {
 
     return (
       <div className="chat">
-        <Chat client={chatClient} theme={"messaging dark"}>
+        <Chat client={chatClient} theme={"messaging light"}>
           <Channel channel={channel}>
             <Window>
               <ChannelHeader />

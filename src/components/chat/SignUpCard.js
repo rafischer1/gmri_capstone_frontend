@@ -1,11 +1,13 @@
 import React from "react";
-import { Row, Card, TextInput, Button } from "react-materialize";
 
 const SignUpCard = ({ chatSignUpCallback }) => {
   /* Sign Up callback disregards the email input to not 'over-engineer' the project */
   const signUpSubmit = chatSignUpCallback => ev => {
     ev.preventDefault();
-    chatSignUpCallback(ev.target[1].value, ev.target[2].value);
+    chatSignUpCallback(
+      ev.target[1].value.toLowerCase(),
+      ev.target[2].value.toLowerCase()
+    );
     ev.target[0].value = "";
     ev.target[1].value = "";
     ev.target[2].value = "";
