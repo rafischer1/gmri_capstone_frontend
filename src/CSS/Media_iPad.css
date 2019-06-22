@@ -1,8 +1,8 @@
 /* ipad */
-@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px)  {
-.row {width: 100%;}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .row {
+    width: 100%;
+  }
 
   /* site heading and alert */
 
@@ -30,28 +30,37 @@ and (max-device-width : 1024px)  {
     font-size: 12px !important;
   }
 
-   #modal_0 > .modal-content > a > img {
+  #modal_0 > .modal-content > a > img {
     width: 40px;
     height: 40px;
   }
 
- /* login page */
+  /* login page */
   .login-block {
     width: 98% !important;
     margin: 0 !important;
     padding: 0;
-    font-size: 14px; 
+    font-size: 14px;
   }
 
   .login-sec h2 {
     font-size: 20px !important;
     margin: 2%;
   }
- 
-  .signUp {width: 100%;}
-  .login-sec {padding: 0;max-width: 700px;}
-  .tideChartCss {margin: 0% !important;}
-  .rv-xy-plot_inner {width: 20px !important;}
+
+  .signUp {
+    width: 100%;
+  }
+  .login-sec {
+    padding: 0;
+    max-width: 700px;
+  }
+  .tideChartCss {
+    margin: 0% !important;
+  }
+  .rv-xy-plot_inner {
+    width: 20px !important;
+  }
 
   .dataPage {
     width: 95%;
@@ -78,12 +87,19 @@ and (max-device-width : 1024px)  {
     box-shadow: 3px 5px 3px rgb(202, 202, 202);
   }
 
-  .septemberPage > .row > h4 {font-size: 16px !important; padding: 1%;}
-  .septemberPage::after {
-     background-size: 100% 80%;
+  .septemberPage > .row > h4 {
+    font-size: 16px !important;
+    padding: 1%;
   }
-  .btn.teal {margin-left: 0;}
-  .rv-xy-plot__axis__tick__text {text-shadow: 2px 2px 1px rgb(252, 230, 133);}
+  .septemberPage::after {
+    background-size: 100% 80%;
+  }
+  .btn.teal {
+    margin-left: 0;
+  }
+  .rv-xy-plot__axis__tick__text {
+    text-shadow: 2px 2px 1px rgb(252, 230, 133);
+  }
 
   .rv-xy-plot__inner {
     width: 60%;
@@ -105,14 +121,14 @@ and (max-device-width : 1024px)  {
   }
 
   #tideChartTitle {
-   font-weight: bold;
-   font-size: 16px !important;
-   margin-left: 10% !important;
-   margin-top: -5%;
-   text-transform: uppercase;
-   width: 100%; 
-   color: white;
-   margin-bottom: 1%;
+    font-weight: bold;
+    font-size: 16px !important;
+    margin-left: 10% !important;
+    margin-top: -5%;
+    text-transform: uppercase;
+    width: 100%;
+    color: white;
+    margin-bottom: 1%;
   }
 
   #tideChartLegend {
@@ -123,11 +139,11 @@ and (max-device-width : 1024px)  {
   }
 
   .tideChartMedia {
-    width: 100%
+    width: 100%;
   }
 
   .rv-hint {
-    border: 2px solid #7C97FB;
+    border: 2px solid #7c97fb;
     width: 100%;
     margin: -6% 0% 2% -18% !important;
   }
@@ -193,7 +209,7 @@ and (max-device-width : 1024px)  {
 
   .curUsers {
     width: 50% !important;
-    font-size: 1.1em !important;    
+    font-size: 1.1em !important;
   }
 
   .curUsers > div {
@@ -201,8 +217,8 @@ and (max-device-width : 1024px)  {
   }
 
   .smsContainer {
-    border-top: 2px solid #7C97FB; 
-    border-bottom: 2px solid #7C97FB; 
+    border-top: 2px solid #7c97fb;
+    border-bottom: 2px solid #7c97fb;
   }
 
   .messagesTable {
@@ -225,7 +241,7 @@ and (max-device-width : 1024px)  {
 
   .hundredYearChart {
     display: none;
-  } 
+  }
 
   button.btn {
     width: 60% !important;
@@ -244,7 +260,7 @@ and (max-device-width : 1024px)  {
   }
 
   .FooterPage:after {
-    content: "";
+    content: '';
     background: url(https://images.unsplash.com/photo-1530123985359-4fd0cce1ea8b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2691&q=80);
     background-size: 200% 100%;
     background-repeat: no-repeat;
@@ -254,7 +270,7 @@ and (max-device-width : 1024px)  {
     bottom: 0;
     right: 0;
     position: absolute;
-    z-index: -1;   
+    z-index: -1;
   }
 
   .letter {

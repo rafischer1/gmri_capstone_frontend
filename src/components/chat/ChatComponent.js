@@ -1,5 +1,5 @@
-import React from "react";
-import faker from "faker";
+import React from 'react';
+import faker from 'faker';
 import {
   Chat,
   Channel,
@@ -7,11 +7,11 @@ import {
   Thread,
   Window,
   MessageInputFlat
-} from "stream-chat-react";
-import { MessageList, MessageInput } from "stream-chat-react";
-import { StreamChat } from "stream-chat";
-import "stream-chat-react/dist/css/index.css";
-const Spinner = require("react-spinkit");
+} from 'stream-chat-react';
+import { MessageList, MessageInput } from 'stream-chat-react';
+import { StreamChat } from 'stream-chat';
+import 'stream-chat-react/dist/css/index.css';
+const Spinner = require('react-spinkit');
 
 const chatClient = new StreamChat(
   process.env.REACT_APP_STREAM_KEY,
@@ -25,9 +25,9 @@ const chatClient = new StreamChat(
  *
  */
 const ChatComponent = ({ username, token, water_level }) => {
-  if (username === "") {
+  if (username === '') {
     return (
-      <Spinner className="spinner chatSpinner" name="pulse" color="white" />
+      <Spinner className='spinner chatSpinner' name='pulse' color='white' />
     );
   } else {
     chatClient.disconnect();
@@ -41,18 +41,18 @@ const ChatComponent = ({ username, token, water_level }) => {
     );
 
     const channel = chatClient.channel(
-      "messaging",
+      'messaging',
       process.env.REACT_APP_STREAM_CHAT_ID,
       {
         image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9hFRSTVcQmuEDRtaMh_VDbDE2y6T9hT-hmhfV_3hPz_kiDhMc",
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9hFRSTVcQmuEDRtaMh_VDbDE2y6T9hT-hmhfV_3hPz_kiDhMc',
         name: `SLR Maine Chat - - - `
       }
     );
 
     return (
-      <div className="chat">
-        <Chat client={chatClient} theme={"messaging light"}>
+      <div className='chat'>
+        <Chat client={chatClient} theme={'messaging light'}>
           <Channel channel={channel}>
             <Window>
               <ChannelHeader />

@@ -1,5 +1,5 @@
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   height: auto;
   margin: 0;
   background-color: rgb(250, 250, 250);
@@ -70,7 +70,7 @@ nav ul a:active {
 }
 
 .dataPage::after {
-  content: "";
+  content: '';
   background: url(https://images.unsplash.com/photo-1523275033438-8c0a9239935b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80);
   opacity: 0.5;
   top: 0px;
@@ -144,7 +144,7 @@ nav ul a:active {
 }
 
 .septemberPage:after {
-  content: "";
+  content: '';
   background: url(https://images.unsplash.com/photo-1495102675274-3ba61637d5bc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);
   background-size: 100% 100%;
   background-repeat: no-repeat;
@@ -222,7 +222,7 @@ nav ul a:active {
 }
 
 .FooterPage:after {
-  content: "";
+  content: '';
   background: url(https://images.unsplash.com/photo-1530123985359-4fd0cce1ea8b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2691&q=80);
   background-size: 110% 110%;
   background-repeat: no-repeat;
@@ -236,7 +236,7 @@ nav ul a:active {
 }
 
 .infoLinks {
-  font-family: "Aleo", sans-serif;
+  font-family: 'Aleo', sans-serif;
   font-size: 2em;
   margin: 5%;
 }
@@ -327,7 +327,7 @@ p.carousel-status {
 }
 
 .carouselContainer:after {
-  content: "";
+  content: '';
   background: url(https://lh3.googleusercontent.com/TsVQtoA5ChHB9rYEyv8QFMOdIgD3JM26zCYrSCYVN0iSx9LK1fdNiUHedxnsg2mbibV47zKWEK4iqC8mtBc0ucp6kl_Dcnvxw5vgjrzVpjLqhjxDba-zg8ZUL1uohvzsLWglk1Nr5TGsffuBDOWigyOOAILLv-TqNqTdMBS6D607BluqxbezU0s8k_quJqfEXEyoUlgAXi858LyzjXRbvLpD1-NrcoZtauZHDlttVPrAWjVaQ5FW3XvdNQOBBS8ZB9GOarXgAHPNRurQQvLz8S4OinX5EcUTwujlTo4H482lYcXABTtkSzUYaZgnPtl6ruGYQ4pSy4NS5Oz6g90WcRCv9AEiNctAJKev5D6W4OodeNZgJbDufIqa8N9xD3BQ-Kx84Rcf-btu8nDP-aEY0P2nsU0K5hk2L7RkxNL6uZPUgaFu2xWgmdmdiMjRoYgfszTEKctuhqnNZ8Oc2aIZ_qtjKZPtFtxk8CEykk2jU3Oq-LhIAikgejgO2ari5PPwu2MoW5nEclUzXuJuHgiq_WGO0CT1i1aEjCr-4tgBQY8qMO_b48L4A5vEb3q17n3Buby7cAgRkNNt3cdoU5077qWyHl2CbHizaFszbol5DnF34BtZCA1Y5Hn0LHwe7jLk3l26VLcTTDBNXzd0Gms4MZTn=w2192-h1642-no);
   background-size: 100% 200%;
   background-repeat: no-repeat;

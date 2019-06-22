@@ -1,25 +1,25 @@
-import React, { Component } from "react";
-import { Navbar } from "react-materialize";
-import "./App.css";
-import "./CSS/Media_iPhone678.css";
-import "./CSS/Media_iPhone5.css";
-import "./CSS/Media_iPad.css";
-import "./CSS/SignUp.css";
-import "./CSS/Moon.css";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import React, { Component } from 'react';
+import { Navbar } from 'react-materialize';
+import './App.css';
+import './CSS/Media_iPhone678.css';
+import './CSS/Media_iPhone5.css';
+import './CSS/Media_iPad.css';
+import './CSS/SignUp.css';
+import './CSS/Moon.css';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 // Component Imports
-import Admin from "./components/coreComponents/Admin";
-import MainView from "./components/MainView";
-import Unsubscribe from "./components/coreComponents/Unsubscribe";
-import ChatParent from "./components/chat/ChatParent";
+import Admin from './components/coreComponents/Admin';
+import MainView from './components/MainView';
+import Unsubscribe from './components/coreComponents/Unsubscribe';
+import ChatParent from './components/chat/ChatParent';
 
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       cool_info: 0,
-      toastMsg: ""
+      toastMsg: ''
     };
   }
 
@@ -38,7 +38,7 @@ export default class App extends Component {
     let response = await fetch(
       `${process.env.REACT_APP_API_URL}/subscribe/${phone}`,
       {
-        method: "DELETE"
+        method: 'DELETE'
       }
     );
 
@@ -48,7 +48,7 @@ export default class App extends Component {
       let msg = `${phone} Unsubscribed`;
       this.renderToast(msg);
       setTimeout(() => {
-        msg = "";
+        msg = '';
         this.renderToast(msg);
       }, 3000);
     }
@@ -57,45 +57,45 @@ export default class App extends Component {
   async postSMSCall() {
     let postBody = {};
     let response = await fetch(`${process.env.REACT_APP_API_URL}/data`, {
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify(postBody),
       headers: {
-        "Content-Type": "application/json"
+        'Content-Type': 'application/json'
       }
     });
     let resJson = await response.json();
-    console.log("posSMScall body:", resJson);
+    console.log('posSMScall body:', resJson);
   }
 
   render() {
     return (
-      <div className="AppView">
+      <div className='AppView'>
         <Router>
           <div>
-            <Navbar className="white">
+            <Navbar className='white'>
               <ul>
                 <li>
-                  <Link to="/">SLR Maine</Link>
+                  <Link to='/'>SLR Maine</Link>
                 </li>
                 <li>
-                  <Link to="/admin">Admin</Link>
+                  <Link to='/admin'>Admin</Link>
                 </li>
                 <li>
-                  <Link to="/unsubscribe">Unsubscribe</Link>
+                  <Link to='/unsubscribe'>Unsubscribe</Link>
                 </li>
                 <li>
-                  <Link to="/chat">SLR Chat</Link>
+                  <Link to='/chat'>SLR Chat</Link>
                 </li>
               </ul>
             </Navbar>
-            <Route exact path="/" component={MainView} />
-            <Route exact path="/chat" component={ChatParent} />
+            <Route exact path='/' component={MainView} />
+            <Route exact path='/chat' component={ChatParent} />
             <Route
-              path="/admin"
+              path='/admin'
               component={() => <Admin postSMSCall={this.portSMSCall} />}
             />
             <Route
-              path="/unsubscribe"
+              path='/unsubscribe'
               component={() => (
                 <Unsubscribe
                   unsubscribeCall={this.unsubscribeCall}

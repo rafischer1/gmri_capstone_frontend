@@ -1,27 +1,27 @@
-import React, { Component } from "react";
-import "../CSS/Letter.css";
-import MediaQuery from "react-responsive";
-import Parallax from "react-springy-parallax";
-import { Spring, animated } from "react-spring";
+import React, { Component } from 'react';
+import '../CSS/Letter.css';
+import MediaQuery from 'react-responsive';
+import Parallax from 'react-springy-parallax';
+import { Spring, animated } from 'react-spring';
 import {
   WindConversion,
   TempConversion,
   DateCalculator
-} from "./function_exports/ConversionFuncs";
+} from './function_exports/ConversionFuncs';
 
 // Component Imports
-import HundredYearGraph from "./dataComponents/HundredYearGraph";
-import SignUp from "./coreComponents/SignUp";
-import AlertCMP from "./alerts/AlertCMP";
-import Data from "./coreComponents/Data";
-import Moon from "./visualComponents/Moon";
-import SixFeetInfo from "./visualComponents/SixFeetInfo";
-import CarouselCMP from "./visualComponents/CarouselCMP";
-import TidePredictionsDisplay from "./dataComponents/TidePredictionsDisplay";
-import FooterPage from "./visualComponents/FooterPage";
-import UnsubscribeInfo from "./visualComponents/UnsubscribeInfo";
+import HundredYearGraph from './dataComponents/HundredYearGraph';
+import SignUp from './coreComponents/SignUp';
+import AlertCMP from './alerts/AlertCMP';
+import Data from './coreComponents/Data';
+import Moon from './visualComponents/Moon';
+import SixFeetInfo from './visualComponents/SixFeetInfo';
+import CarouselCMP from './visualComponents/CarouselCMP';
+import TidePredictionsDisplay from './dataComponents/TidePredictionsDisplay';
+import FooterPage from './visualComponents/FooterPage';
+import UnsubscribeInfo from './visualComponents/UnsubscribeInfo';
 
-const Spinner = require("react-spinkit");
+const Spinner = require('react-spinkit');
 
 class MainView extends Component {
   constructor(props) {
@@ -29,17 +29,17 @@ class MainView extends Component {
     this.state = {
       water_level_noaa: [],
       water_temp_noaa: [],
-      todaysDate: "",
-      tomorrowsDate: "",
-      currentTime: "",
+      todaysDate: '',
+      tomorrowsDate: '',
+      currentTime: '',
       water_level: 0,
       air_temp: 80,
-      wind_card: "",
+      wind_card: '',
       wind_dir: 0,
       wind_speed: 0,
       show: false,
       alertValue: 0,
-      viewToastMsg: "",
+      viewToastMsg: '',
       flooding: false
     };
   }
@@ -67,10 +67,10 @@ class MainView extends Component {
       location
     };
     let response = await fetch(`${process.env.REACT_APP_API_URL}/subscribe`, {
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify(postBody),
       headers: {
-        "Content-Type": "application/json"
+        'Content-Type': 'application/json'
       }
     });
 
@@ -80,7 +80,7 @@ class MainView extends Component {
       // console.log(res, msg)
       this.renderToast(msg);
       setTimeout(() => {
-        msg = "";
+        msg = '';
         this.renderToast(msg);
       }, 3000);
     }
@@ -124,7 +124,7 @@ class MainView extends Component {
     let resJson = await response.json();
 
     if (resJson.predictions === undefined) {
-      return "wait";
+      return 'wait';
     } else {
       // console.log(resJson.predictions)
       resJson.predictions.map(day => {
@@ -149,7 +149,7 @@ class MainView extends Component {
 
     let tmp = resJson.data;
     if (tmp === undefined) {
-      return <Spinner className="spinner" name="line-scale" color="teal" />;
+      return <Spinner className='spinner' name='line-scale' color='teal' />;
     }
     if (+tmp[tmp.length - 1].v > 11.4) {
       this.setState({ flooding: true });
@@ -166,7 +166,7 @@ class MainView extends Component {
     let resJson = await response.json();
 
     if (resJson.data === undefined) {
-      return "wait";
+      return 'wait';
     } else {
       return this.setState({
         water_temp_noaa: resJson.data
@@ -206,29 +206,29 @@ class MainView extends Component {
 
   // css styles for scroll layer
   tideLayer = {
-    backgroundColor: "black"
+    backgroundColor: 'black'
   };
 
   render() {
     return (
-      <div className="App">
+      <div className='App'>
         <MediaQuery minDeviceWidth={101}>
-          <Parallax ref="parallax" pages={5} scrolling={true}>
+          <Parallax ref='parallax' pages={5} scrolling={true}>
             <AlertCMP props={this.state.alertValue} />
             {/* SignUp layer at the top */}
 
             <Parallax.Layer offset={0} speed={0}>
               <div
-                className="siteHeading"
-                style={{ fontSize: ".5em", marginLeft: "26%" }}
+                className='siteHeading'
+                style={{ fontSize: '.5em', marginLeft: '26%' }}
               >
-                <span className="letter" data-letter="W">
+                <span className='letter' data-letter='W'>
                   Welcome to
                 </span>
-                <span className="letter" data-letter="S">
+                <span className='letter' data-letter='S'>
                   SLR
                 </span>
-                <span className="letter" data-letter="M">
+                <span className='letter' data-letter='M'>
                   Maine
                 </span>
               </div>
@@ -254,7 +254,7 @@ class MainView extends Component {
 
             {/* Moon layer */}
             <Parallax.Layer offset={0.94} speed={-0.4} factor={0.35}>
-              <div className="moonDiv">
+              <div className='moonDiv'>
                 <Spring native from={{ opacity: 0 }} to={{ opacity: 1 }}>
                   {props => (
                     <animated.div style={props}>
@@ -286,7 +286,7 @@ class MainView extends Component {
 
             {/* carousel of flooding pics */}
             <Parallax.Layer offset={2.8} speed={0.75} factor={0.75}>
-              <div className="container carouselContainer">
+              <div className='container carouselContainer'>
                 <CarouselCMP />
               </div>
             </Parallax.Layer>

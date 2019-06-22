@@ -11,12 +11,11 @@ const DateCalculator = () => {
   let day = d.getDate();
   var tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);
-  let nextYear = tomorrow.getFullYear()
-  let nextMo = FormatMonth(tomorrow.getMonth() + 1)
-  let tomorrowDay = tomorrow.toString().split(" ")[2]
-  return { year, month, day, tomorrowDay , nextYear, nextMo };
+  let nextYear = tomorrow.getFullYear();
+  let nextMo = FormatMonth(tomorrow.getMonth() + 1);
+  let tomorrowDay = tomorrow.toString().split(' ')[2];
+  return { year, month, day, tomorrowDay, nextYear, nextMo };
 };
-
 
 // TempConversion converts kelvin to fahrenheit
 const TempConversion = tempK => {
@@ -28,44 +27,43 @@ const TempConversion = tempK => {
 const WindConversion = deg => {
   let dir;
   if (deg > 330) {
-    dir = "N";
+    dir = 'N';
   } else if (deg <= 330 && deg > 290) {
-    dir = "NW";
+    dir = 'NW';
   } else if (deg <= 290 && deg > 250) {
-    dir = "W";
+    dir = 'W';
   } else if (deg <= 250 && deg > 210) {
-    dir = "SW";
+    dir = 'SW';
   } else if (deg <= 210 && deg > 140) {
-    dir = "S";
+    dir = 'S';
   } else if (deg <= 140 && deg > 120) {
-    dir = "SE";
+    dir = 'SE';
   } else if (deg <= 120 && deg > 80) {
-    dir = "E";
+    dir = 'E';
   } else if (deg <= 80 && deg > 30) {
-    dir = "NE";
+    dir = 'NE';
   } else {
-    dir = "N";
+    dir = 'N';
   }
   return dir;
 };
 
 // PhoneFormat handles the phoen input to clean for POST call to DB
-const PhoneFormat = (phone) => {
+const PhoneFormat = phone => {
   for (let i = 0; i < phone.length; i++) {
-    if (phone[i] === "-") {
+    if (phone[i] === '-') {
       phone = phone.slice(0, i) + phone.slice(i + 1);
-    }
-    else if (phone[i] === " ") {
+    } else if (phone[i] === ' ') {
       phone = phone.slice(0, i) + phone.slice(i + 1);
     }
   }
   return phone;
-}
+};
 
 // Convert military to standard time
-const MilToStrdTime = (militaryTime) => {
-  let tmp = +(militaryTime.split(":")[0])
-  let minutes = militaryTime.split(":")[1]
+const MilToStrdTime = militaryTime => {
+  let tmp = +militaryTime.split(':')[0];
+  let minutes = militaryTime.split(':')[1];
 
   if (tmp >= 12) {
     if (tmp === 13) {
@@ -91,45 +89,48 @@ const MilToStrdTime = (militaryTime) => {
     } else if (tmp === 23) {
       tmp = 11;
     }
-    return `${tmp}:${minutes}PM`
-
-  }
-  else if (tmp === 24) {
-    return `12:${minutes}AM`
+    return `${tmp}:${minutes}PM`;
+  } else if (tmp === 24) {
+    return `12:${minutes}AM`;
   } else {
-    return `${tmp}:${minutes}AM`
+    return `${tmp}:${minutes}AM`;
   }
-}
+};
 
-const FormatMonth = (month) => {
-  let result = ""
- if (month.toString().length === 1) {
-   result = `0${month}`
- }
- return result
-}
+const FormatMonth = month => {
+  let result = '';
+  if (month.toString().length === 1) {
+    result = `0${month}`;
+  }
+  return result;
+};
 
 // FormatDate returns a US style date `day/month/year` from a timestamp
 const FormatDate = createdAt => {
-  let date = "";
-  date = `${createdAt.split(":")[0].split("-")[1]}/${
+  let date = '';
+  date = `${createdAt.split(':')[0].split('-')[1]}/${
     createdAt
-      .split(":")[0]
-      .split("-")[2]
-      .split("T")[0]
-  }/${createdAt.split(":")[0].split("-")[0]}`;
+      .split(':')[0]
+      .split('-')[2]
+      .split('T')[0]
+  }/${createdAt.split(':')[0].split('-')[0]}`;
   return date;
 };
 
 const FormatDateApi = createdAt => {
   // 19-01-28 04:48
-  let tmp = createdAt.split(" ")[0]
-  let time = MilToStrdTime(createdAt.split(" ")[1])
-  let date = `${tmp.split("-")[1]}/${tmp.split("-")[2]} ${time}`;
-  return date
-}
+  let tmp = createdAt.split(' ')[0];
+  let time = MilToStrdTime(createdAt.split(' ')[1]);
+  let date = `${tmp.split('-')[1]}/${tmp.split('-')[2]} ${time}`;
+  return date;
+};
 
 module.exports = {
-  WindConversion, TempConversion, DateCalculator, PhoneFormat, MilToStrdTime, FormatDate,
+  WindConversion,
+  TempConversion,
+  DateCalculator,
+  PhoneFormat,
+  MilToStrdTime,
+  FormatDate,
   FormatDateApi
-}
+};

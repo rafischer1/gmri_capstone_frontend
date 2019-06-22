@@ -1,9 +1,8 @@
 /* iphone 6,7,8 */
-@media only screen 
-and (min-device-width : 375px) 
-and (max-device-width : 768px)
-and (-webkit-min-device-pixel-ratio: 2) { 
-  .row {width: 100%;}
+@media only screen and (min-device-width: 375px) and (max-device-width: 768px) and (-webkit-min-device-pixel-ratio: 2) {
+  .row {
+    width: 100%;
+  }
 
   /* site heading and alert */
 
@@ -32,31 +31,42 @@ and (-webkit-min-device-pixel-ratio: 2) {
     font-size: 12px !important;
   }
 
-   #modal_0 > .modal-content > a > img {
+  #modal_0 > .modal-content > a > img {
     width: 40px;
     height: 40px;
   }
 
-  .moonPage {display: none;}
+  .moonPage {
+    display: none;
+  }
 
- /* login page */
+  /* login page */
 
   .login-block {
     width: 98% !important;
     margin: 0 !important;
     padding: 0;
-    font-size: 14px; 
+    font-size: 14px;
   }
 
   .login-sec h2 {
     font-size: 20px !important;
     margin: 2%;
   }
- 
-  .signUp {width: 100%;}
-  .login-sec {padding: 0;max-width: 700px;}
-  .tideChartCss {margin: 0% !important;}
-  .rv-xy-plot_inner {width: 20px !important;}
+
+  .signUp {
+    width: 100%;
+  }
+  .login-sec {
+    padding: 0;
+    max-width: 700px;
+  }
+  .tideChartCss {
+    margin: 0% !important;
+  }
+  .rv-xy-plot_inner {
+    width: 20px !important;
+  }
 
   .dataPage {
     width: 95%;
@@ -83,12 +93,19 @@ and (-webkit-min-device-pixel-ratio: 2) {
     box-shadow: 3px 5px 3px rgb(202, 202, 202);
   }
 
-  .septemberPage > .row > h4 {font-size: 16px !important; padding: 1%;}
-  .septemberPage::after {
-     background-size: 100% 80%;
+  .septemberPage > .row > h4 {
+    font-size: 16px !important;
+    padding: 1%;
   }
-  .btn.teal {margin-left: 0;}
-  .rv-xy-plot__axis__tick__text {text-shadow: 2px 2px 1px rgb(252, 230, 133);}
+  .septemberPage::after {
+    background-size: 100% 80%;
+  }
+  .btn.teal {
+    margin-left: 0;
+  }
+  .rv-xy-plot__axis__tick__text {
+    text-shadow: 2px 2px 1px rgb(252, 230, 133);
+  }
 
   .rv-xy-plot__inner {
     width: 60%;
@@ -110,14 +127,14 @@ and (-webkit-min-device-pixel-ratio: 2) {
   }
 
   #tideChartTitle {
-   font-weight: bold;
-   font-size: 16px !important;
-   margin-left: 10% !important;
-   margin-top: -5%;
-   text-transform: uppercase;
-   width: 100%; 
-   color: white;
-   margin-bottom: 1%;
+    font-weight: bold;
+    font-size: 16px !important;
+    margin-left: 10% !important;
+    margin-top: -5%;
+    text-transform: uppercase;
+    width: 100%;
+    color: white;
+    margin-bottom: 1%;
   }
 
   #tideChartLegend {
@@ -129,11 +146,11 @@ and (-webkit-min-device-pixel-ratio: 2) {
   }
 
   .tideChartMedia {
-    width: 100%
+    width: 100%;
   }
 
   .rv-hint {
-    border: 2px solid #7C97FB;
+    border: 2px solid #7c97fb;
     width: 100%;
     margin: -6% 0% 2% -18% !important;
   }
@@ -199,8 +216,8 @@ and (-webkit-min-device-pixel-ratio: 2) {
   }
 
   .curUsers {
-    font-size: 1em !important; 
-    border: 2px solid #DE6262;
+    font-size: 1em !important;
+    border: 2px solid #de6262;
     border-radius: 10px;
     margin-right: 5%;
     height: 60%;
@@ -212,9 +229,9 @@ and (-webkit-min-device-pixel-ratio: 2) {
 
   .barChart {
     width: 120% !important;
-    border-left: 2px solid #7C97FB;
-    border-right: 2px solid #7C97FB; 
-    border-bottom: 2px solid #7C97FB; 
+    border-left: 2px solid #7c97fb;
+    border-right: 2px solid #7c97fb;
+    border-bottom: 2px solid #7c97fb;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
   }
@@ -224,8 +241,8 @@ and (-webkit-min-device-pixel-ratio: 2) {
   }
 
   .smsContainer {
-    border-top: 2px solid #7C97FB; 
-    border-bottom: 2px solid #7C97FB; 
+    border-top: 2px solid #7c97fb;
+    border-bottom: 2px solid #7c97fb;
   }
 
   .messagesTable {
@@ -245,19 +262,19 @@ and (-webkit-min-device-pixel-ratio: 2) {
   rect {
     width: 10%;
   }
-  
+
   .barChart > .rv-xy-plot__inner {
     width: 120% !important;
     margin-left: -15% !important;
   }
 
-  .subscribeChart > svg > g > .subscribeTicks  {
+  .subscribeChart > svg > g > .subscribeTicks {
     width: 20%;
   }
 
   .hundredYearChart {
     display: none;
-  } 
+  }
 
   button.btn {
     width: 60% !important;
@@ -276,7 +293,7 @@ and (-webkit-min-device-pixel-ratio: 2) {
   }
 
   .FooterPage:after {
-    content: "";
+    content: '';
     background: url(https://images.unsplash.com/photo-1530123985359-4fd0cce1ea8b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2691&q=80);
     background-size: 200% 100%;
     background-repeat: no-repeat;
@@ -286,7 +303,7 @@ and (-webkit-min-device-pixel-ratio: 2) {
     bottom: 0;
     right: 0;
     position: absolute;
-    z-index: -1;   
+    z-index: -1;
   }
 
   .letter {
@@ -299,5 +316,3 @@ and (-webkit-min-device-pixel-ratio: 2) {
     font-size: 14px !important;
   }
 }
-
-

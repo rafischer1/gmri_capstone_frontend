@@ -1,4 +1,6 @@
-.adminPage {text-align: center;}
+.adminPage {
+  text-align: center;
+}
 
 .signInAdmin {
   margin-left: -10%;
@@ -11,13 +13,13 @@
 }
 
 .adminStats > div {
- margin: 5%;
- padding: 1%;
+  margin: 5%;
+  padding: 1%;
 }
 
 .curUsers {
   font-size: 1.5em;
-  border: 2px solid #C97857;
+  border: 2px solid #c97857;
   border-radius: 10px;
   margin-right: 5%;
   height: 80%;
@@ -29,9 +31,9 @@
 }
 
 .barChart {
-  border-left: 2px solid #C97857;
-  border-right: 2px solid #C97857; 
-  border-bottom: 2px solid #C97857; 
+  border-left: 2px solid #c97857;
+  border-right: 2px solid #c97857;
+  border-bottom: 2px solid #c97857;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
 }
@@ -41,8 +43,8 @@
 }
 
 .smsContainer {
-  border-top: 2px solid #7C97FB; 
-  border-bottom: 2px solid #7C97FB; 
+  border-top: 2px solid #7c97fb;
+  border-bottom: 2px solid #7c97fb;
   background-color: rgba(209, 209, 209, 0.068);
 }
 
@@ -50,8 +52,8 @@
   font-size: 18px;
 }
 
-.messagesTable > thead> tr:hover {
-  background-color:  rgba(201, 119, 87, 0.384);
+.messagesTable > thead > tr:hover {
+  background-color: rgba(201, 119, 87, 0.384);
   border-top: 1px dashed darkgrey;
 }
 
@@ -64,7 +66,3 @@
   margin-left: 15%;
   top: 500px;
 }
-
-
-
-

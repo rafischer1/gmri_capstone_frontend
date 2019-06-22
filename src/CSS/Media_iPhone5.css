@@ -1,15 +1,18 @@
 /* iphone 5 */
-@media only screen 
-and (min-device-width : 300px) 
-and (max-device-width : 568px)
-and (-webkit-min-device-pixel-ratio: 2) { 
-  .row {width: 100%;}
+@media only screen and (min-device-width: 300px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) {
+  .row {
+    width: 100%;
+  }
 
   /* site heading and alert */
 
-  .siteHeading {margin-left: 3% !important;}
+  .siteHeading {
+    margin-left: 3% !important;
+  }
 
-  .siteHeading > .letter {font-size: 3.5em !important;}
+  .siteHeading > .letter {
+    font-size: 3.5em !important;
+  }
 
   .btn.red {
     width: 95% !important;
@@ -17,39 +20,58 @@ and (-webkit-min-device-pixel-ratio: 2) {
     margin-left: -4%;
   }
 
-  #modal_5 > .modal-content > h5 {font-size: 14px !important;}
+  #modal_5 > .modal-content > h5 {
+    font-size: 14px !important;
+  }
 
-  #modal_5 > .modal-content > h4 {font-size: 14px !important;}
+  #modal_5 > .modal-content > h4 {
+    font-size: 14px !important;
+  }
 
-  #modal_5 > .modal-content > h3 {font-size: 18px !important;}
+  #modal_5 > .modal-content > h3 {
+    font-size: 18px !important;
+  }
 
-  #modal_0 > .modal-content > a {font-size: 12px !important;}
+  #modal_0 > .modal-content > a {
+    font-size: 12px !important;
+  }
 
-   #modal_0 > .modal-content > a > img {
+  #modal_0 > .modal-content > a > img {
     width: 30px;
     height: 30px;
   }
 
-  .moonPage {display: none;}
+  .moonPage {
+    display: none;
+  }
 
- /* login page */
+  /* login page */
 
   .login-block {
     width: 98% !important;
     margin: 0 !important;
     padding: 0;
-    font-size: 13px; 
+    font-size: 13px;
   }
 
   .login-sec h2 {
     font-size: 18px !important;
     margin: 1%;
   }
- 
-  .signUp {width: 100%;}
-  .login-sec {padding: 0;max-width: 700px;}
-  .tideChartCss {margin: 0% !important;}
-  .rv-xy-plot_inner {width: 16px !important;}
+
+  .signUp {
+    width: 100%;
+  }
+  .login-sec {
+    padding: 0;
+    max-width: 700px;
+  }
+  .tideChartCss {
+    margin: 0% !important;
+  }
+  .rv-xy-plot_inner {
+    width: 16px !important;
+  }
 
   .dataPage {
     width: 95%;
@@ -57,7 +79,9 @@ and (-webkit-min-device-pixel-ratio: 2) {
     font-size: 13px;
   }
 
-  .dataPage > div {width: auto;}
+  .dataPage > div {
+    width: auto;
+  }
 
   .septemberPage {
     background: url(https://services3.arcgis.com/IWh1Id1sBCnK9p7O/arcgis/rest/services/Portland_Flooding/FeatureServer/0/2/attachments/3);
@@ -74,10 +98,19 @@ and (-webkit-min-device-pixel-ratio: 2) {
     box-shadow: 3px 5px 3px rgb(202, 202, 202);
   }
 
-  .septemberPage > .row > h4 {font-size: 16px !important; padding: 1%;}
-  .septemberPage::after {background-size: 100% 80%;}
-  .btn.teal {margin-left: 0;}
-  .rv-xy-plot__axis__tick__text {text-shadow: 2px 2px 1px rgb(252, 230, 133);}
+  .septemberPage > .row > h4 {
+    font-size: 16px !important;
+    padding: 1%;
+  }
+  .septemberPage::after {
+    background-size: 100% 80%;
+  }
+  .btn.teal {
+    margin-left: 0;
+  }
+  .rv-xy-plot__axis__tick__text {
+    text-shadow: 2px 2px 1px rgb(252, 230, 133);
+  }
 
   .rv-xy-plot__inner {
     height: 90% !important;
@@ -86,25 +119,29 @@ and (-webkit-min-device-pixel-ratio: 2) {
   }
 
   .rv-hint {
-    border: 2px solid #7C97FB;
+    border: 2px solid #7c97fb;
     margin: -6% 0% 2% -18% !important;
     font-size: 14px;
     margin-right: 0 !important;
   }
 
-  #floodCatLegend {display: none;}
+  #floodCatLegend {
+    display: none;
+  }
 
-  .tideChartCss {width: 100%;}
+  .tideChartCss {
+    width: 100%;
+  }
 
   #tideChartTitle {
-   font-weight: bold;
-   font-size: 14px !important;
-   margin-left: 10% !important;
-   margin-top: -5%;
-   text-transform: uppercase;
-   width: 100%; 
-   color: white;
-   margin-bottom: 1%;
+    font-weight: bold;
+    font-size: 14px !important;
+    margin-left: 10% !important;
+    margin-top: -5%;
+    text-transform: uppercase;
+    width: 100%;
+    color: white;
+    margin-bottom: 1%;
   }
 
   #tideChartLegend {
@@ -116,7 +153,9 @@ and (-webkit-min-device-pixel-ratio: 2) {
     margin-left: 0 !important;
   }
 
-  .tideChartMedia {width: 100%;}
+  .tideChartMedia {
+    width: 100%;
+  }
 
   .sixFtPage {
     width: 96%;
@@ -125,9 +164,13 @@ and (-webkit-min-device-pixel-ratio: 2) {
     box-shadow: none;
   }
 
-  .sixFtPage > h4 {font-size: 16px;}
+  .sixFtPage > h4 {
+    font-size: 16px;
+  }
 
-  .sixFtPage > div {font-size: 16px;}
+  .sixFtPage > div {
+    font-size: 16px;
+  }
 
   .unsubscribe {
     display: inline-block;
@@ -141,12 +184,13 @@ and (-webkit-min-device-pixel-ratio: 2) {
     background-color: rgb(255, 255, 255);
   }
 
-  .unsubscribe-form > .row > h5 {font-size: 18px;}
+  .unsubscribe-form > .row > h5 {
+    font-size: 18px;
+  }
 
   .unsubscribe-form > .btn {
     font-size: 10px;
     height: 30px !important;
-    
   }
 
   .septemberPage {
@@ -154,18 +198,26 @@ and (-webkit-min-device-pixel-ratio: 2) {
     width: 96%;
   }
 
-  .septemberPage:after {background: none;}
+  .septemberPage:after {
+    background: none;
+  }
 
-  .carouselContainer {width: 100% !important;}
+  .carouselContainer {
+    width: 100% !important;
+  }
 
-  .carouselContainer::after {background: none;}
+  .carouselContainer::after {
+    background: none;
+  }
 
   .carouselPage {
     width: 100% !important;
     margin-left: 0;
   }
 
-  li.thumb {display: none !important;}
+  li.thumb {
+    display: none !important;
+  }
 
   /* admin page */
   .adminPage {
@@ -182,8 +234,8 @@ and (-webkit-min-device-pixel-ratio: 2) {
   }
 
   .curUsers {
-    font-size: .90em !important; 
-    border: 2px solid #DE6262;
+    font-size: 0.9em !important;
+    border: 2px solid #de6262;
     border-radius: 10px;
     margin-right: 5%;
     height: 50%;
@@ -195,11 +247,17 @@ and (-webkit-min-device-pixel-ratio: 2) {
     margin: 0 !important;
   }
 
-  .barChart {width: 120% !important;}
+  .barChart {
+    width: 120% !important;
+  }
 
-  .barChart > .rv-xy-plot__inner {margin: 0;}
+  .barChart > .rv-xy-plot__inner {
+    margin: 0;
+  }
 
-  .messagesTable {font-size: 12px !important;}
+  .messagesTable {
+    font-size: 12px !important;
+  }
 
   .btn.teal.toast.sms {
     position: relative;
@@ -223,7 +281,7 @@ and (-webkit-min-device-pixel-ratio: 2) {
   h4 {
     font-size: 22px;
   }
-  
+
   .barChart > .rv-xy-plot__inner {
     width: 120% !important;
     margin-left: -15% !important;
@@ -235,7 +293,7 @@ and (-webkit-min-device-pixel-ratio: 2) {
 
   .hundredYearChart {
     display: none;
-  } 
+  }
 
   button.btn {
     width: 60% !important;
@@ -262,7 +320,7 @@ and (-webkit-min-device-pixel-ratio: 2) {
   }
 
   .FooterPage:after {
-    content: "";
+    content: '';
     background: url(https://images.unsplash.com/photo-1530123985359-4fd0cce1ea8b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2691&q=80);
     background-size: 200% 100%;
     background-repeat: no-repeat;
@@ -272,10 +330,12 @@ and (-webkit-min-device-pixel-ratio: 2) {
     bottom: 0;
     right: 0;
     position: absolute;
-    z-index: -1;   
+    z-index: -1;
   }
 
-  .letter {font-size: 32px !important;}
+  .letter {
+    font-size: 32px !important;
+  }
 
   .infoLinks {
     display: inline-block;
@@ -283,4 +343,3 @@ and (-webkit-min-device-pixel-ratio: 2) {
     font-size: 14px !important;
   }
 }
-
